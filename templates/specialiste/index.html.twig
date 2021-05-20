@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Specialiste index{% endblock %}
+
+{% block body %}
+    <h1>Specialiste index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Profession</th>
+                <th>Telephone</th>
+                <th>Email</th>
+                <th>Adresse</th>
+                <th>Ville</th>
+                <th>Cp</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for specialiste in specialistes %}
+            <tr>
+                <td>{{ specialiste.id }}</td>
+                <td>{{ specialiste.nom }}</td>
+                <td>{{ specialiste.prenom }}</td>
+                <td>{{ specialiste.profession }}</td>
+                <td>{{ specialiste.telephone }}</td>
+                <td>{{ specialiste.email }}</td>
+                <td>{{ specialiste.adresse }}</td>
+                <td>{{ specialiste.ville }}</td>
+                <td>{{ specialiste.cp }}</td>
+                <td>
+                    <a href="{{ path('specialiste_show', {'id': specialiste.id}) }}">show</a>
+                    <a href="{{ path('specialiste_edit', {'id': specialiste.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('specialiste_new') }}">Create new</a>
+{% endblock %}
