@@ -12,7 +12,4 @@ const $ = require("jquery");
 global.$ = global.jQuery = $;
 window.Popper = require("popper.js")
 require("bootstrap");
-// start the Stimulus application
-
-// import './bootstrap';
 
