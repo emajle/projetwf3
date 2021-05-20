@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page Conseil{% endblock %}
+
+{% block body %}
+
+<h1><i class="fas fa-paw"></i>
+Espace Proriétaire</h1>
+<div class="example-wrapper">
+    <div>
+        <article>
+            <h2>Le conseil du jours</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor iure aliquam libero labore suscipit fugit maiores, sunt a quidem delectus ex omnis tempora amet. Harum quis pariatur veniam. Laborum, distinctio?
+            Ullam, sapiente maxime, magnam fuga quidem recusandae magni itaque provident atque libero aliquid accusamus aperiam perspiciatis suscipit a praesentium ratione totam. Provident voluptatem natus id illo earum, voluptas possimus nesciunt?
+            Vero autem praesentium eius iure unde nesciunt nostrum in eos, necessitatibus, deleniti nam minima asperiores amet officia molestiae, vel ea sequi aliquam accusantium similique numquam modi quibusdam. Quod, omnis at.</p>
+            <button><a href=""> Consulter tous les conseils</a></button>
+        </article>
+    </div>
+
+    <div>
+        <article>
+            <h2> Carnet de sante Virtuel de </h2>
+        </article>
+    </div>
+    <div class="d-flex">
+
+        <article>
+            <a href="{{ path('app_education')}}"><h2> Education </h2></a>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam inventore iste rem cumque odio! Expedita facilis voluptatem praesentium libero ipsum! Dolorum ipsa soluta aperiam quam obcaecati inventore accusantium, illum amet.
+            </p>
+            
+        </article>
+
+        <article>
+            <a href="{{ path('app_education')}}"><h2>Quotidien</h2></a>
+            <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim sequi, provident repellat dicta voluptatem nemo hic nam dolorum optio. Quisquam debitis ullam vel aut dolor alias cumque, necessitatibus tempore laudantium!
+            </p>
+        </article>
+
+        <article>
+            <a href="{{ path('app_education')}}"><h2> Nourriture</h2></a>
+            <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto maiores animi officia! Dicta voluptas id inventore, nobis odio quibusdam? Eos dolore aspernatur nostrum nisi ducimus, voluptate dolorem ex omnis repellat.
+            </p>
+        </article>
+
+        
+    </div>
+</div>
+{% endblock %}
