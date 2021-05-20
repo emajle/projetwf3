@@ -33,13 +33,10 @@ class AnimalType extends AbstractType
                     "femelle" => "femelle"
                 ],
             ])
-            ->add('photo', FileType::class, [
+            ->add('image', FileType::class, [
                 'required' => false,
                 'mapped' => \false,
                 'multiple' => true,
-                'constraints' => [
-                    new Image(['maxSize' => '1024k'])
-                ]
 
             ])
             ->add('description')

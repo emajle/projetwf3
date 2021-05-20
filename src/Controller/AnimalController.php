@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Animal;
+use App\Entity\Image;
 use App\Form\AnimalType;
 use App\Repository\AnimalRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -29,6 +30,24 @@ class AnimalController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // On récupère les images transmis
+            $images = $form->get('image')->getData();
+            // On Boucle nos images
+            foreach ($images as $image) {
+                // Generée un nom aleatoire pour l'image
+                $fichier = md5(uniqid()) . '.' . $image->guessExtension();
+
+                // On copie le fichier dans le dossier uploads
+                $image->move(
+                    $this->getParameter('images_directory'),
+                    $fichier
+                );
+                // On stocke l'image dans la BDD (son nom)
+                $img = new Image();
+                $img->setName($fichier);
+                $animal->addImage($img);
+            }
+            //
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($animal);
             $entityManager->flush();

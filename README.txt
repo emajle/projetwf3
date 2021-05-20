@@ -16,3 +16,5 @@ changer les Not NULL dans la table user quand on va etre en prod
 creation d'une table conseil
 
 Formulaire animal menbre = menbre connecter a voir
+
+Creation d'une nouvelle table pour geré les image-> puis insertion en bdd a finir (video 36.14)
