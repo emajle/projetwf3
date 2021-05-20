@@ -2,10 +2,10 @@
 CREATE TABLE membre (
   id_membre int(5) NOT NULL auto_increment,
   pseudo varchar(15) NOT NULL,
-  mdp varchar(255) NOT NULL,
+  -mdp varchar(255) NOT NULL,
   nom varchar(50) NOT NULL,
   prenom varchar(50) NOT NULL,
-  email varchar(50) NOT NULL,
+  -email varchar(50) NOT NULL,
   ville varchar(20) NOT NULL,
   cp INTEGER NOT NULL,
   adresse text NOT NULL,
