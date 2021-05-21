@@ -1,10 +1,54 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Produit index{% endblock %}
+{% block title %}Produit index
+{% endblock %}
 
 {% block body %}
-    <h1>Produit index</h1>
+	<h1>Produit index</h1>
 
+<<<<<<< HEAD
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Reference</th>
+				<th>Titre</th>
+				<th>Categorie</th>
+				<th>Description</th>
+				<th>Photo</th>
+				<th>Prix</th>
+				<th>Origine_site</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for produit in produits %}
+				<tr>
+					<td>{{ produit.id }}</td>
+					<td>{{ produit.reference }}</td>
+					<td>{{ produit.titre }}</td>
+					<td>{{ produit.categorie }}</td>
+					<td>{{ produit.description }}</td>
+					<td>{{ produit.photo }}</td>
+					<td>{{ produit.prix }}</td>
+					<td>{{ produit.origineSite }}</td>
+					<td>
+						<a href="{{ path('produit_show', {'id': produit.id}) }}">show</a>
+						<a href="{{ path('produit_edit', {'id': produit.id}) }}">edit</a>
+						<a href="{{path('cardproduit_add', {'id': produit.id}) }}" class="btn btn-success float-right">
+							<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+							Ajouter
+						</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="9">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+=======
     <table class="table">
         <thead>
             <tr>
@@ -42,6 +86,7 @@
         {% endfor %}
         </tbody>
     </table>
+>>>>>>> 654bd225218b70006fc5c700b6288890ad6c18b9
 
-    <a href="{{ path('produit_new') }}">Create new</a>
+	<a href="{{ path('produit_new') }}">Create new</a>
 {% endblock %}
