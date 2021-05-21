@@ -11,3 +11,9 @@
 
     {{ include('animal/_delete_form.html.twig') }}
 {% endblock %}
+
+{# guilhem js pour supprimer les photo #}
+{% block javascripts %}
+    {{parent()}}
+   {{ encore_entry_script_tags('image') }}
+{% endblock %}

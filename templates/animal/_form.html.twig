@@ -1,4 +1,16 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
+    {# Verifier si la route est "animal_edit" on affiche les image #}
+    {% if app.request.attributes.get('_route') == 'animal_edit'%}
+        <h2>Image</h2>
+        {% for image in animal.images %}
+            <div>
+                <img src="{{ asset('/uploads/animal_photo/'~ image.name) }}" alt="photo de notre bete" width = "150" >
+                <a href="{{path('app_delete_image', {'id': image.id} )}}" data-delete data-token="{{csrf_token('delete' ~ image.id)}}">Supprimer vos photo</a>
+            </div>
+            
+        {% endfor %}
+    {% endif %}
+
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
