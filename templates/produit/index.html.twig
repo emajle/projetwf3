@@ -27,7 +27,7 @@
                 <td>{{ produit.titre }}</td>
                 <td>{{ produit.categorie }}</td>
                 <td>{{ produit.description }}</td>
-                <td>{{ produit.photo }}</td>
+                <td><img src="{{ asset('/uploads/photos/'~ produit.photo) }}" alt="image de {{ produit.titre }}" width="150"></td>
                 <td>{{ produit.prix }}</td>
                 <td>{{ produit.origineSite }}</td>
                 <td>

@@ -17,7 +17,11 @@ class ProduitType extends AbstractType
             ->add('titre')
             ->add('categorie')
             ->add('description')
-            ->add('photo', FileType::class)
+            ->add('photo', FileType::class, [
+                'required' => false,
+                'mapped' => false
+            ])
+
             ->add('prix')
             ->add('origine_site');
     }

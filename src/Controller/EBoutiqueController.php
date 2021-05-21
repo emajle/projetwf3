@@ -16,4 +16,12 @@ class EBoutiqueController extends AbstractController
             'produits' => $pr->findAll(),
         ]);
     }
+
+    #[Route('/e/boutique/accessoires', name: 'e_boutique_accessoires')]
+    public function accessoires(ProduitRepository $pr): Response
+    {
+        return $this->render('e_boutique/accessoires.html.twig', [
+            'produits' => $pr->findAll(),
+        ]);
+    }
 }
