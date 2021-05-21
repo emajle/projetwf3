@@ -26,7 +26,7 @@ class AnimalType extends AbstractType
                 ],
             ])
             ->add('couleur')
-            ->add('age')
+            ->add('age', NumberType::class)
             ->add('sexe', ChoiceType::class, [
                 "choices" => [
                     "male" => "male",
@@ -39,7 +39,7 @@ class AnimalType extends AbstractType
                 'multiple' => true,
 
             ])
-            ->add('description')
+            ->add('description', TextType::class)
             ->add('membre', EntityType::class, [
                 "class" => User::class,
                 "choice_label" => "Pseudo",

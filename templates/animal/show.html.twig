@@ -32,8 +32,6 @@
                 <td>{{ animal.sexe }}</td>
             </tr>
             <tr>
-                <th>Photo</th>
-                <td>{{ animal.photo }}</td>
             </tr>
             <tr>
                 <th>Description</th>
@@ -41,6 +39,10 @@
             </tr>
         </tbody>
     </table>
+  <h2>Photo {{animal.prenom}}</h2>
+                {% for image in animal.images %}
+                    <img src="{{ asset('/uploads/animal_photo/'~ image.name) }}" alt="photo de notre bete" width = "150" >
+                    {% endfor %}
 
     <a href="{{ path('animal_index') }}">back to list</a>
 

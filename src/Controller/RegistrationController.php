@@ -26,7 +26,7 @@ class RegistrationController extends AbstractController
         $this->emailVerifier = $emailVerifier;
     }
 
-    #[Route('/register', name: 'app_register')]
+    #[Route('/user/new', name: 'user_new', methods: ['GET', 'POST'])]
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, LoginAuthenticator $authenticator): Response
     {
         $user = new User();
@@ -66,8 +66,9 @@ class RegistrationController extends AbstractController
             );
         }
 
-        return $this->render('registration/register.html.twig', [
-            'registrationForm' => $form->createView(),
+        return $this->render('user/new.html.twig', [
+            'user' => $user,
+            'form' => $form->createView(),
         ]);
     }
 
