@@ -24,3 +24,4 @@ generation d'image : fonction = asset('')
 
 <img class="card-img-top" src="{{asset('build/images/1.jpg')}}" alt="img">
  style="background-image:url(./fxlogo.png);">
+page 404
