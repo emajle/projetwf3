@@ -17,4 +17,4 @@ creation d'une table conseil
 
 Formulaire animal menbre = menbre connecter a voir
 
-Creation d'une nouvelle table pour geré les image-> puis insertion en bdd a finir (video 36.14)
+photo animal ok-> sauf la suppression d'une image probleme -token Json

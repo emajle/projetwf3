@@ -119,13 +119,14 @@ class AnimalController extends AbstractController
     }
 
     //Gerée la suppréssion d'une image
-    #[Route('/supprime/image/{id}', name: "app_delete_image", methods: ["DELETE"])]
+    #[Route('/supprime/image/{id}', name: "app_delete_image", methods: ['DELETE'])]
+
     public function deleteImage(Image $image, Request $request)
     {
-        $date = \json_decode($request->getContent(), true);
-
+        $data = json_decode($request->getContent(), true);
+        dd($data);
         // On verifie si le token est valide (token pour securiser)
-        if ($this->isCsrfTokenValid('delete' . $image->getId(), $date['_token'])) {
+        if ($this->isCsrfTokenValid('delete' . $image->getId(), $data['_token'])) {
             //Recupere le non de l'image 
             $nom = $image->getName();
             //On supprime le fichier
