@@ -15,5 +15,9 @@ return [
     Symfony\WebpackEncoreBundle\WebpackEncoreBundle::class => ['all' => true],
     SymfonyCasts\Bundle\VerifyEmail\SymfonyCastsVerifyEmailBundle::class => ['all' => true],
     SymfonyCasts\Bundle\ResetPassword\SymfonyCastsResetPasswordBundle::class => ['all' => true],
+<<<<<<< HEAD
     EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle::class => ['all' => true],
+=======
+    Vich\UploaderBundle\VichUploaderBundle::class => ['all' => true],
+>>>>>>> 654bd225218b70006fc5c700b6288890ad6c18b9
 ];

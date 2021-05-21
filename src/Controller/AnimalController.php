@@ -3,9 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Animal;
+use App\Entity\Image;
 use App\Form\AnimalType;
 use App\Repository\AnimalRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -29,6 +31,24 @@ class AnimalController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // On récupère les images transmis
+            $images = $form->get('image')->getData();
+            // On Boucle nos images
+            foreach ($images as $image) {
+                // Generée un nom aleatoire pour l'image
+                $fichier = md5(uniqid()) . '.' . $image->guessExtension();
+
+                // On copie le fichier dans le dossier uploads
+                $image->move(
+                    $this->getParameter('images_directory'),
+                    $fichier
+                );
+                // On stocke l'image dans la BDD (son nom)
+                $img = new Image();
+                $img->setName($fichier);
+                $animal->addImage($img);
+            }
+            //
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($animal);
             $entityManager->flush();
@@ -57,6 +77,24 @@ class AnimalController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // On récupère les images transmis
+            $images = $form->get('image')->getData();
+            // On Boucle nos images
+            foreach ($images as $image) {
+                // Generée un nom aleatoire pour l'image
+                $fichier = md5(uniqid()) . '.' . $image->guessExtension();
+
+                // On copie le fichier dans le dossier uploads
+                $image->move(
+                    $this->getParameter('images_directory'),
+                    $fichier
+                );
+                // On stocke l'image dans la BDD (son nom)
+                $img = new Image();
+                $img->setName($fichier);
+                $animal->addImage($img);
+            }
+
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('animal_index');
@@ -71,12 +109,38 @@ class AnimalController extends AbstractController
     #[Route('/{id}', name: 'animal_delete', methods: ['POST'])]
     public function delete(Request $request, Animal $animal): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$animal->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $animal->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($animal);
             $entityManager->flush();
         }
 
         return $this->redirectToRoute('animal_index');
+    }
+
+    //Gerée la suppréssion d'une image
+    #[Route('/supprime/image/{id}', name: "app_delete_image", methods: ['DELETE'])]
+
+    public function deleteImage(Image $image, Request $request)
+    {
+        $data = json_decode($request->getContent(), true);
+        dd($data);
+        // On verifie si le token est valide (token pour securiser)
+        if ($this->isCsrfTokenValid('delete' . $image->getId(), $data['_token'])) {
+            //Recupere le non de l'image 
+            $nom = $image->getName();
+            //On supprime le fichier
+            unlink($this->getParameter('images_directory') . '/' . $nom);
+
+            // On supprime l'entrée de la base
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($image);
+            $em->flush();
+
+            // On repond en Json
+            return new JsonResponse(['success' => 1]);
+        } else {
+            return new JsonResponse(['error' => 'Token invalide'], 400);
+        }
     }
 }

@@ -4,9 +4,12 @@ namespace App\Entity;
 
 use App\Repository\ProduitRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\component\HttpFoundation\File\File;
 
 /**
  * @ORM\Entity(repositoryClass=ProduitRepository::class)
+ * @Vich\Uploadable
  */
 class Produit
 {
@@ -41,6 +44,12 @@ class Produit
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $photo;
+
+    /**
+     * @Vich\UploadableField(mapping="photo_images", fileNameProperty="photo")
+     * @var File
+     */
+    private $imageFile;
 
     /**
      * @ORM\Column(type="float")
@@ -115,6 +124,23 @@ class Produit
         $this->photo = $photo;
 
         return $this;
+    }
+
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    public function setImgageFile(File $photo = null)
+    {
+        $this->imageFile = $photo;
+
+        //It is required that at least one field changes if you are using Doctrine,
+        //otherwise the event listeners won't be called and the file is lost
+        if ($photo) {
+            // if 'updatedAt' is not defined in your entity, use another property
+            $this->createdAt = new \DateTime('now');
+        }
     }
 
     public function getPrix(): ?float
