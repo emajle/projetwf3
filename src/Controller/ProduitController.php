@@ -22,13 +22,29 @@ class ProduitController extends AbstractController
     }
 
     #[Route('/new', name: 'produit_new', methods: ['GET', 'POST'])]
-    public function new(Request $request): Response
+    public function new(Request $request, ProduitRepository $pr): Response
     {
+
         $produit = new Produit();
         $form = $this->createForm(ProduitType::class, $produit);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // On récupère les images transmis
+            $image = $form->get('photo')->getData();
+
+            // Generée un nom aleatoire pour l'image
+            $fichier = md5(uniqid()) . '.' . $image->guessExtension();
+
+
+            // On copie le fichier dans le dossier uploads
+            $image->move(
+                $this->getParameter('photo_images'),
+                $fichier
+            );
+            $produit->setPhoto($fichier);
+
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($produit);
             $entityManager->flush();
@@ -71,7 +87,7 @@ class ProduitController extends AbstractController
     #[Route('/{id}', name: 'produit_delete', methods: ['POST'])]
     public function delete(Request $request, Produit $produit): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$produit->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $produit->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($produit);
             $entityManager->flush();

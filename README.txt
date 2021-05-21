@@ -12,3 +12,5 @@ Une fois que l'authentif est faite voir route de redirection (app_home?)
 app_forgot_password_request -> à changer
 
 changer les Not NULL dans la table user quand on va etre en prod
+
+Fix VichUploader bundle utile? (commit)
