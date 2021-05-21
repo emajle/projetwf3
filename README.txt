@@ -12,3 +12,9 @@ Une fois que l'authentif est faite voir route de redirection (app_home?)
 app_forgot_password_request -> à changer
 
 changer les Not NULL dans la table user quand on va etre en prod
+
+
+generation d'image : fonction = asset('')
+
+<img class="card-img-top" src="{{asset('build/images/1.jpg')}}" alt="img">
+ style="background-image:url(./fxlogo.png);">
