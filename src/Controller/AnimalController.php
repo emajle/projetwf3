@@ -26,7 +26,9 @@ class AnimalController extends AbstractController
     #[Route('/new', name: 'animal_new', methods: ['GET', 'POST'])]
     public function new(Request $request): Response
     {
+        $user = $this->getUser();
         $animal = new Animal();
+        $animal->setMembre($user);
         $form = $this->createForm(AnimalType::class, $animal);
         $form->handleRequest($request);
 
