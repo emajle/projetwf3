@@ -1,7 +1,15 @@
+/* $bleu: #077187;
+$jaune: #F9A620; */
+
+
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 @import "~bootstrap/scss/bootstrap";
 
 
 body {
-    background-color: lightgray;
+    background-color: lightgrey;
+}
+
+.titre{
+    color: black;
 }
