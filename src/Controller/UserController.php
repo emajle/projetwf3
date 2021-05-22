@@ -2,10 +2,11 @@
 
 namespace App\Controller;
 
+
 use App\Entity\User;
-use App\Form\UserType;
 use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
+use App\Repository\AnimalRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,8 +18,10 @@ class UserController extends AbstractController
     #[Route('/', name: 'user_index', methods: ['GET'])]
     public function index(UserRepository $userRepository): Response
     {
+        $animals = $userRepository->useranimal();
         return $this->render('user/index.html.twig', [
             'users' => $userRepository->findAll(),
+            'animals' => $animals
         ]);
     }
     // #[Route('/new', name: 'user_new', methods: ['GET', 'POST'])]
@@ -44,10 +47,13 @@ class UserController extends AbstractController
 
 
     #[Route('/{id}', name: 'user_show', methods: ['GET'])]
-    public function show(User $user): Response
+    public function show(User $user, AnimalRepository $ar): Response
     {
+        $animaux = $ar->idAnimal($user->getId());
+        //dd($animaux);
         return $this->render('user/show.html.twig', [
             'user' => $user,
+            'animaux' => $animaux
         ]);
     }
 
