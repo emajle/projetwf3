@@ -64,30 +64,32 @@
             </tbody>
         </table>
 
-        <h2>Animaux</h2>
-        <div>
-            <p>Le menbre {{user.pseudo}} a {{animaux|length}} </p>
-        </div>
-        <div class="d-flex justify-content-center">
-            {% for animal in animaux %}
-                <table class="table border border-dark">
-                        <tbody>
-                            <tr>
-                                <th>Prenom</th>
-                                <td>{{animal.prenom}}</td>
-                            </tr>
-                            <tr>
-                                <th>Espece</th>
-                                <td>{{animal.espece}}</td>
-                            </tr>
-                            <tr>
-                           <th></th>
-                            <td> <a href="{{ path('animal_show', {'id': animal.id}) }}">Voir animal</a></td>
-                            </tr>
-                        </tbody>
-                </table>
-            {% endfor %}
-        </div>
+        {% if animaux|length != 0 %}
+            <h2>Animaux</h2>
+            <div>
+                <p>Le membre {{user.pseudo}} a {{animaux|length}} </p>
+            </div>
+            <div class="d-flex justify-content-center">
+                {% for animal in animaux %}
+                    <table class="table border border-dark">
+                            <tbody>
+                                <tr>
+                                    <th>Prenom</th>
+                                    <td>{{animal.prenom}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Espece</th>
+                                    <td>{{animal.espece}}</td>
+                                </tr>
+                                <tr>
+                            <th></th>
+                                <td> <a href="{{ path('animal_show', {'id': animal.id}) }}">Voir animal</a></td>
+                                </tr>
+                            </tbody>
+                    </table>
+                {% endfor %}
+            </div>
+        {% endif %}
         
     
         <a href="{{ path('user_index') }}">Retour a la liste</a><br>

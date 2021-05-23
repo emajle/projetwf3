@@ -18,10 +18,10 @@ class UserController extends AbstractController
     #[Route('/', name: 'user_index', methods: ['GET'])]
     public function index(UserRepository $userRepository): Response
     {
-        $animals = $userRepository->useranimal();
+        $animaux = $userRepository->useranimal();
         return $this->render('user/index.html.twig', [
             'users' => $userRepository->findAll(),
-            'animals' => $animals
+            'animaux' => $animaux
         ]);
     }
     // #[Route('/new', name: 'user_new', methods: ['GET', 'POST'])]
