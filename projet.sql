@@ -69,11 +69,36 @@ CREATE TABLE association(
   description TEXT NOT NULL,
   PRIMARY KEY (id_association)
 )ENGINE=InnoDB DEFAULT CHARSET=latin1 ;
+-- a voir pour ajouter un carnet de santé avec 
 
-Create Table QRcode(
-  id_qrc int(5) NOT NULL auto_increment,
-  image_qrc varchar (50) NOT NULL,
+Create Table carnet_sante(
+  id_carnet int(5) NOT NULL auto_increment,
   animal_id int(5) NOT NULL,
   PRIMARY KEY (id_qrc),
-  KEY animal_id (animal_id)
+  KEY animal_id (animal_id),
 )ENGINE=InnoDB DEFAULT CHARSET=latin1 ;
+
+--lien one to many avec carnet_sante
+Create table Visite_medical(
+  id_visite int(5) NOT NULL AUTO_INCREMENT,
+  date_visite date NOT NULL,
+  description text NUll,
+  diagnostique text NULL,
+  analyses text NULL,
+  specialiste_id int(5) NOT NULL,
+  carnet_id int(5) NOT NULL,
+  PRIMARY KEY (id_visite),
+  KEY specialiste_id (specialiste_id),
+  KEY specialiste_id (carnet_id)
+)ENGINE=InnoDB DEFAULT CHARSET=latin1 ;
+
+
+Create table antecedent_medical(
+  id_antecedent int(5) NOT NULL AUTO_INCREMENT,
+  nom varchar(250) NOT NULL,
+  description text NULL,
+  carnet_id int(5) NOT NULL,
+  PRIMARY KEY (id_visite),
+  KEY carnet_id (carnet_id)
+)ENGINE=InnoDB DEFAULT CHARSET=latin1 ;
+

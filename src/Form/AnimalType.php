@@ -32,7 +32,7 @@ class AnimalType extends AbstractType
 
             ->add('prenom', TextType::class)
             ->add('espece', ChoiceType::class, [
-                'placeholder' => 'Espece De votre Animal',
+                'placeholder' => '',
                 'label' => false,
                 "choices" => [
                     "chien" => "chien",

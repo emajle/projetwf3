@@ -1,3 +1,9 @@
+ SUPPRIMER LA ENTITY QRCODE
+
+FAIRE LA PARTIE SPECIALISTE 
+PUIS RECUPERAIE LA CARTE (TIBO)
+PUIS VOIR AVEC L'EQUIPE SI ON RAJOUTE DES TABLE
+
  composer update
 composer require symfony/webpack-encore-bundle
 yarn install
