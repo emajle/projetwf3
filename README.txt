@@ -1,8 +1,8 @@
 Demander a didier conmment  SUPPRIMER LA ENTITY QRCODE
 
-FAIRE LA PARTIE SPECIALISTE 
-PUIS RECUPERAIE LA CARTE (TIBO)
-PUIS VOIR AVEC L'EQUIPE SI ON RAJOUTE DES TABLE
+Probleme Supprimer utilisateur
+
+CARNET a fini avec les deux autre table
 
  composer update
 composer require symfony/webpack-encore-bundle
