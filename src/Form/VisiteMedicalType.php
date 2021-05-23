@@ -23,12 +23,12 @@ class VisiteMedicalType extends AbstractType
                 "class" => Specialiste::class,
                 "choice_label" => "Nom",
                 "label" => "Nom"
-            ])
-            ->add('carnet', EntityType::class, [
-                "class" => CarnetSante::class,
-                "choice_label" => "animal.prenom",
-                "label" => "Nom"
             ]);
+        // ->add('carnet', EntityType::class, [
+        //     "class" => CarnetSante::class,
+        //     "choice_label" => "animal.prenom",
+        //     "label" => "Nom"
+        // ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

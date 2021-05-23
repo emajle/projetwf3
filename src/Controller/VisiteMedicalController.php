@@ -2,13 +2,14 @@
 
 namespace App\Controller;
 
+use App\Entity\CarnetSante;
 use App\Entity\VisiteMedical;
 use App\Form\VisiteMedicalType;
 use App\Repository\VisiteMedicalRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/vm')]
 class VisiteMedicalController extends AbstractController
@@ -21,10 +22,12 @@ class VisiteMedicalController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'visite_medical_new', methods: ['GET', 'POST'])]
-    public function new(Request $request): Response
+    #[Route('/{id}/new', name: 'visite_medical_new', methods: ['GET', 'POST'])]
+    public function new(Request $request, CarnetSante $carnet): Response
     {
+
         $visiteMedical = new VisiteMedical();
+        $visiteMedical->setCarnet($carnet);
         $form = $this->createForm(VisiteMedicalType::class, $visiteMedical);
         $form->handleRequest($request);
 

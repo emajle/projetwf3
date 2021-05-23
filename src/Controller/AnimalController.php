@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\Image;
 use App\Entity\Animal;
 use App\Form\AnimalType;
-use App\Entity\CarnetSante;
 use App\Repository\AnimalRepository;
 use App\Controller\CarnetSanteController;
 use Symfony\Component\HttpFoundation\Request;

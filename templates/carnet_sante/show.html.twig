@@ -4,7 +4,7 @@
 
 {% block body %}
     <h1>CarnetSante</h1>
-
+    ici il va avoir la card
     <table class="table">
         <tbody>
             <tr>
@@ -33,6 +33,13 @@
             </tr>
         </tbody>
     </table>
+
+        <h2>Visite medical</h2>
+
+        
+    <a href="{{ path('app_vac&opp_new', {'id': carnet_sante.id }) }}"> Nouvelle Vaccination ou Operation</a><br>
+
+    <a href="{{ path('visite_medical_new', {'id': carnet_sante.id }) }}"> Nouvelle Visite medical</a><br>
 
     <a href="{{ path('carnet_sante_index') }}">back to list</a>
 

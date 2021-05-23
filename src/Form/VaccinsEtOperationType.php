@@ -19,6 +19,8 @@ class VaccinsEtOperationType extends AbstractType
         $builder
             ->add('nom', TextType::class)
             ->add('action', ChoiceType::class, [
+                "placeholder" => "Action",
+                "label" => \false,
                 "choices" => [
                     "Opération" => "operation",
                     "Vaccination" => "vaccimation"
@@ -27,14 +29,16 @@ class VaccinsEtOperationType extends AbstractType
             ->add('description', TextType::class)
             ->add('specialiste', EntityType::class, [
                 "class" => Specialiste::class,
+                "placeholder" => "Nom du Specialiste",
                 "choice_label" => "Nom",
-                "label" => "Nom"
-            ])
-            ->add('carnet', EntityType::class, [
-                "class" => CarnetSante::class,
-                "choice_label" => "animal.prenom",
-                "label" => "Nom"
+                "label" => \false,
+                "required" => false,
             ]);
+        // ->add('carnet', EntityType::class, [
+        //     "class" => CarnetSante::class,
+        //     "choice_label" => "animal.prenom",
+        //     "label" => "Nom"
+        // ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
