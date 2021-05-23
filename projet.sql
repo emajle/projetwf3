@@ -89,16 +89,21 @@ Create table Visite_medical(
   carnet_id int(5) NOT NULL,
   PRIMARY KEY (id_visite),
   KEY specialiste_id (specialiste_id),
-  KEY specialiste_id (carnet_id)
+  KEY carnet_id (carnet_id)
 )ENGINE=InnoDB DEFAULT CHARSET=latin1 ;
 
 
-Create table antecedent_medical(
-  id_antecedent int(5) NOT NULL AUTO_INCREMENT,
-  nom varchar(250) NOT NULL,
+Create table vaccinsEtOperation(
+  id_vaccinsEtOperation int(5) NOT NULL AUTO_INCREMENT,
+  nom varchar(250) not null,
+  action varchar(250) NOT NULL,
   description text NULL,
+  specialiste_id int(5) NOT NULL,
   carnet_id int(5) NOT NULL,
+  visite_id int(5) NOT NULL,
+  KEY carnet_id (carnet_id),
+  Key visite_id(visite_id),
+  KEY specialiste_id (specialiste_id),
   PRIMARY KEY (id_visite),
-  KEY carnet_id (carnet_id)
 )ENGINE=InnoDB DEFAULT CHARSET=latin1 ;
 
