@@ -57,6 +57,11 @@ class Specialiste
      */
     private $cp;
 
+    /**
+     * @ORM\OneToOne(targetEntity=VisiteMedical::class, mappedBy="specialiste", cascade={"persist", "remove"})
+     */
+    private $visiteMedical;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -154,6 +159,23 @@ class Specialiste
     public function setCp(int $cp): self
     {
         $this->cp = $cp;
+
+        return $this;
+    }
+
+    public function getVisiteMedical(): ?VisiteMedical
+    {
+        return $this->visiteMedical;
+    }
+
+    public function setVisiteMedical(VisiteMedical $visiteMedical): self
+    {
+        // set the owning side of the relation if necessary
+        if ($visiteMedical->getSpecialiste() !== $this) {
+            $visiteMedical->setSpecialiste($this);
+        }
+
+        $this->visiteMedical = $visiteMedical;
 
         return $this;
     }

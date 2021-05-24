@@ -18,7 +18,15 @@
 			</tr>
 			<tr>
 				<th>Espece</th>
-				<td>{{ animal.espece }}</td>
+				{% if animal.espece == "chien" %}
+					<td>
+						<i class="fas fa-dog"></i>
+					</td>
+				{% else %}
+					<td>
+						<i class="fas fa-cat"></i>
+					</td>
+				{% endif %}
 			</tr>
 			<tr>
 				<th>Couleur</th>
@@ -30,7 +38,15 @@
 			</tr>
 			<tr>
 				<th>Sexe</th>
-				<td>{{ animal.sexe }}</td>
+				{% if animal.sexe == "m" %}
+					<td>
+						<i class="fas fa-mars"></i>
+					</td>
+				{% else %}
+					<td>
+						<i class="fas fa-venus"></i>
+					</td>
+				{% endif %}
 			</tr>
 			<tr></tr>
 			<tr>

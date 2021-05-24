@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}VaccinsEtOperation index{% endblock %}
+
+{% block body %}
+    <h1>VaccinsEtOperation index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Action</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for vaccins_et_operation in vaccins_et_operations %}
+            <tr>
+                <td>{{ vaccins_et_operation.id }}</td>
+                <td>{{ vaccins_et_operation.nom }}</td>
+                <td>{{ vaccins_et_operation.action }}</td>
+                <td>{{ vaccins_et_operation.description }}</td>
+                <td>
+                    <a href="{{ path('app_vac&opp_show', {'id': vaccins_et_operation.id}) }}">show</a>
+                    <a href="{{ path('app_vac&opp_edit', {'id': vaccins_et_operation.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Animal;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -19,6 +20,24 @@ class AnimalRepository extends ServiceEntityRepository
         parent::__construct($registry, Animal::class);
     }
 
+    /**
+     * Recuperation des animaux part rapport a un membre
+     */
+    public function idAnimal($idshow)
+    {
+        /*
+         SELECT * FROM animal
+          INNER JOIN user ON 
+          animal.membre_id = user.id 
+          WHERE user.id = $idshow
+         */
+
+        return $this->createQueryBuilder("a")
+            ->join(User::class, "u", "WITH", "u.id = a.membre")
+            ->where(" a.membre =" . $idshow)
+            ->getQuery()
+            ->getResult();
+    }
     // /**
     //  * @return Animal[] Returns an array of Animal objects
     //  */

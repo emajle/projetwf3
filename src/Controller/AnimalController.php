@@ -2,15 +2,16 @@
 
 namespace App\Controller;
 
-use App\Entity\Animal;
 use App\Entity\Image;
+use App\Entity\Animal;
 use App\Form\AnimalType;
 use App\Repository\AnimalRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
+use App\Controller\CarnetSanteController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/animal')]
 class AnimalController extends AbstractController
@@ -24,9 +25,12 @@ class AnimalController extends AbstractController
     }
 
     #[Route('/new', name: 'animal_new', methods: ['GET', 'POST'])]
-    public function new(Request $request): Response
+    public function new(Request $request, CarnetSanteController $carnet): Response
     {
+        $user = $this->getUser();
         $animal = new Animal();
+
+        $animal->setMembre($user);
         $form = $this->createForm(AnimalType::class, $animal);
         $form->handleRequest($request);
 
@@ -51,6 +55,8 @@ class AnimalController extends AbstractController
             //
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($animal);
+            $carnet->new($animal);
+
             $entityManager->flush();
 
             return $this->redirectToRoute('animal_index');

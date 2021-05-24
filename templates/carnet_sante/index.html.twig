@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CarnetSante index{% endblock %}
+
+{% block body %}
+    <h1>CarnetSante index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Prenom</th>
+                <th>Maitre</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for carnet_sante in carnet_santes %}
+            <tr>
+                <td>{{ carnet_sante.id }}</td>
+                <td>{{ carnet_sante.animal.prenom}}</td>
+                <td>{{ carnet_sante.animal.membre.pseudo}}</td>
+                <td>
+                    <a href="{{ path('carnet_sante_show', {'id': carnet_sante.id}) }}">show</a>
+                    <a href="{{ path('carnet_sante_edit', {'id': carnet_sante.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

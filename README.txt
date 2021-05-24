@@ -1,3 +1,9 @@
+Demander a didier conmment  SUPPRIMER LA ENTITY QRCODE
+
+Probleme Supprimer utilisateur
+
+CARNET a fini avec les deux autre table
+
  composer update
 composer require symfony/webpack-encore-bundle
 yarn install
