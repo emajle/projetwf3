@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Animal;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -35,6 +36,27 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->_em->persist($user);
         $this->_em->flush();
     }
+
+    /**
+     * Fonction qui permet de voir si un user a des animaux
+     */
+    public function userAnimal()
+    {
+        /*
+         SELECT * FROM animal
+          INNER JOIN user ON 
+          animal.membre_id = user.id 
+         */
+        return $this->createQueryBuilder("u")
+            ->join(Animal::class, "a", "WITH", "u.id = a.membre")
+            // ->where(" user.id IS NOT NULL")
+            ->orderBy('u.pseudo', 'ASC')
+            ->addOrderBy('a.prenom')
+            ->getQuery()
+            ->getResult();
+    }
+
+
 
     // /**
     //  * @return User[] Returns an array of User objects

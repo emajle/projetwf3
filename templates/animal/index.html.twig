@@ -24,10 +24,18 @@
             <tr>
                 <td>{{ animal.id }}</td>
                 <td>{{ animal.prenom }}</td>
-                <td>{{ animal.espece }}</td>
+                {% if animal.espece == "chien" %}
+                     <td> <i class="fas fa-dog"></i></td>
+                {% else %}
+                    <td><i class="fas fa-cat"></i></td>
+                {% endif %}
                 <td>{{ animal.couleur }}</td>
                 <td>{{ animal.age }}</td>
-                <td>{{ animal.sexe }}</td>
+                {% if animal.sexe == "m" %}
+                     <td> <i class="fas fa-mars"></i></td>
+                {% else %}
+                    <td><i class="fas fa-venus"></i></td>
+                {% endif %}
                 <td>{% for image in animal.images %}
                     <img src="{{ asset('/uploads/animal_photo/'~ image.name) }}" alt="photo de notre bete" width = "10" >
                     {% endfor %}

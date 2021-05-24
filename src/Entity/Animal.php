@@ -70,6 +70,11 @@ class Animal
      */
     private $images;
 
+    /**
+     * @ORM\OneToOne(targetEntity=CarnetSante::class, mappedBy="animal", cascade={"persist", "remove"})
+     */
+    private $carnetSante;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -219,6 +224,23 @@ class Animal
                 $image->setAnimal(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCarnetSante(): ?CarnetSante
+    {
+        return $this->carnetSante;
+    }
+
+    public function setCarnetSante(CarnetSante $carnetSante): self
+    {
+        // set the owning side of the relation if necessary
+        if ($carnetSante->getAnimal() !== $this) {
+            $carnetSante->setAnimal($this);
+        }
+
+        $this->carnetSante = $carnetSante;
 
         return $this;
     }

@@ -69,7 +69,7 @@ class User implements UserInterface
     private $adresse;
 
     /**
-     * @ORM\OneToMany(targetEntity=Animal::class, mappedBy="membre")
+     * @ORM\OneToMany(targetEntity=Animal::class, mappedBy="membre",  cascade={"persist", "remove"})
      */
     private $animals;
 
