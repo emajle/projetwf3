@@ -72,6 +72,7 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Nom </th>
+                            <th scope="col">Date </th>
                             <th scope="col"></th>
                             <th scope="col">Detail</th>
                             <th scope="col">Specialiste</th>
@@ -81,7 +82,7 @@
                     {% for operation in operations %}
                         <tr>
                            <th scope="row">{{operation.id}}</th> 
-                            {#<td>{{operaton.dateVisite ? visite.dateVisite|date('Y-m-d') : '' }}</td> #}
+                            <td>{{operation.date ? operation.date|date('Y-m-d') : '' }}</td> 
                             <td>{{ operation.nom }}</td>
                                     {% if operation.action == "operation" %}
                                         <td> <i class="fas fa-clinic-medical"></i></td>

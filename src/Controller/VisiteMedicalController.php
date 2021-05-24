@@ -36,7 +36,7 @@ class VisiteMedicalController extends AbstractController
             $entityManager->persist($visiteMedical);
             $entityManager->flush();
 
-            return $this->redirectToRoute('visite_medical_index');
+            return $this->redirectToRoute('carnet_sante_index');
         }
 
         return $this->render('visite_medical/new.html.twig', [

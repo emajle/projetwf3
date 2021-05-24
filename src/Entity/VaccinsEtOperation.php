@@ -39,10 +39,15 @@ class VaccinsEtOperation
     private $specialiste;
 
     /**
-     * @ORM\ManyToOne(targetEntity=CarnetSante::class)
+     * @ORM\ManyToOne(targetEntity=CarnetSante::class, cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $carnet;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $date;
 
     public function getId(): ?int
     {
@@ -105,6 +110,18 @@ class VaccinsEtOperation
     public function setCarnet(?CarnetSante $carnet): self
     {
         $this->carnet = $carnet;
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(\DateTimeInterface $date): self
+    {
+        $this->date = $date;
 
         return $this;
     }

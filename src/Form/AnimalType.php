@@ -44,8 +44,8 @@ class AnimalType extends AbstractType
             ->add('age', NumberType::class)
             ->add('sexe', ChoiceType::class, [
                 "choices" => [
-                    "male" => "male",
-                    "femelle" => "femelle"
+                    "male" => "m",
+                    "femelle" => "f"
                 ],
             ])
             ->add('image', FileType::class, [

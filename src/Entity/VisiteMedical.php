@@ -38,7 +38,7 @@ class VisiteMedical
     private $analyses;
 
     /**
-     * @ORM\OneToOne(targetEntity=Specialiste::class, inversedBy="visiteMedical", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity=Specialiste::class,)
      * @ORM\JoinColumn(nullable=false)
      */
     private $specialiste;
