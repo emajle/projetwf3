@@ -14,8 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
-
-
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class AnimalType extends AbstractType
 {

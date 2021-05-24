@@ -1,0 +1,40 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	Page non trouvée
+{% endblock %}
+
+{% block body %}
+
+	<section>
+		<div class="page_404">
+			<div class="container">
+				<div class="row">
+					<div class="content_box_404">
+						<h3 class="h2">
+							{{status_text}}
+						</h3>
+						<a href="{{path('app_home')}}" class="btn btn-primary">Par ici</a>
+					</div>
+					<div class="col-sm-12">
+						<div class="col-sm-12 col-sm-offset-1  text-center">
+							<div class="four_zero_four_bg">
+								<img class="w-50" src="{{asset('/images/dog.gif')}}" alt="chien reniflant">
+								<h1 class="text-center">
+									{{status_code}}
+								</h1>
+							</div>
+							<div class="content_box_404">
+								<h3 class="h2">
+									{{status_text}}
+								</h3>
+								<a href="{{path('app_home')}}" class="btn btn-primary">Par ici</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}

@@ -6,64 +6,69 @@
 {% block body %}
 	<h1>Animal</h1>
 
-	<table class="table">
-		<tbody>
-			<tr>
-				<th>Id</th>
-				<td>{{ animal.id }}</td>
-			</tr>
-			<tr>
-				<th>Prenom</th>
-				<td>{{ animal.prenom }}</td>
-			</tr>
-			<tr>
-				<th>Espece</th>
-				{% if animal.espece == "chien" %}
-					<td>
-						<i class="fas fa-dog"></i>
-					</td>
-				{% else %}
-					<td>
-						<i class="fas fa-cat"></i>
-					</td>
-				{% endif %}
-			</tr>
-			<tr>
-				<th>Couleur</th>
-				<td>{{ animal.couleur }}</td>
-			</tr>
-			<tr>
-				<th>Age</th>
-				<td>{{ animal.age }}</td>
-			</tr>
-			<tr>
-				<th>Sexe</th>
-				{% if animal.sexe == "m" %}
-					<td>
-						<i class="fas fa-mars"></i>
-					</td>
-				{% else %}
-					<td>
-						<i class="fas fa-venus"></i>
-					</td>
-				{% endif %}
-			</tr>
-			<tr></tr>
-			<tr>
-				<th>Description</th>
-				<td>{{ animal.description }}</td>
-			</tr>
-		</tbody>
-	</table>
-	<h2>Photo
-		{{animal.prenom}}</h2>
-	{% for image in animal.images %}
-		<img src="{{ asset('/uploads/animal_photo/'~ image.name) }}" alt="photo de notre bete" width="150">
-	{% endfor %}
-
 	<a href="{{ path('animal_index') }}">back to list</a>
 
 	<a href="{{ path('animal_edit', {'id': animal.id}) }}">edit</a>
+	{% block card %}
+		<div id="card">
+			<div id="card-title">
+				<h1>République Libre des Animaux</h1>
+			</div>
+			<div id="card-id">
+				<div id="card-number">
+					<p class="cardtitle">Carte nationale d'identité (id) :
+					</p>
+					<p>{{animal.id}}</p>
+				</div>
+				<p class="cardtitle">Espèce :
+				</p>
+				<p>{{animal.espece}}</p>
+			</div>
+			<div id="card-information">
+				<div id="card-photo">
+					{% for image in animal.images %}
+						<img src="{{ asset('/uploads/animal_photo/'~ image.name) }}" alt="photo de notre bete" width="146" height="146">
+					{% endfor %}
+				</div>
+				<div id="card-text">
+					<div id="card-name">
+						<div class="card-box"></div>
+						<p class="cardtitle">Prénom :</p>
+						<p>{{animal.prenom}}</p>
+						<div class="card-box"></div>
+						<p class="cardtitle">Couleur :</p>
+						<p>{{animal.couleur}}</p>
+					</div>
+					<div id="card-detail">
+						<div class="card-box">
+							<p class="cardtitle">Sexe :</p>
+							<p>{{animal.sexe}}</p>
+						</div>
+						<div class="card-box">
+							<p class="cardtitle">Age :</p>
+							<p>{{animal.age}}</p>
+						</div>
+						<div class="card-box">
+							<p class="cardtitle">Description :</p>
+							<p>{{animal.description}}</p>
+						</div>
+					</div>
+					<div id="card-sign">
+						<p class="cardtitle">QR-code :</p>
+						<div id="cardsign"></div>
+					</div>
+				</div>
+			</div>
+			<div id="card-code">
+				<p>
+					***************************** **************************************************** ************************
+				</p>
+			</div>
+		</div>
 
-	{{ include('animal/_delete_form.html.twig') }}
+
+	{% endblock %}
+
+
+	{{include('animal/_delete_form.html.twig')}}
 {% endblock %}
