@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	PAccès interdit
+{% endblock %}
+
+{% block body %}
+	<h1>Accès interdit</h1>
+	<p>Vous n'avez pas la permission de voir cette page</p>
+	<p>
+		<a href="{{path('user_new')}}">Inscription</a>
+	</p>
+{% endblock %}
