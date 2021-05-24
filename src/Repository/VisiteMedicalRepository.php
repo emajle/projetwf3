@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\CarnetSante;
 use App\Entity\VisiteMedical;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -17,6 +18,22 @@ class VisiteMedicalRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, VisiteMedical::class);
+    }
+
+    public function jointCarnetVisite($idvm)
+    {
+
+        /**
+         * SELECT * FROM visite_medical AS vm
+         * INNER JOIN carnet_sante as cs ON 
+         * vm.carnet_id = cs.id
+         * WHERE vm.carnet_id = $idvm
+         */
+        return $this->createQueryBuilder("vm")
+            ->join(CarnetSante::class, "cs", "WITH", "vm.carnet=cs.id")
+            ->where("vm.carnet =" . $idvm)
+            ->getQuery()
+            ->getResult();
     }
 
     // /**

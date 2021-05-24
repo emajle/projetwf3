@@ -4,8 +4,11 @@ namespace App\Controller;
 
 use App\Entity\Animal;
 use App\Entity\CarnetSante;
+use App\Entity\VisiteMedical;
 use App\Form\CarnetSanteType;
 use App\Repository\CarnetSanteRepository;
+use App\Repository\VaccinsEtOperationRepository;
+use App\Repository\VisiteMedicalRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -33,10 +36,16 @@ class CarnetSanteController extends AbstractController
     }
 
     #[Route('/{id}', name: 'carnet_sante_show', methods: ['GET'])]
-    public function show(CarnetSante $carnetSante): Response
+    public function show(CarnetSante $carnetSante, VisiteMedicalRepository $vr, VaccinsEtOperationRepository $vor): Response
     {
+
+        $visites = $vr->jointCarnetVisite($carnetSante->getId());
+        $operaton = $vor->jointCarnetOperation($carnetSante->getId());
         return $this->render('carnet_sante/show.html.twig', [
             'carnet_sante' => $carnetSante,
+            'visites' => $visites,
+            'operations' => $operaton,
+
         ]);
     }
 

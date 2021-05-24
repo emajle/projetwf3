@@ -3,38 +3,100 @@
 {% block title %}CarnetSante{% endblock %}
 
 {% block body %}
-    <h1>CarnetSante</h1>
-    ici il va avoir la card
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ carnet_sante.id }}</td>
-            </tr>
-            <tr>
-                <th>Maitre</th>
-                <td>{{ carnet_sante.animal.membre.pseudo }}</td>
-            </tr>
-           <tr>
-                <th>Prenom</th>
-                <td>{{ carnet_sante.animal.prenom }}</td>
-            </tr>
-            <tr>
-                <th>Espece</th>
-                <td>{{ carnet_sante.animal.espece }}</td>
-            </tr>
-            <tr>
-                <th>age</th>
-                <td>{{ carnet_sante.animal.age }}</td>
-            </tr>
-            <tr>
-                <th>sexe</th>
-                <td>{{ carnet_sante.animal.sexe }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="container">
+        <h1>CarnetSante</h1>
+        ici il va avoir la card
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ carnet_sante.id }}</td>
+                </tr>
+                <tr>
+                    <th>Maitre</th>
+                    <td>{{ carnet_sante.animal.membre.pseudo }}</td>
+                </tr>
+               <tr>
+                    <th>Prenom</th>
+                    <td>{{ carnet_sante.animal.prenom }}</td>
+                </tr>
+                <tr>
+                    <th>Espece</th>
+                    <td>{{ carnet_sante.animal.espece }}</td>
+                </tr>
+                <tr>
+                    <th>age</th>
+                    <td>{{ carnet_sante.animal.age }}</td>
+                </tr>
+                <tr>
+                    <th>sexe</th>
+                    <td>{{ carnet_sante.animal.sexe }}</td>
+                </tr>
+            </tbody>
+        </table>
+    
+        <div class="" >
+            <article class="col-6 align-bottom">
+                <h2>Visite medical </h2>
+                <table class="table border border-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Date de la visite</th>
+                            <th scope="col">Symptome</th>
+                            <th scope="col">Diagnostique</th>
+                            <th scope="col">Analyses</th>
+                            <th scope="col">Specialiste</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for visite in visites %}
+                        <tr>
+                           <th scope="row">{{visite.id}}</th> 
+                            <td>{{visite.dateVisite ? visite.dateVisite|date('d/m/y') : '' }}</td>
+                            <td>{{ visite.symptome }}</td>
+                            <td>{{ visite.diagnostique }}</td>
+                            <td>{{ visite.analyses }}</td>
+                            <td>{{ visite.specialiste.nom }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            
+            </article>
 
-        <h2>Visite medical</h2>
+            <article class="col-6">
+                <h2>Vaccination ou Opération</h2>
+                <table class="table border border-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nom </th>
+                            <th scope="col"></th>
+                            <th scope="col">Detail</th>
+                            <th scope="col">Specialiste</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for operation in operations %}
+                        <tr>
+                           <th scope="row">{{operation.id}}</th> 
+                            {#<td>{{operaton.dateVisite ? visite.dateVisite|date('Y-m-d') : '' }}</td> #}
+                            <td>{{ operation.nom }}</td>
+                                    {% if operation.action == "operation" %}
+                                        <td> <i class="fas fa-clinic-medical"></i></td>
+                                        {% else %}
+                                        <td><i class="fas fa-syringe"></i></td>
+                                    {% endif %}
+                            <td>{{ operation.description }}</td>
+                            <td>{{ operation.specialiste.nom }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    </table>
+            </article>    
+        </div>   
+    </div>
 
         
     <a href="{{ path('app_vac&opp_new', {'id': carnet_sante.id }) }}"> Nouvelle Vaccination ou Operation</a><br>

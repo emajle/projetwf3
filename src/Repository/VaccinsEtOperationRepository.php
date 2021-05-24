@@ -2,9 +2,10 @@
 
 namespace App\Repository;
 
+use App\Entity\CarnetSante;
 use App\Entity\VaccinsEtOperation;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method VaccinsEtOperation|null find($id, $lockMode = null, $lockVersion = null)
@@ -18,6 +19,23 @@ class VaccinsEtOperationRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, VaccinsEtOperation::class);
     }
+
+    public function jointCarnetOperation($idop)
+    {
+
+        /**
+         * SELECT * FROM Vaccin/operation AS vm
+         * INNER JOIN carnet_sante as cs ON 
+         * vm.carnet_id = cs.id
+         * WHERE vm.carnet_id = $idvm
+         */
+        return $this->createQueryBuilder("vo")
+            ->join(CarnetSante::class, "cs", "WITH", "vo.carnet=cs.id")
+            ->where("vo.carnet =" . $idop)
+            ->getQuery()
+            ->getResult();
+    }
+
 
     // /**
     //  * @return VaccinsEtOperation[] Returns an array of VaccinsEtOperation objects
