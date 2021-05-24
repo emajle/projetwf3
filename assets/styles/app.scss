@@ -1,13 +1,181 @@
-/* $bleu: #077187;
-$jaune: #F9A620; */
+$bleu: #077187;
+$jaune: #f9a620;
 
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
+@import "custom";
 @import "~bootstrap/scss/bootstrap";
 
 body {
-  background-color: lightgrey;
+  background-color: white;
 }
 
 .titre {
   color: black;
 }
+
+/*======================
+    ANIMAL CARD
+=======================*/
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-family: "Arvo", serif;
+  font-weight: lighter;
+  font-size: 25px;
+}
+
+.cardtitle {
+  font-family: "Bitter", serif;
+  font-weight: bold;
+}
+
+p {
+  font-family: "Lato", sans-serif;
+  display: inline-block;
+  margin: 5px 1px;
+  font-size: 15px;
+}
+
+#card {
+  border: solid 2px #000;
+  border-radius: 10px;
+  box-shadow: 1px 2px 10px #000;
+  background-color: #e9eef2;
+  margin: auto 0;
+}
+
+#card-title {
+  padding: 5px;
+  color: #fff;
+  letter-spacing: 2px;
+  text-align: center;
+  text-transform: uppercase;
+  background-color: $bleu;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+#card-id {
+  padding: 5px;
+  display: flex;
+}
+
+#card-number {
+  display: inherit;
+  margin-right: 50px;
+}
+
+#card-information {
+  display: flex;
+  padding: 5px;
+}
+
+#card-photo {
+  background-position: center;
+  background-repeat: none;
+  border: solid 2px #000;
+  height: 150px;
+  width: 150px;
+}
+
+#card-detail {
+  display: flex;
+}
+
+.card-box {
+  margin-right: 20px;
+}
+
+#cardsign {
+  display: flex;
+  background: no-repeat
+    url(https://fontmeme.com/permalink/200329/2719511201202ec68d51bbc66ea58d25.png);
+  background-position: center;
+  height: 38px;
+  width: 350px;
+}
+
+#card-code {
+  padding: 5px;
+  background-color: #fff;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+// --------------------------------------------------------------------
+
+/*======================
+    SIGN IN FORM
+=======================*/
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+//---------------------------------------------------------------
+
+/*======================
+    404 page
+=======================*/
+
+.page_404 {
+  padding: 40px 0;
+  background: #fff;
+  font-family: "Arvo", serif;
+}
+
+.page_404 img {
+  width: 60%;
+}
+
+.four_zero_four_bg {
+  height: 400px;
+  background-position: center;
+}
+
+.four_zero_four_bg h1 {
+  font-size: 80px;
+}
+
+.four_zero_four_bg h3 {
+  font-size: 80px;
+}
+
+.link_404 {
+  color: #fff !important;
+  padding: 10px 20px;
+  margin: 20px 0;
+  display: inline-block;
+}
+.contant_box_404 {
+  margin-top: -50px;
+}
+//----------------------------------------------------------------

@@ -20,7 +20,7 @@ Formulaire animal menbre = menbre connecter a voir
 
 photo animal ok-> sauf la suppression d'une image probleme -token Json
 
-generation d'image : fonction = asset('')
+generation d'image : fonction = asset('')   // 	<img src="{{asset('/images/1.jpg')}}" alt="toto">
 
 <img class="card-img-top" src="{{asset('build/images/1.jpg')}}" alt="img">
  style="background-image:url(./fxlogo.png);">
