@@ -2,12 +2,13 @@
 
 namespace App\Controller;
 
-use App\Entity\Abonnement;
 use App\Entity\User;
 use App\Form\UserType;
-use App\Repository\AbonnementRepository;
+use App\Entity\Abonnement;
+use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
 use App\Repository\AnimalRepository;
+use App\Repository\AbonnementRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;

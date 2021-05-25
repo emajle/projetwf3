@@ -1,20 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProfilController!{% endblock %}
+{% block title %}Profil {{app.user.pseudo}}{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+      <h2>Hello {{ app.user.pseudo }}! ✅</h2>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+        <ul class = "list-group">
+        <li class="list-group-itemp">Nom : {{ app.user.nom }}</li>
+        <li class="list-group-itemp">Prenom : {{ app.user.prenom }}</li>
+        </ul>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Applications/MAMP/htdocs/projet/projetwf3/src/Controller/ProfilController.php'|file_link(0) }}">src/Controller/ProfilController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Applications/MAMP/htdocs/projet/projetwf3/templates/profil/index.html.twig'|file_link(0) }}">templates/profil/index.html.twig</a></code></li>
-    </ul>
-</div>
+        {# <h3>Mes emprunts</h3>
+        
+            <table class= "table table-bordered">
+                <thead class = "thead-dark">
+                    <th>Livre</th>
+                    <th>Emprunté le</th>
+                    <th>Rendu le</th>
+                </thead>
+
+                <tbody>
+                    {% for emprunt in app.user.emprunts %}
+                    <tr>
+                        <td>{{emprunt.livre_id.titre}}</td>
+                        <td>{{emprunt.dateEmprunt|date("d/m/y")}}</td>
+                        <td>{{emprunt.dateRetour ? emprunt.dateRetour|date("d/m/y"): "Le livre n'a pas etait rendu"}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table> #}
 {% endblock %}
