@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProduitRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\component\HttpFoundation\File\File;
@@ -60,6 +62,13 @@ class Produit
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $origine_site;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Categories::class, inversedBy="produit")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $categories;
+
 
     public function getId(): ?int
     {
@@ -131,17 +140,17 @@ class Produit
         return $this->imageFile;
     }
 
-    // public function setImgageFile(File $photo = null)
-    // {
-    //     $this->imageFile = $photo;
+    public function setImageFile(File $photo = null)
+    {
+        $this->imageFile = $photo;
 
-    //     //It is required that at least one field changes if you are using Doctrine,
-    //     //otherwise the event listeners won't be called and the file is lost
-    //     if ($photo) {
-    //         // if 'updatedAt' is not defined in your entity, use another property
-    //         $this->createdAt = new \DateTime('now');
-    //     }
-    // }
+        //It is required that at least one field changes if you are using Doctrine,
+        //otherwise the event listeners won't be called and the file is lost
+        if ($photo) {
+            // if 'updatedAt' is not defined in your entity, use another property
+            $this->createdAt = new \DateTime('now');
+        }
+    }
 
     public function getPrix(): ?float
     {
@@ -163,6 +172,18 @@ class Produit
     public function setOrigineSite(?string $origine_site): self
     {
         $this->origine_site = $origine_site;
+
+        return $this;
+    }
+
+    public function getCategories(): ?Categories
+    {
+        return $this->categories;
+    }
+
+    public function setCategories(?Categories $categories): self
+    {
+        $this->categories = $categories;
 
         return $this;
     }

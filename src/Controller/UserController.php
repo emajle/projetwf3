@@ -2,9 +2,10 @@
 
 namespace App\Controller;
 
-
+use App\Entity\Abonnement;
 use App\Entity\User;
-use App\Form\RegistrationFormType;
+use App\Form\UserType;
+use App\Repository\AbonnementRepository;
 use App\Repository\UserRepository;
 use App\Repository\AnimalRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -84,6 +85,17 @@ class UserController extends AbstractController
             $entityManager->flush();
         }
 
+        return $this->redirectToRoute('user_index');
+    }
+
+    #[Route('abonnement/{idU}/{idA}', name: 'user_abonnement', methods: ['GET'])]
+    public function abonnement($idA, $idU, UserRepository $userRepo, AbonnementRepository $aboRepo)
+    {
+        $user = $userRepo->find($idU);
+        $abonnement = $aboRepo->find($idA);
+        $user->setAbonnement($abonnement);
+        $this->getDoctrine()->getManager()->flush();
+        $this->addFlash("success", "Le paiement a bien été validé, vous êtes désormais abonné !");
         return $this->redirectToRoute('user_index');
     }
 }

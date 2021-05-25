@@ -11,6 +11,8 @@
 		{# --- CSS #}
 		{% block stylesheets %}
 			{{ encore_entry_link_tags('app') }}
+            <!-- Custom styles for Panier -->
+            <link href="form-validation.css" rel="stylesheet">
 		{% endblock %}
 
 		{% block javascripts %}
@@ -26,6 +28,21 @@
 				{% endfor %}
 			{% endblock %}
 		</div>
+        {% endblock %}
+        {% block head %}{% endblock %}
+        <style>
+            .grid{
+                display:grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-gap: 20px;
+            }
+        </style>
+        {% block javascriptsAjax %}{% endblock %}
+        
+    </head>
+    <body>
+   
+        {% include "nav.html.twig" %}
 
 	</body>
 </html>
