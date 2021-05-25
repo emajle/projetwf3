@@ -31,3 +31,8 @@ generation d'image : fonction = asset('')   // 	<img src="{{asset('/images/1.jpg
 <img class="card-img-top" src="{{asset('build/images/1.jpg')}}" alt="img">
  style="background-image:url(./fxlogo.png);">
 page 404
+
+
+Filter : a prévoir pour les produits
+
+npm i @popperjs/core => pour résolution 
