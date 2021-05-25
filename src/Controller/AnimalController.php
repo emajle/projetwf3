@@ -68,6 +68,53 @@ class AnimalController extends AbstractController
         ]);
     }
 
+    public function newModal(Request $request, CarnetSanteController $carnet, $user)
+    {
+        $animal = new Animal();
+        $animal->setMembre($user);
+        $form = $this->createForm(AnimalType::class, $animal);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // On récupère les images transmis
+            $images = $form->get('image')->getData();
+            // On Boucle nos images
+            foreach ($images as $image) {
+                // Generée un nom aleatoire pour l'image
+                $fichier = md5(uniqid()) . '.' . $image->guessExtension();
+
+                // On copie le fichier dans le dossier uploads
+                $image->move(
+                    $this->getParameter('images_directory'),
+                    $fichier
+                );
+                // On stocke l'image dans la BDD (son nom)
+                $img = new Image();
+                $img->setName($fichier);
+                $animal->addImage($img);
+            }
+            //
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($animal);
+            $carnet->new($animal);
+
+            $entityManager->flush();
+            $request->getSession();
+            $this->addflash('success', 'Votre inscription a été enregistré.');
+            return $this->redirectToRoute('profil');
+        }
+
+        return $this->render('profil/index.html.twig', [
+            'animal' => $animal,
+            'form' => $form->createView(),
+        ]);
+    }
+
+
+
+
+
+
     #[Route('/{id}', name: 'animal_show', methods: ['GET'])]
     public function show(Animal $animal): Response
     {

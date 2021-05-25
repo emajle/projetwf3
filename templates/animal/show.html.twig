@@ -9,66 +9,8 @@
 	<a href="{{ path('animal_index') }}">back to list</a>
 
 	<a href="{{ path('animal_edit', {'id': animal.id}) }}">edit</a>
-	{% block card %}
-		<div id="card">
-			<div id="card-title">
-				<h1>République Libre des Animaux</h1>
-			</div>
-			<div id="card-id">
-				<div id="card-number">
-					<p class="cardtitle">Carte nationale d'identité (id) :
-					</p>
-					<p>{{animal.id}}</p>
-				</div>
-				<p class="cardtitle">Espèce :
-				</p>
-				<p>{{animal.espece}}</p>
-			</div>
-			<div id="card-information">
-				<div id="card-photo">
-					{% for image in animal.images %}
-						<img src="{{ asset('/uploads/animal_photo/'~ image.name) }}" alt="photo de notre bete" width="146" height="146">
-					{% endfor %}
-				</div>
-				<div id="card-text">
-					<div id="card-name">
-						<div class="card-box"></div>
-						<p class="cardtitle">Prénom :</p>
-						<p>{{animal.prenom}}</p>
-						<div class="card-box"></div>
-						<p class="cardtitle">Couleur :</p>
-						<p>{{animal.couleur}}</p>
-					</div>
-					<div id="card-detail">
-						<div class="card-box">
-							<p class="cardtitle">Sexe :</p>
-							<p>{{animal.sexe}}</p>
-						</div>
-						<div class="card-box">
-							<p class="cardtitle">Age :</p>
-							<p>{{animal.age}}</p>
-						</div>
-						<div class="card-box">
-							<p class="cardtitle">Description :</p>
-							<p>{{animal.description}}</p>
-						</div>
-					</div>
-					<div id="card-sign">
-						<p class="cardtitle">QR-code :</p>
-						<div id="cardsign"></div>
-					</div>
-				</div>
-			</div>
-			<div id="card-code">
-				<p>
-					***************************** **************************************************** ************************
-				</p>
-			</div>
-		</div>
 
-
-	{% endblock %}
-
+	{% include "animal/card_animal.html.twig" %}
 
 	{{include('animal/_delete_form.html.twig')}}
 {% endblock %}

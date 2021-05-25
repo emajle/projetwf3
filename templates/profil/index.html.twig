@@ -4,11 +4,51 @@
 
 {% block body %}
       <h2>Hello {{ app.user.pseudo }}! ✅</h2>
-
+        {# Information user #}
         <ul class = "list-group">
-        <li class="list-group-itemp">Nom : {{ app.user.nom }}</li>
-        <li class="list-group-itemp">Prenom : {{ app.user.prenom }}</li>
+            <li class="list-group-itemp">Nom : {{ app.user.nom }}</li>
+            <li class="list-group-itemp">Prenom : {{ app.user.prenom }}</li>
+            <li class="list-group-itemp">email : {{ app.user.email }}</li>
+            <li class="list-group-itemp">adresse : {{ app.user.adresse }}</li>
+            <li class="list-group-itemp">ville : {{ app.user.ville }}</li>
+            <li class="list-group-itemp">cp : {{ app.user.cp }}</li>
         </ul>
+        
+            {# Animal user #}
+        <div>
+            <div class="d-flex justify-content-between">
+                {% for animal in app.user.animals  %}
+                        {% include "animal/card_animal.html.twig" %} 
+                {% endfor %}
+            </div>
+        </div>
+        
+        {# Modal inscription animaux #}
+        <!-- Button trigger modal -->
+            <button  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            Ajoutée un animal
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Nouvelle animal</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                        <button class="btn btn-primary">{{ button_label|default('save') }}</button>
+                {{ form_end(form) }}
+                </div>
+                </div>
+            </div>
+            </div>
 
         {# <h3>Mes emprunts</h3>
         
