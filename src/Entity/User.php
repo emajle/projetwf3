@@ -78,6 +78,12 @@ class User implements UserInterface
      */
     private $isVerified = false;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Abonnement::class, inversedBy="membre", cascade={"persist", "remove"})
+     */
+    private $abonnement;
+
+
     public function __construct()
     {
         $this->animals = new ArrayCollection();
@@ -275,6 +281,18 @@ class User implements UserInterface
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    public function getAbonnement(): ?Abonnement
+    {
+        return $this->abonnement;
+    }
+
+    public function setAbonnement(?Abonnement $abonnement): self
+    {
+        $this->abonnement = $abonnement;
 
         return $this;
     }

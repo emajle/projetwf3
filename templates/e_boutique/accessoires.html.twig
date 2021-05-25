@@ -4,18 +4,42 @@
 
 {% block h1 %}Les accessoires précieusement séléctionnés par nos soins : {% endblock %}
 {% block body %}
-<div class="card-deck">
-  {% for produit in produits %}
-    <div class="card" style="width: 18rem;">
-    <img src="{{ asset('/uploads/photos/'~ produit.photo) }}" class="card-img-top" alt="image de {{ produit.titre }}">
-    <div class="card-body">
-      <h5 class="card-title">{{ produit.titre }}</h5>
-      <p class="card-text">{{ produit.description }}</p>
-      <h4>{{ produit.prix }} €</h4>
-      <a href="{{ produit.origineSite }}" class="btn btn-primary">Voir l'article</a>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <p>Filtrer</p>
+      <form id="filters">
+        {% for categorie in categories %}
+          <p><input type="checkbox" name="categories[]" id="cat{{categorie.id}}" value="{{categorie.id}}"><label for="cat{{categorie.id}}">{{categorie.name}}</label></p>
+        {% endfor %}
+      </form>
     </div>
-  </div>  
-  {% endfor %}
+    <div class="col-md-9">
+      <div class="grid" id="content">
+        {% for produit in produits %}
+          {% include "e_boutique/_content.html.twig" with {produit: produit} only %}
+  
+        {% endfor %}
+      </div>
+    </div>
+  </div>
 </div>
+ {# <p>Filtrer</p>
+ <form id="filters">
+ {% for categorie in categories %}
+    <p><input type="checkbox" name="categories[]" id="cat{{categorie.id}}" value="{{categorie.id}}"><label for="cat{{categorie.id}}">{{categorie.name}}</label> </p>
+  {% endfor %}
+ </form>
+ 
+ <div id="content">
+  {% include "e_boutique/_content.html.twig" %}
+ </div>
 
+  #}
+
+
+{% endblock %}
+
+{% block javascriptsAjax %}
+<script src="{{ asset('js/filters.js') }}"></script>
 {% endblock %}

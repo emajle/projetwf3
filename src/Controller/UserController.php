@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Abonnement;
 use App\Entity\User;
 use App\Form\UserType;
+use App\Repository\AbonnementRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -71,12 +73,23 @@ class UserController extends AbstractController
     #[Route('/{id}', name: 'user_delete', methods: ['POST'])]
     public function delete(Request $request, User $user): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($user);
             $entityManager->flush();
         }
 
+        return $this->redirectToRoute('user_index');
+    }
+
+    #[Route('abonnement/{idU}/{idA}', name: 'user_abonnement', methods: ['GET'])]
+    public function abonnement($idA, $idU, UserRepository $userRepo, AbonnementRepository $aboRepo)
+    {
+        $user = $userRepo->find($idU);
+        $abonnement = $aboRepo->find($idA);
+        $user->setAbonnement($abonnement);
+        $this->getDoctrine()->getManager()->flush();
+        $this->addFlash("success", "Le paiement a bien été validé, vous êtes désormais abonné !");
         return $this->redirectToRoute('user_index');
     }
 }

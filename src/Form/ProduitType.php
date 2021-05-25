@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Categories;
 use App\Entity\Produit;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -16,6 +18,11 @@ class ProduitType extends AbstractType
             ->add('reference')
             ->add('titre')
             ->add('categorie')
+            ->add('categories', EntityType::class, [
+                "class" => Categories::class,
+                "choice_label" => "name",
+                "label" => "Catégorie"
+            ])
             ->add('description')
             ->add('photo', FileType::class, [
                 'required' => false,
