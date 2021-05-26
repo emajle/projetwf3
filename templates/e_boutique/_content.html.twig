@@ -1,0 +1,33 @@
+<div class="card">
+    <img src="{{ asset('/uploads/photos/'~ produit.photo) }}" alt="" class="card-img-top">
+    <div class="card-body">
+        <h5 class="card-title">{{ produit.titre }}</h5>
+        <div class="card-title text-primary" style="font-weight: bold; font-size: 1.5rem;">
+        {{ produit.prix }} €
+        </div>
+        <p class="text text-muted">{{ produit.description }}</p>
+    </div>
+
+</div>
+
+{#  <div class="card-deck">
+ {% for produit in produits %}
+
+    <div class="card" style="width: 18rem;">
+    <img src="{{ asset('/uploads/photos/'~ produit.photo) }}" class="card-img-top" alt="image de {{ produit.titre }}">
+    <div class="card-body">
+      <h5 class="card-title">{{ produit.titre }}</h5>
+      <p class="card-text">{{ produit.description }}</p>
+     
+      <h4>{{ produit.prix }} €</h4>
+      <a href="{{ produit.origineSite }}" class="btn btn-primary">Voir l'article</a>
+    </div>
+  </div>  
+ 
+  {% endfor %}
+    </div> #}
+ 
+
+
+
+
