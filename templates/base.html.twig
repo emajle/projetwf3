@@ -4,8 +4,7 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>
-			{% block title %}Welcome!
-			{% endblock %}
+			{% block title %}Welcome!{% endblock %}
 		</title>
 
 		{# --- CSS #}
@@ -14,7 +13,16 @@
             <!-- Custom styles for Panier -->
             <link href="form-validation.css" rel="stylesheet">
 		{% endblock %}
-
+		{% block head %}{% endblock %}
+        <style>
+            .grid{
+                display:grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-gap: 20px;
+            }
+        </style>
+        
+        
 		{% block javascripts %}
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
@@ -28,21 +36,6 @@
 				{% endfor %}
 			{% endblock %}
 		</div>
-        {% endblock %}
-        {% block head %}{% endblock %}
-        <style>
-            .grid{
-                display:grid;
-                grid-template-columns: repeat(3, 1fr);
-                grid-gap: 20px;
-            }
-        </style>
-        {% block javascriptsAjax %}{% endblock %}
-        
-    </head>
-    <body>
-   
-        {% include "nav.html.twig" %}
-
-	</body>
+{% block javascriptsAjax %}{% endblock %}
+    
 </html>

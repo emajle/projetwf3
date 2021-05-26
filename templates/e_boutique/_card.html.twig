@@ -1,11 +1,4 @@
-<div class="card">
-    <img src="{{ asset('/uploads/photos/'~ produit.photo) }}" alt="" class="card-img-top">
-    <div class="card-body">
-        <h5 class="card-title">{{ produit.titre }}</h5>
-        <div class="card-title text-primary" style="font-weight: bold; font-size: 1.5rem;">
-        {{ produit.prix }} €
-        </div>
-        <p class="text text-muted">{{ produit.description }}</p>
-    </div>
-
-</div>
+        {% for produit in produits %}
+          {% include "e_boutique/_content.html.twig" with {produit: produit} only %}
+  
+        {% endfor %}
