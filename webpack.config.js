@@ -77,6 +77,8 @@ Encore
         to: '../images/[path][name].[ext]', 
         from: './assets/video',
         to: '../video/[path][name].[ext]',
+        from: './assets/audio',
+        to: '../audio/[path][name].[ext]',
         /* 
             // if versioning is enabled, add the file hash too 
             //to: 'images/[path][name].[hash:8].[ext]', 

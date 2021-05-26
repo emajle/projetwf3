@@ -4,15 +4,10 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="">
-		<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-		<meta name="generator" content="Hugo 0.83.1">
 		<title>Cover Template · Bootstrap v5.0</title>
 
-		<link
-		rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/cover/">
+		<link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/cover/">
 
-
-		<!-- Bootstrap core CSS -->
 		{% block stylesheets %}
 			{{ encore_entry_link_tags('app') }}
 		{% endblock %}
@@ -36,36 +31,77 @@
 					font-size: 3.5rem;
 				}
 			}
+
+			video {
+				position: fixed;
+				z-index: -1;
+			}
+
+			@media(min-aspect-ratio: 16 / 9) {
+				#videoBg {
+					width: 100%;
+					height: auto;
+				}
+			}
+
+			@media(max-aspect-ratio: 16 / 9) {
+				#videoBg {
+					width: auto;
+					height: 100%;
+				}
+			}
 		</style>
 
 	</head>
-	<body class="d-flex h-100 text-center text-white bg-dark">
+	<body class="body d-flex h-100 text-center text-white bg-dark">
+		<video id="videoBg" class="d-flex w-100" autoplay="" muted="" loop="">
+			<source src="{{asset('/video/videoWel.mp4')}}" type="video/mp4">
+		</video>
+
+
+		<div class="bg-music">
+			<audio src="{{asset('/audio/nina-simone-my-baby-just-cares-for-me.mp3')}}"></audio>
+			<button class="btn">
+				<i class="fas fa-play-circle"></i>
+				<i class="fas fa-pause-circle"></i>
+			</button>
+		</div>
+
 
 		<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
 			<header class="mb-auto">
 				<div>
 					<h3 class="float-md-start mb-0">MyCarePet</h3>
 					<nav class="nav nav-masthead justify-content-center float-md-end">
-						<a class="nav-link active" aria-current="page" href="#">Home</a>
-						<a class="nav-link" href="#">Features</a>
+						<a class="nav-link active" aria-current="page" href="{{path('app_home')}}">Accueil</a>
+						<a class="nav-link" href="#">Boutique</a>
 						<a class="nav-link" href="#">Contact</a>
 					</nav>
 				</div>
 			</header>
 
 			<main class="px-3">
-				<h1>Cover your page.</h1>
-				<p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+				<h1>My Care Pet</h1>
+				<p class="lead">Si vous voulez des conseils pour le bien être de votre ami vous êtes au bon endroit. Notre réseau d'experts et de spécialistes vous accompagnera. vous Parce que si votre animal se porte bien il vous le rend bien.</p>
 				<p class="lead">
-					<a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Learn more</a>
+					<a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-white">En savoir plus</a>
 				</p>
 			</main>
 
 			<footer class="mt-auto text-white-50">
 				<p>Cover template for
-					<a href="https://getbootstrap.com/" class="text-white">Bootstrap</a>, by
-					<a href="https://twitter.com/mdo" class="text-white">@mdo</a>.</p>
+					<a href="https://github.com" class="text-white">MyCarePet Team</a>, by
+					<a href="https://twitter.com/mdo" class="text-white">E.S.G.T</a>.</p>
+				<audio class="d-flex w-100" controls src="{{asset('/audio/nina-simone-my-baby-just-cares-for-me.mp3')}}">
+					Your browser does not support the<code>audio</code>element.</audio>
 			</footer>
+			<script>
+				window.addEventListener("DOMContentLoaded", event => {
+const audio = document.querySelector("audio");
+audio.volume = 0.2;
+audio.play();
+});
+			</script>
 		</div>
 	</body>
-</html></body></html>
+</html>

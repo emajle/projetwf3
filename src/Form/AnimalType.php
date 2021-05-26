@@ -31,7 +31,7 @@ class AnimalType extends AbstractType
 
             ->add('prenom', TextType::class)
             ->add('espece', ChoiceType::class, [
-                'placeholder' => '',
+                'placeholder' => 'Espèce',
                 'label' => false,
                 "choices" => [
                     "chien" => "chien",
@@ -39,7 +39,7 @@ class AnimalType extends AbstractType
                 ],
                 'multiple' => false
             ])
-            ->add('couleur')
+            ->add('couleur', TextType::class)
             ->add('age', NumberType::class)
             ->add('sexe', ChoiceType::class, [
                 "choices" => [
