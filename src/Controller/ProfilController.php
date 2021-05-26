@@ -20,7 +20,7 @@ class ProfilController extends AbstractController
     #[Route('/profil', name: 'profil')]
     #[IsGranted("IS_AUTHENTICATED_FULLY")]
 
-    public function index(AnimalRepository $aR, AnimalController $ac, Request $request, CarnetSanteController $carnet, AnimalType $at): Response
+    public function index(AnimalRepository $aR, AnimalController $ac, Request $request, CarnetSanteController $carnet): Response
     {
         $user = $this->getUser();
         $animal = new Animal();
@@ -28,7 +28,7 @@ class ProfilController extends AbstractController
         $form = $this->createForm(AnimalType::class, $animal);
         $form->handleRequest($request);
 
-        $ac->newModalAnimal($request, $carnet, $form);
+        $ac->newModalAnimal($request, $carnet, $form, $animal);
 
         return $this->render('profil/index.html.twig', [
             "animaux" => $aR->idAnimal($this->getUser()->getId()),

@@ -70,9 +70,7 @@
 								<li class="nav-item">
 									<a class="nav-link" href="#">Annuaire</a>
 								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="{{ path('carnet_sante_index')}}">E-carnet</a>
-								</li>
+								
 								<li class="nav-item dropdown">
 									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 										E-Boutique
@@ -86,6 +84,41 @@
 										</li>
 									</ul>
 								</li>
+								{%  if is_granted("ROLE_ADMIN") %} 
+								<li class="nav-item dropdown">
+									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+										Espace admin
+									</a>
+									<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+										<li>
+											<a class="dropdown-item" href="{{ path('animal_index') }}">Animaux</a>
+										</li>
+										<li>
+											<a class="dropdown-item" href="{{ path('user_index') }}">Membre</a>
+										</li>
+										<li>
+											<a class="dropdown-item" href="{{ path('carnet_sante_index') }}">E-carnet</a>
+										</li>
+									</ul>
+								</li>
+								{% elseif  is_granted("ROLE_ABONNE") %}  
+								<li class="nav-item dropdown">
+									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+										Mon espace 
+									</a>
+									<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+										<li>
+											<a class="dropdown-item" href="{{ path('animal_index') }}">Animaux</a>
+										</li>
+										<li>
+											<a class="dropdown-item" href="{{ path('carnet_sante_index') }}">E-carnet</a>
+										</li>
+										<li>
+											<a class="dropdown-item" href="#">Ton abonnement</a>
+										</li>
+									</ul>
+								</li>
+								{% endif %}
 								 {% if app.user %}
 								<li class="nav-item">
 									<a class="nav-link" href="{{ path('profil')}}">

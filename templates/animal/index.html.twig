@@ -4,67 +4,108 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Animal index</h1>
+	{%  if is_granted("ROLE_ADMIN") %} 	
+		<h1>Animaux </h1>
 
-	<table class="table">
-		<thead>
-			<tr>
-				<th>Id</th>
-				<th>Prenom</th>
-				<th>Espece</th>
-				<th>Couleur</th>
-				<th>Age</th>
-				<th>Sexe</th>
-				<th>Photo</th>
-				<th>Description</th>
-				<th>actions</th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for animal in animals %}
+		<table class="table">
+			<thead>
 				<tr>
-					<td>{{ animal.id }}</td>
-					<td>{{ animal.prenom }}</td>
-					{% if animal.espece == "chien" %}
-						<td>
-							<i class="fas fa-dog"></i>
-						</td>
-					{% else %}
-						<td>
-							<i class="fas fa-cat"></i>
-						</td>
-					{% endif %}
-					<td>{{ animal.couleur }}</td>
-					<td>{{ animal.age }}</td>
-					{% if animal.sexe == "m" %}
-						<td>
-							<i class="fas fa-mars"></i>
-						</td>
-					{% else %}
-						<td>
-							<i class="fas fa-venus"></i>
-						</td>
-					{% endif %}
-					<td>
-						{% for image in animal.images %}
-							<img src="{{ asset('/uploads/animal_photo/'~ image.name) }}" alt="photo de notre bete" width="10">
-						{% endfor %}
-					</td>
-
-
-					<td>{{ animal.description }}</td>
-					<td>
-						<a href="{{ path('animal_show', {'id': animal.id}) }}">show</a>
-						<a href="{{ path('animal_edit', {'id': animal.id}) }}">edit</a>
-					</td>
+					<th>Id</th>
+					<th>Prenom</th>
+					<th>Espece</th>
+					<th>Couleur</th>
+					<th>Age</th>
+					<th>Sexe</th>
+					<th>Photo</th>
+					<th>Description</th>
+					<th>actions</th>
 				</tr>
-			{% else %}
-				<tr>
-					<td colspan="9">no records found</td>
-				</tr>
-			{% endfor %}
-		</tbody>
-	</table>
+			</thead>
+			<tbody>
+				{% for animal in animals %}
+					<tr>
+						<td>{{ animal.id }}</td>
+						<td>{{ animal.prenom }}</td>
+						{% if animal.espece == "chien" %}
+							<td>
+								<i class="fas fa-dog"></i>
+							</td>
+						{% else %}
+							<td>
+								<i class="fas fa-cat"></i>
+							</td>
+						{% endif %}
+						<td>{{ animal.couleur }}</td>
+						<td>{{ animal.age }}</td>
+						{% if animal.sexe == "m" %}
+							<td>
+								<i class="fas fa-mars"></i>
+							</td>
+						{% else %}
+							<td>
+								<i class="fas fa-venus"></i>
+							</td>
+						{% endif %}
+						<td>
+							{% for image in animal.images %}
+								<img src="{{ asset('/uploads/animal_photo/'~ image.name) }}" alt="photo de notre bete" width="10">
+							{% endfor %}
+						</td>
 
-	<a href="{{ path('animal_new') }}">Create new</a>
+
+						<td>{{ animal.description }}</td>
+						<td>
+							<a href="{{ path('animal_show', {'id': animal.id}) }}"><i class="far fa-eye"></i></a>
+							<a href="{{ path('animal_edit', {'id': animal.id}) }}"><i class="far fa-edit"></i></a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="9">Aucun animaux d'enrengistrée</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		
+	{% elseif is_granted("ROLE_ABONNE") %}
+			<h1>Mes Animaux</h1>
+		{% if app.user.animals  is not empty  %}
+					{% for animal in app.user.animals %}
+						<div class="card" style="width: 18rem;">
+						<div class="card-body">
+							<h5 class="card-title">{{animal.prenom}}</h5>
+							<p class="card-text">{{animal.description}}</p>
+						</div>
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item">{{animal.espece}}</li>
+							<li class="list-group-item">{{animal.age}}</li>
+							<li class="list-group-item">{{animal.sexe}}</li>
+							<li class="list-group-item">{{animal.couleur}}</li>
+						</ul>
+						<div class="card-body">
+							<a href="{{ path('animal_show', {'id': animal.id}) }}">Voir CI</i></a>
+							<a href="{{ path('animal_edit', {'id': animal.id}) }}" class="card-link">Modifiée</a>
+						</div>
+						</div>
+
+					{% endfor %}
+					<button  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            			Ajoutée un animal
+            		</button>
+
+					{% include "form_modal.html.twig" %}
+
+		{% else %}
+			<div>
+			<h3>Pas D'animaux</h3>
+			<p>Comment cela se fait? </p>
+			</div>
+			<button  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            			Nouvelle animal
+            		</button>
+
+			{% include "form_modal.html.twig" %}
+		{% endif %}
+	{% endif %}	
+
 {% endblock %}

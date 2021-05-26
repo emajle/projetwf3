@@ -3,34 +3,73 @@
 {% block title %}CarnetSante index{% endblock %}
 
 {% block body %}
-    <h1>CarnetSante index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Prenom</th>
-                <th>Maitre</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for carnet_sante in carnet_santes %}
-            <tr>
-                <td>{{ carnet_sante.id }}</td>
-                <td>{{ carnet_sante.animal.prenom}}</td>
-                <td>{{ carnet_sante.animal.membre.pseudo}}</td>
-                <td>
-                    <a href="{{ path('carnet_sante_show', {'id': carnet_sante.id}) }}">show</a>
-                    <a href="{{ path('carnet_sante_edit', {'id': carnet_sante.id}) }}">edit</a>
-                </td>
-            </tr>
+    {%  if is_granted("ROLE_ADMIN") %} 
+        <h1>Les Carnets de Santes</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Prenom</th>
+                    <th>Maitre</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for carnet_sante in carnet_santes %}
+                <tr>
+                        <td>{{ carnet_sante.id }}</td>
+                        <td>{{ carnet_sante.animal.prenom}}</td>
+                        <td>{{ carnet_sante.animal.membre.pseudo}}</td>
+                        <td>
+                            <a href="{{ path('carnet_sante_show', {'id': carnet_sante.id}) }}">show</a>
+                            <a href="{{ path('carnet_sante_edit', {'id': carnet_sante.id}) }}">edit</a>
+                        </td>
+                    </tr>
+             {% else %}
+                <tr>
+                    <td colspan="2">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    {% elseif is_granted("ROLE_ABONNE") %}
+        {% if app.user.carnetSantes is not empty  %}
+            <h1>Vos carnet de santée</h1>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Prenom</th>
+                            <th>Maitre</th>
+                            <th>actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                                {% for carnet_sante in app.user.carnetSantes %}     
+                        <tr>
+                                <td>{{ carnet_sante.id }}</td>
+                                <td>{{ carnet_sante.animal.prenom}}</td>
+                                <td>{{ carnet_sante.animal.membre.pseudo}}</td>
+                                <td>
+                                    <a href="{{ path('carnet_sante_show', {'id': carnet_sante.id}) }}">show</a>
+                                    <a href="{{ path('carnet_sante_edit', {'id': carnet_sante.id}) }}">edit</a>
+                                </td>
+                        </tr>
+                                {% else %}
+                        <tr>
+                            <td colspan="2">Pas d'animaux enrensigtrée</td>
+                        </tr>
+                    </tbody>
+                </table>
+                                {% endfor %}
         {% else %}
-            <tr>
-                <td colspan="2">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <p>Pas encore d'animaux enrengistré, Mais quelle dommage vous avez droit a un accée a nous carnet de santer en ligne pour vos monstre</p>
+        {% endif %}
+        
+    {% endif %}
+    
+
 
 {% endblock %}

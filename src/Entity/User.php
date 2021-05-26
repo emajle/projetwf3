@@ -83,10 +83,16 @@ class User implements UserInterface
      */
     private $abonnement;
 
+    /**
+     * @ORM\OneToMany(targetEntity=CarnetSante::class, mappedBy="user")
+     */
+    private $carnetSantes;
+
 
     public function __construct()
     {
         $this->animals = new ArrayCollection();
+        $this->carnetSantes = new ArrayCollection();
     }
 
 
@@ -293,6 +299,36 @@ class User implements UserInterface
     public function setAbonnement(?Abonnement $abonnement): self
     {
         $this->abonnement = $abonnement;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CarnetSante[]
+     */
+    public function getCarnetSantes(): Collection
+    {
+        return $this->carnetSantes;
+    }
+
+    public function addCarnetSante(CarnetSante $carnetSante): self
+    {
+        if (!$this->carnetSantes->contains($carnetSante)) {
+            $this->carnetSantes[] = $carnetSante;
+            $carnetSante->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCarnetSante(CarnetSante $carnetSante): self
+    {
+        if ($this->carnetSantes->removeElement($carnetSante)) {
+            // set the owning side to null (unless already changed)
+            if ($carnetSante->getUser() === $this) {
+                $carnetSante->setUser(null);
+            }
+        }
 
         return $this;
     }

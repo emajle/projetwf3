@@ -32,26 +32,7 @@
             </button>
 
             <!-- Modal -->
-            <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Nouvelle animal</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                {{ form_start(form) }}
-                    {{ form_widget(form) }}
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                        <button class="btn btn-primary">{{ button_label|default('save') }}</button>
-                {{ form_end(form) }}
-                </div>
-                </div>
-            </div>
-            </div>
-
+           {% include "form_modal.html.twig" %}
         {# <h3>Mes emprunts</h3>
         
             <table class= "table table-bordered">

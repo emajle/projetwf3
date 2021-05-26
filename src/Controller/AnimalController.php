@@ -13,14 +13,23 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('/animal')]
+#[Route('/abonne/animal')]
 class AnimalController extends AbstractController
 {
-    #[Route('/', name: 'animal_index', methods: ['GET'])]
-    public function index(AnimalRepository $animalRepository): Response
+    #[Route('/', name: 'animal_index', methods: ['GET', 'POST'])]
+    public function index(AnimalRepository $animalRepository, AnimalController $ac, Request $request, CarnetSanteController $carnet): Response
     {
+        $user = $this->getUser();
+        $animal = new Animal();
+        $animal->setMembre($user);
+        $form = $this->createForm(AnimalType::class, $animal);
+        $form->handleRequest($request);
+
+        $ac->newModalAnimal($request, $carnet, $form, $animal);
+
         return $this->render('animal/index.html.twig', [
             'animals' => $animalRepository->findAll(),
+            'form' => $form->createView(),
         ]);
     }
 
@@ -68,7 +77,7 @@ class AnimalController extends AbstractController
         ]);
     }
 
-    public function newModalAnimal(Request $request, CarnetSanteController $carnet, $form)
+    public function newModalAnimal(Request $request, CarnetSanteController $carnet, $form, $animal)
     {
 
         if ($form->isSubmitted() && $form->isValid()) {

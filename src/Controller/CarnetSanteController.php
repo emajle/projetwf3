@@ -14,14 +14,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/carnet')]
+#[Route('/abonne/carnet')]
 class CarnetSanteController extends AbstractController
 {
     #[Route('/', name: 'carnet_sante_index', methods: ['GET'])]
     public function index(CarnetSanteRepository $carnetSanteRepository): Response
     {
 
-        dd($carnetSanteRepository->findAll());
+        //dd($carnetSanteRepository->findAll());
         return $this->render('carnet_sante/index.html.twig', [
             'carnet_santes' => $carnetSanteRepository->findAll(),
         ]);
@@ -31,6 +31,7 @@ class CarnetSanteController extends AbstractController
     {
         $carnetSante = new CarnetSante();
         $carnetSante->setAnimal($animal);
+        $carnetSante->setUser($this->getUser());
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($carnetSante);
         $entityManager->flush();

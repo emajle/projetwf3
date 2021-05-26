@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\VaccinsEtOperationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('/vo')]
+#[Route('/membre/vo')]
 class VaccinsEtOperationController extends AbstractController
 {
     #[Route('/', name: 'app_vac&opp', methods: ['GET'])]

@@ -35,6 +35,11 @@ class CarnetSante
      */
     private $animal;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="carnetSantes")
+     */
+    private $user;
+
     public function __construct()
     {
         $this->visiteMedicals = new ArrayCollection();
@@ -113,6 +118,18 @@ class CarnetSante
                 $visiteMedical->setCarnet(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
