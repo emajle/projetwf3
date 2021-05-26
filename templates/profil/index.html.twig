@@ -16,9 +16,11 @@
         
             {# Animal user #}
         <div>
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between flex-wrap align-items-center">
                 {% for animal in app.user.animals  %}
-                        {% include "animal/card_animal.html.twig" %} 
+                        <div class = clo-6>
+                            {% include "animal/card_animal.html.twig" %} 
+                        </div>
                 {% endfor %}
             </div>
         </div>

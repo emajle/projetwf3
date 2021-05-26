@@ -68,12 +68,8 @@ class AnimalController extends AbstractController
         ]);
     }
 
-    public function newModal(Request $request, CarnetSanteController $carnet, $user)
+    public function newModalAnimal(Request $request, CarnetSanteController $carnet, $form)
     {
-        $animal = new Animal();
-        $animal->setMembre($user);
-        $form = $this->createForm(AnimalType::class, $animal);
-        $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             // On récupère les images transmis
@@ -103,11 +99,6 @@ class AnimalController extends AbstractController
             $this->addflash('success', 'Votre inscription a été enregistré.');
             return $this->redirectToRoute('profil');
         }
-
-        return $this->render('profil/index.html.twig', [
-            'animal' => $animal,
-            'form' => $form->createView(),
-        ]);
     }
 
 

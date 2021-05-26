@@ -103,7 +103,9 @@
     <a href="{{ path('app_vac&opp_new', {'id': carnet_sante.id }) }}"> Nouvelle Vaccination ou Operation</a><br>
 
     <a href="{{ path('visite_medical_new', {'id': carnet_sante.id }) }}"> Nouvelle Visite medical</a><br>
-
+ <button  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            Ajoutée un animal
+            </button>
     <a href="{{ path('carnet_sante_index') }}">back to list</a>
 
     <a href="{{ path('carnet_sante_edit', {'id': carnet_sante.id}) }}">edit</a>
