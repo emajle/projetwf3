@@ -21,6 +21,7 @@ class CarnetSanteController extends AbstractController
     public function index(CarnetSanteRepository $carnetSanteRepository): Response
     {
 
+        dd($carnetSanteRepository->findAll());
         return $this->render('carnet_sante/index.html.twig', [
             'carnet_santes' => $carnetSanteRepository->findAll(),
         ]);
