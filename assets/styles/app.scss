@@ -1,17 +1,35 @@
 $bleu: #077187;
 $jaune: #f9a620;
 
+
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 @import "custom";
 @import "~bootstrap/scss/bootstrap";
 
 body {
   background-color: white;
+  // background-image: url("/assets/images/CAREPET_Paws2.svg");
+  // background-repeat:repeat-x;
 }
 
 .titre {
   color: black;
 }
+
+.footer{
+  background-image: url("/assets/images/CAREPET_Paws1.svg");
+  background-repeat: no-repeat;
+}
+
+#carouselExampleCaptions{
+  background-image: url("/assets/images/CAREPET_Paws1.svg");
+  background-repeat: no-repeat;
+}
+
+// .container{
+//   background-image: url("/assets/images/CAREPET_Paws2.svg");
+//   background-repeat: no-repeat;
+// }
 
 /*======================
     ANIMAL CARD

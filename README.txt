@@ -31,3 +31,12 @@ generation d'image : fonction = asset('')   // 	<img src="{{asset('/images/1.jpg
 <img class="card-img-top" src="{{asset('build/images/1.jpg')}}" alt="img">
  style="background-image:url(./fxlogo.png);">
 page 404
+
+
+		<!-- Copyright -->
+		<div class="text-center p-1" style="background-color: rgba(0, 0, 0, 0.2);">
+			<p class="mt-5 mb-3 text-muted">
+				&copy;{{ "now"|date("Y") }}</p>
+			<a class="text-white" href="https://www.wf3.fr/">PetCare.com</a>
+		</div>
+		<!-- Copyright -->
