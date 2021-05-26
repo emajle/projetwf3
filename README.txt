@@ -36,3 +36,10 @@ page 404
 Filter : a prévoir pour les produits
 
 npm i @popperjs/core => pour résolution 
+		<!-- Copyright -->
+		<div class="text-center p-1" style="background-color: rgba(0, 0, 0, 0.2);">
+			<p class="mt-5 mb-3 text-muted">
+				&copy;{{ "now"|date("Y") }}</p>
+			<a class="text-white" href="https://www.wf3.fr/">PetCare.com</a>
+		</div>
+		<!-- Copyright -->
