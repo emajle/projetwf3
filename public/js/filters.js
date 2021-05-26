@@ -25,8 +25,8 @@ window.onload = () => {
                     "X-Requested-With": "XMLHttpRequest"
                 }
             }).then(response => {
-                response.json();
-            }).then(function (data) {
+                response.json()
+            }).then(data => {
                 const content = document.querySelector("#content");
                 content.innerHTML = data.content;
                 history.pushState({}, null, Url.pathname + "?" + Params.toString());
