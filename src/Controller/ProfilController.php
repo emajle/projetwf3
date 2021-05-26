@@ -22,6 +22,7 @@ class ProfilController extends AbstractController
 
     public function index(AnimalRepository $aR, AnimalController $ac, Request $request, CarnetSanteController $carnet): Response
     {
+        $titreModal = "Animal";
         $user = $this->getUser();
         $animal = new Animal();
         $animal->setMembre($user);
@@ -33,6 +34,7 @@ class ProfilController extends AbstractController
         return $this->render('profil/index.html.twig', [
             "animaux" => $aR->idAnimal($this->getUser()->getId()),
             'form' => $form->createView(),
+            "titre" => $titreModal,
 
         ]);
     }
