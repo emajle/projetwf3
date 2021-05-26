@@ -32,7 +32,7 @@ class EBoutiqueController extends AbstractController
 
         if ($request->get('ajax')) {
             return new JsonResponse(array(
-                'content' => $this->renderView('e_boutique/_content.html.twig', compact('produits'))
+                'content' => $this->renderView('e_boutique/_card.html.twig', compact('produits'))
             ));
         }
         $categories = $catRep->findAll();

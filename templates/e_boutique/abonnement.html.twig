@@ -2,6 +2,10 @@
 {% block title %}Abonnement{% endblock %}
 
 {% block head %}
+{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
+
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;

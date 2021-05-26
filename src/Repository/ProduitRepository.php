@@ -29,7 +29,7 @@ class ProduitRepository extends ServiceEntityRepository
 
         if ($filters != null) {
             $query->where('p.categories IN(:cat)')
-                ->setParameter(':cat', array_values($filters));
+                ->setParameter('cat', array_values($filters));
         }
 
         $query->orderBy('p.id', 'ASC');

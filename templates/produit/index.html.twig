@@ -34,10 +34,6 @@
 					<td>
 						<a href="{{ path('produit_show', {'id': produit.id}) }}">show</a>
 						<a href="{{ path('produit_edit', {'id': produit.id}) }}">edit</a>
-						<a href="{{path('cardproduit_add', {'id': produit.id}) }}" class="btn btn-success float-right">
-							<i class="fa fa-shopping-cart" aria-hidden="true"></i>
-							Ajouter
-						</a>
 					</td>
 				</tr>
 			{% else %}
