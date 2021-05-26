@@ -43,12 +43,23 @@ class RegistrationFormType extends AbstractType
                 ],
                 "required" => $user->getid() ? false : true
             ])
-            ->add('pseudo', TextType::class)
-            ->add('prenom', TextType::class)
-            ->add('nom', TextType::class)
-            ->add('adresse', TextType::class)
-            ->add('ville', TextType::class)
+            ->add('pseudo', TextType::class, [
+                'required' => false,
+            ])
+            ->add('prenom', TextType::class, [
+                'required' => false,
+            ])
+            ->add('nom', TextType::class, [
+                'required' => false,
+            ])
+            ->add('adresse', TextType::class, [
+                'required' => false,
+            ])
+            ->add('ville', TextType::class, [
+                'required' => false,
+            ])
             ->add('cp', NumberType::class, [
+                'required' => false,
                 'constraints' => [
                     new Positive([
                         'message' => "doit etre un chiffre possitif"
@@ -57,8 +68,9 @@ class RegistrationFormType extends AbstractType
                         'min' => 5,
                         'max' => 5,
                         'minMessage' => 'un code postal est composé de 5 chiffre',
-                        'maxMessage' => 'un code postal est composé de 5 chiffre'
-                    ])
+                        'maxMessage' => 'un code postal est composé de 5 chiffre',
+                    ]),
+
                 ]
             ])
             ->add('roles', ChoiceType::class, [

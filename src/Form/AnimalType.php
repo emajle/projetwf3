@@ -33,13 +33,14 @@ class AnimalType extends AbstractType
             ->add('espece', ChoiceType::class, [
 
                 'label' => "Espece",
+                'placeholder' => 'Espèce',
                 "choices" => [
                     "chien" => "chien",
                     "chat" => "chat"
                 ],
                 'multiple' => false
             ])
-            ->add('couleur')
+            ->add('couleur', TextType::class)
             ->add('age', NumberType::class)
             ->add('sexe', ChoiceType::class, [
                 "choices" => [
