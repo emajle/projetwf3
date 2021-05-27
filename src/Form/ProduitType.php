@@ -17,11 +17,11 @@ class ProduitType extends AbstractType
         $builder
             ->add('reference')
             ->add('titre')
-            ->add('categorie')
             ->add('categories', EntityType::class, [
                 "class" => Categories::class,
                 "choice_label" => "name",
-                "label" => "Catégorie"
+                "label" => "Catégorie",
+                'required' => false
             ])
             ->add('description')
             ->add('photo', FileType::class, [

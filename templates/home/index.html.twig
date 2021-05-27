@@ -17,21 +17,6 @@
 			{{ encore_entry_link_tags('app') }}
 		{% endblock %}
 
-		<style>
-			.bd-placeholder-img {
-				font-size: 1.125rem;
-				text-anchor: middle;
-				-webkit-user-select: none;
-				-moz-user-select: none;
-				user-select: none;
-			}
-
-			@media(min-width: 768px) {
-				.bd-placeholder-img-lg {
-					font-size: 3.5rem;
-				}
-			}
-		</style>
 
 	</head>
 	<body class="body-index">
@@ -80,7 +65,7 @@
 											<a class="dropdown-item" href="{{ path('e_boutique_accessoires') }}">Accessoires</a>
 										</li>
 										<li>
-											<a class="dropdown-item" href="#">Abonnement</a>
+											<a class="dropdown-item" href="{{ path('e_boutique_abonnement') }}">Abonnement</a>
 										</li>
 									</ul>
 								</li>

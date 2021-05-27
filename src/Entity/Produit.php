@@ -33,11 +33,6 @@ class Produit
     private $titre;
 
     /**
-     * @ORM\Column(type="string", length=50)
-     */
-    private $categorie;
-
-    /**
      * @ORM\Column(type="text")
      */
     private $description;
@@ -95,18 +90,6 @@ class Produit
     public function setTitre(string $titre): self
     {
         $this->titre = $titre;
-
-        return $this;
-    }
-
-    public function getCategorie(): ?string
-    {
-        return $this->categorie;
-    }
-
-    public function setCategorie(string $categorie): self
-    {
-        $this->categorie = $categorie;
 
         return $this;
     }
