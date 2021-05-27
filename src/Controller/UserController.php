@@ -8,13 +8,16 @@ use App\Entity\Abonnement;
 use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
 use App\Repository\AnimalRepository;
+use App\Security\LoginAuthenticator;
 use App\Repository\AbonnementRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-#[Route('/admin/user')]
+#[Route('/user')]
 class UserController extends AbstractController
 {
     #[Route('/', name: 'user_index', methods: ['GET'])]
@@ -26,26 +29,33 @@ class UserController extends AbstractController
             'animaux' => $animaux
         ]);
     }
-    // #[Route('/new', name: 'user_new', methods: ['GET', 'POST'])]
-    // public function new(Request $request): Response
-    // {
-    //     $user = new User();
-    //     $form = $this->createForm(UserType::class, $user);
-    //     $form->handleRequest($request);
+    #[Route('/admin/new', name: 'admin_user_new', methods: ['GET', 'POST'])]
+    public function new(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
+    {
+        $user = new User();
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
 
-    //     if ($form->isSubmitted() && $form->isValid()) {
-    //         $entityManager = $this->getDoctrine()->getManager();
-    //         $entityManager->persist($user);
-    //         $entityManager->flush();
+        if ($form->isSubmitted() && $form->isValid()) {
+            // encode the plain password
+            $user->setPassword(
+                $passwordEncoder->encodePassword(
+                    $user,
+                    $form->get('plainPassword')->getData()
+                )
+            );
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
 
-    //         return $this->redirectToRoute('user_index');
-    //     }
+            return $this->redirectToRoute('user_index');
+        }
 
-    //     return $this->render('user/new.html.twig', [
-    //         'user' => $user,
-    //         'form' => $form->createView(),
-    //     ]);
-    // }
+        return $this->render('user/new.html.twig', [
+            'user' => $user,
+            'form' => $form->createView(),
+        ]);
+    }
 
 
     #[Route('/{id}', name: 'user_show', methods: ['GET'])]

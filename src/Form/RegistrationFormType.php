@@ -73,15 +73,16 @@ class RegistrationFormType extends AbstractType
 
                 ]
             ])
-            ->add('roles', ChoiceType::class, [
-                "choices" => [
-                    "Admin" => "ROLE_ADMIN",
-                    "Abonné" => "ROLE_ABONNE",
-                    "Utilisateur" => "ROLE_USER"
-                ],
-                "multiple" => true,
-                "expanded" => true
-            ])
+            //NON BESION ROLE PART DEFAUT UTILISATEUR
+            // ->add('roles', ChoiceType::class, [
+            //     "choices" => [
+            //         "Admin" => "ROLE_ADMIN",
+            //         "Abonné" => "ROLE_ABONNE",
+            //         "Utilisateur" => "ROLE_USER"
+            //     ],
+            //     "multiple" => true,
+            //     "expanded" => true
+            // ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
                 'constraints' => [

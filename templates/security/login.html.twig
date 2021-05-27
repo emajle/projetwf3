@@ -5,55 +5,56 @@
 
 {% block body %}
 
-	<main class="form-signin text-center">
-		<form method="post">
-			{% if error %}
-				<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-			{% endif %}
+  <main class="form-signin text-center">
+    <form method="post">
+      {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+      {% endif %}
 
-			{% if app.user %}
-				<div class="mb-3">
-					You are logged in as
-					{{ app.user.username }},
-					<a href="{{ path('app_logout') }}">Logout</a>
-				</div>
-			{% endif %}
-			<img class="mb-4" src="{{asset('/images/chien4.jpg')}}" alt="" width="72" height="57">
-			<h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+      {% if app.user %}
+        <div class="mb-3">
+          You are logged in as
+          {{ app.user.username }},
+          <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+      {% endif %}
+      <img class="mb-4" src="{{asset('/images/chien4.jpg')}}" alt="" width="72" height="57">
+      <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
-			<div class="form-floating">
-				<input type="email" class="form-control" name="email" id="floatingInput" placeholder="name@example.com" value="{{ last_username }}" autocomplete="email" required autofocus>
-				<label for="floatingInput">Email address</label>
-			</div>
-			<div class="form-floating">
-				<input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Password" autocomplete="current-password" required>
-				<label for="floatingPassword">Password</label>
-				<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-			</div>
-			<button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-		</form>
-		<div class="checkbox mb-3">
-			<label>
-				<input type="checkbox" value="remember-me">
-				Remember me
-			</label>
-		</div>
-		<p>
-			<a href="{{ path('app_forgot_password_request')}}">Mot de passe oublié</a>
-		</p>
-		<div>
-			<p>
-				Pour nous rejoindre, sa ce passe ici
-				<a href="{{path('user_new')}}">
-					<i class="fas fa-hand-point-up"></i>
-				</a>
-			</p>
-		</div>
-		<p class="mt-5 mb-3 text-muted">
-			&copy;{{ "now"|date("Y") }}</p>
-	</main>
-	{% block javascripts %}
-		{{ encore_entry_script_tags('app') }}
+      <div class="form-floating">
+        <input type="email" class="form-control" name="email" id="floatingInput" placeholder="name@example.com" value="{{ last_username }}" autocomplete="email" required="required" autofocus="autofocus">
+        <label for="floatingInput">Email address</label>
+      </div>
+      <div class="form-floating">
+        <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Password" autocomplete="current-password" required="required">
+        <label for="floatingPassword">Password</label>
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+      </div>
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+    </form>
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me">
+        Remember me
+      </label>
+    </div>
+    <p>
+      <a href="{{ path('app_forgot_password_request')}}">Mot de passe oublié</a>
+    </p>
+    <div>
+      <p>
 
-	{% endblock %}
+        <a href="{{path('user_new')}}">
+          Nous rejoindre
+          <i class="fas fa-hand-point-up"></i>
+        </a>
+      </p>
+    </div>
+    <p class="mt-5 mb-3 text-muted">
+      &copy;{{ "now"|date("Y") }}</p>
+  </main>
+  {% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+
+  {% endblock %}
 {% endblock %}
