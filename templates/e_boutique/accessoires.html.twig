@@ -9,14 +9,12 @@
 <div class="container">
   <div class="row">
     
-      
-    {# Futurs filtres #}
-    {#   <p>Filtrer</p>
-      <form id="filters">
-        {% for categorie in categories %}
-          <p><input type="checkbox" name="categories[]" id="cat{{categorie.id}}" value="{{categorie.id}}"><label for="cat{{categorie.id}}">{{categorie.name}}</label></p>
-        {% endfor %}
-      </form> #}
+    {# Recherche #}
+    
+     <form class="form-inline my-2 mb-5 text-center" action="{{ path('recherche') }}">
+      <input class=" mr-sm-2" name= "mot" type="search" placeholder="Entrez un mot clé">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">C'est partit !</button>
+    </form>
 
     
     <div class="col-md-12">

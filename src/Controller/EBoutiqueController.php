@@ -21,27 +21,15 @@ class EBoutiqueController extends AbstractController
     }
 
     #[Route('boutique/accessoires', name: 'e_boutique_accessoires')]
-    public function accessoires(ProduitRepository $pr, CategoriesRepository $catRep, HttpFoundationRequest $request): Response
+    public function accessoires(ProduitRepository $pr): Response
     {
-
-
-        // on récupère les filtres 
-        $filters = $request->get("categories");
-
-        $produits = $pr->findByCategorie($filters);
-
-        if ($request->get('ajax')) {
-            return new JsonResponse(array(
-                'content' => $this->renderView('e_boutique/_card.html.twig', compact('produits'))
-            ));
-        }
-        $categories = $catRep->findAll();
 
         return $this->render('e_boutique/accessoires.html.twig', [
             'produits' => $pr->findAll(),
-            'categories' => $categories
+
         ]);
     }
+
 
     #[Route('boutique/abonnement', name: 'e_boutique_abonnement')]
     public function abonnement(QrCodeRepository $qrc): Response
