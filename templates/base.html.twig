@@ -29,7 +29,7 @@
 
 	</head>
 	<body>
-<h1 class="m-3 p-3 text-primary">{% block h1 %}{% endblock %}</h1>
+{% block h1 %}{% endblock %}
 		<div class="container">
 			{% block body %}
 				{% for message in app.flashes("success") %}

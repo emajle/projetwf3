@@ -2,12 +2,13 @@
 
 {% block title %}Accessoires{% endblock %}
 
-{% block h1 %}Les accessoires précieusement séléctionnés par nos soins : {% endblock %}
+{% block h1 %}<h1 class="mt-5 pt-5 text-center fw-normal">Les accessoires précieusement séléctionnés par nos soins : </h1>
+<img id="print-dog" src="{{asset('/images/CAREPET_Paws2.svg')}}" alt="empruntes de chien">{% endblock %}
 {% block body %}
 
 <div class="container">
   <div class="row">
-    <div class="col-md-3 ">
+    
       
     {# Futurs filtres #}
     {#   <p>Filtrer</p>
@@ -17,8 +18,8 @@
         {% endfor %}
       </form> #}
 
-    </div>
-    <div class="col-md-9 ml-5">
+    
+    <div class="col-md-12">
       <div class="grid" id="content">
         {% for produit in produits %}
           {% include "e_boutique/_content.html.twig" with {produit: produit} only %}
