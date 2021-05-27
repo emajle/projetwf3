@@ -10,7 +10,8 @@
 		{# --- CSS #}
 		{% block stylesheets %}
 			{{ encore_entry_link_tags('app') }}
-
+			{# custom for conseils template #}
+			<link href="features.css" rel="stylesheet">
 		{% endblock %}
 		{% block headHome %}{% endblock %}
 		{% block head %}{% endblock %}
@@ -51,21 +52,10 @@
 						</button>
 						<div class="collapse navbar-collapse" id="navbarCollapse">
 							<ul class="navbar-nav me-auto mb-2 mb-md-0">
-								<li class="nav-item dropdown">
-									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								<li class="nav-item">
+									<a class="nav-link" href="{{ path('conseil_index') }}">
 										Les bons conseils
 									</a>
-									<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-										<li>
-											<a class="dropdown-item" href="#">Éducation</a>
-										</li>
-										<li>
-											<a class="dropdown-item" href="#">Quotidien</a>
-										</li>
-										<li>
-											<a class="dropdown-item" href="#">Nourriture</a>
-										</li>
-									</ul>
 								</li>
 								<li class="nav-item">
 									<a class="nav-link" href="{{path('specialiste_index')}}">Annuaire</a>
@@ -118,9 +108,6 @@
 										</li>
 										<li>
 											<a class="dropdown-item" href="{{ path('carnet_sante_index') }}">E-carnet</a>
-										</li>
-										<li>
-											<a class="dropdown-item" href="#">Ton abonnement</a>
 										</li>
 									</ul>
 								</li>

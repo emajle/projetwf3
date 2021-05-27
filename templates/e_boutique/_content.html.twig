@@ -10,14 +10,16 @@
         
         <p class="text text-muted">{{ produit.description }}</p>
     </div>
-    
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
     {% if app.user.abonnement is not null %}
          <a href="{{ produit.origineSite }}" class="btn btn-primary" target="_blank">Profitez de -10%</a>
         {% else %}
         <a href="{{ produit.origineSite }}" class="btn btn-primary" target="_blank">Voir l'article</a>
         
         {% endif %}
-  
+        {% else %}
+        <a href="{{ produit.origineSite }}" class="btn btn-primary" target="_blank">Voir l'article</a>
+  {% endif %}
 
 </div>
 

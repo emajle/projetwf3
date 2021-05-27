@@ -14,13 +14,13 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class EBoutiqueController extends AbstractController
 {
-    #[Route('/e/boutique', name: 'e_boutique')]
+    #[Route('/boutique', name: 'e_boutique')]
     public function index(): Response
     {
         return $this->render('e_boutique/index.html.twig');
     }
 
-    #[Route('/e/boutique/accessoires', name: 'e_boutique_accessoires')]
+    #[Route('boutique/accessoires', name: 'e_boutique_accessoires')]
     public function accessoires(ProduitRepository $pr, CategoriesRepository $catRep, HttpFoundationRequest $request): Response
     {
 
@@ -43,7 +43,7 @@ class EBoutiqueController extends AbstractController
         ]);
     }
 
-    #[Route('/e/boutique/abonnement', name: 'e_boutique_abonnement')]
+    #[Route('boutique/abonnement', name: 'e_boutique_abonnement')]
     public function abonnement(QrCodeRepository $qrc): Response
     {
         return $this->render('e_boutique/abonnement.html.twig');

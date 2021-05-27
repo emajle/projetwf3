@@ -3,7 +3,7 @@
 {% block title %}Profil {{app.user.pseudo}}{% endblock %}
 
 {% block body %}
-      <h2>Hello {{ app.user.pseudo }}! ✅</h2>
+      <h2>Hello {{ app.user.pseudo }}! </h2>
         {# Information user #}
         <ul class = "list-group">
             <li class="list-group-itemp">Nom : {{ app.user.nom }}</li>
@@ -12,6 +12,9 @@
             <li class="list-group-itemp">adresse : {{ app.user.adresse }}</li>
             <li class="list-group-itemp">ville : {{ app.user.ville }}</li>
             <li class="list-group-itemp">cp : {{ app.user.cp }}</li>
+            {% if (app.user.abonnement) is not null %} 
+            <li class="list-group-itemp">Abonnement : {{ app.user.abonnement.name|capitalize }} <a href="{{ path('remove_abonnement', {'idU': app.user.id }) }}" ><button class="btn btn-danger">Se désabonner</button></a></li>
+            {% endif %}
         </ul>
         
             {# Animal user #}
