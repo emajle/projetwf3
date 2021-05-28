@@ -17,21 +17,6 @@
 			{{ encore_entry_link_tags('app') }}
 		{% endblock %}
 
-		<style>
-			.bd-placeholder-img {
-				font-size: 1.125rem;
-				text-anchor: middle;
-				-webkit-user-select: none;
-				-moz-user-select: none;
-				user-select: none;
-			}
-
-			@media(min-width: 768px) {
-				.bd-placeholder-img-lg {
-					font-size: 3.5rem;
-				}
-			}
-		</style>
 
 	</head>
 	<body class="body-index">
@@ -51,21 +36,10 @@
 						</button>
 						<div class="collapse navbar-collapse" id="navbarCollapse">
 							<ul class="navbar-nav me-auto mb-2 mb-md-0">
-								<li class="nav-item dropdown">
-									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								<li class="nav-item">
+									<a class="nav-link" href="{{path('conseil_index')}}" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 										Les bons conseils
 									</a>
-									<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-										<li>
-											<a class="dropdown-item" href="#">Éducation</a>
-										</li>
-										<li>
-											<a class="dropdown-item" href="#">Quotidien</a>
-										</li>
-										<li>
-											<a class="dropdown-item" href="#">Nourriture</a>
-										</li>
-									</ul>
 								</li>
 								<li class="nav-item">
 									<a class="nav-link" href="{{path('specialiste_index')}}">Annuaire</a>
@@ -80,7 +54,7 @@
 											<a class="dropdown-item" href="{{ path('e_boutique_accessoires') }}">Accessoires</a>
 										</li>
 										<li>
-											<a class="dropdown-item" href="#">Abonnement</a>
+											<a class="dropdown-item" href="{{ path('e_boutique_abonnement') }}">Abonnement</a>
 										</li>
 									</ul>
 								</li>
@@ -99,6 +73,12 @@
 										<li>
 											<a class="dropdown-item" href="{{ path('carnet_sante_index') }}">E-carnet</a>
 										</li>
+										<li>
+											<a class="dropdown-item" href="{{ path('abonnement_index') }}">Abonnements</a>
+										</li>
+										<li>
+											<a class="dropdown-item" href="{{ path('produit_index') }}">Produits</a>
+										</li>
 									</ul>
 								</li>
 								{% elseif  is_granted("ROLE_ABONNE") %}  
@@ -112,9 +92,6 @@
 										</li>
 										<li>
 											<a class="dropdown-item" href="{{ path('carnet_sante_index') }}">E-carnet</a>
-										</li>
-										<li>
-											<a class="dropdown-item" href="#">Ton abonnement</a>
 										</li>
 									</ul>
 								</li>

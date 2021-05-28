@@ -19,6 +19,18 @@ class SpecialisteRepository extends ServiceEntityRepository
         parent::__construct($registry, Specialiste::class);
     }
 
+    /** 
+     * @return specialiste[] Returns an array of specialiste objects
+     */
+    public function findByMot($value)
+    {
+        return $this->createQueryBuilder('s')
+            ->where("s.profession LIKE :mot")
+            ->setParameter('mot', '%' . $value . '%')
+            ->orderBy('s.id', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
     // /**
     //  * @return Specialiste[] Returns an array of Specialiste objects
     //  */

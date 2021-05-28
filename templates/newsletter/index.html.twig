@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello NewsletterController!
+{% endblock %}
+
+{% block body %}
+	<h1>Accédez à la Newsletter</h1>
+	{{form(form)}}
+		{# <p>Pour vous désinscrire, cliquez sur ce lien
+					<a href="{{absolute_url(path('unsubscribe', {id: usernews.id, newsletter: newsletter.id, token: usernews.validationToken}))}}">{{absolute_url(path('unsubscribe', {id: usernews.id, newsletter: newsletter.id, token: usernews.validationtoken}))}}</a>
+				</p> #}
+	{% endblock %}

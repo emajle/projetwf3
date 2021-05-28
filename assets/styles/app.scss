@@ -1,7 +1,6 @@
 $bleu: #077187;
 $jaune: #f9a620;
 
-
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 @import "custom";
 @import "~bootstrap/scss/bootstrap";
@@ -57,12 +56,12 @@ $jaune: #f9a620;
   border-bottom-color: #fff;
 }
 
-.footer{
+.footer {
   background-image: url("/assets/images/CAREPET_Paws1.svg");
   background-repeat: no-repeat;
 }
 
-#carouselExampleCaptions{
+#carouselExampleCaptions {
   background-image: url("/assets/images/CAREPET_Paws1.svg");
   background-repeat: no-repeat;
 }
@@ -219,6 +218,24 @@ p {
 // --------------------------------------------------------------------
 
 /*======================
+    ACCESSORIES PAGE
+=======================*/
+
+#print-dog{
+  width: 40%;
+  margin-left: 30%;
+  margin-top: 10px;
+}
+
+.card-img-accessoire{
+  width: 200px;
+  height: 200px;
+}
+
+
+// --------------------------------------------------------------------
+
+/*======================
     SIGN IN FORM
 =======================*/
 
@@ -295,12 +312,6 @@ video {
 }
 
 
-//---------------------------------------------------------------
-
-/*======================
-    Carnet
-=======================*/
-
 #carnet {
   border: solid 2px #000;
   border-radius: 10px;
@@ -316,5 +327,37 @@ video {
 #b-carnet a{
   color: white;
   text-decoration: none;
-  
+}
+
+/*======================
+    COOKIE
+=======================*/
+
+.card {
+  position: relative;
+  width: 200px;
+  margin-top: -600px;
+  z-index: 2;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid #d2d2dc;
+  border-radius: 6px;
+  -webkit-box-shadow: 0px 0px 5px 0px rgb(249, 249, 250);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(212, 182, 212, 1);
+  box-shadow: 0px 0px 5px 0px rgb(161, 163, 164);
+}
+
+.cookies a {
+  text-decoration: none;
+  color: #000;
+  margin-top: 8px;
+}
+
+.cookies a:hover {
+  text-decoration: none;
+  color: blue;
+  margin-top: 8px;
 }

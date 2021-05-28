@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Categories;
 use App\Entity\Produit;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -19,22 +20,18 @@ class ProduitRepository extends ServiceEntityRepository
         parent::__construct($registry, Produit::class);
     }
 
-    /**
-     * @return Produit[] Returns an array of Produit objects by categorie
-     * @return void
+    /** 
+     * @return produit[] Returns an array of produits objects
      */
-    public function findByCategorie($filters = null): array
+    public function findByMot($value)
     {
-        $query = $this->createQueryBuilder('p');
-
-        if ($filters != null) {
-            $query->where('p.categories IN(:cat)')
-                ->setParameter(':cat', array_values($filters));
-        }
-
-        $query->orderBy('p.id', 'ASC');
-
-        return $query->getQuery()->getResult();
+        return $this->createQueryBuilder('p')
+            ->join(Categories::class, 'c', "WITH", "p.categories = c.id")
+            ->where("c.name LIKE :mot")
+            ->setParameter('mot', '%' . $value . '%')
+            ->orderBy('p.id', 'DESC')
+            ->getQuery()
+            ->getResult();
     }
 
 

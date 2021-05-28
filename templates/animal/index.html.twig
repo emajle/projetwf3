@@ -4,59 +4,47 @@
 {% endblock %}
 
 {% block body %}
-	{%  if is_granted("ROLE_ADMIN") %} 	
-		<h1>Animaux </h1>
+{%  if is_granted("ROLE_ADMIN") %}
+	<h1>Animaux
+	</h1>
 
-		<table class="table">
-			<thead>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Prenom</th>
+				<th>Espece</th>
+				<th>Couleur</th>
+				<th>Age</th>
+				<th>Sexe</th>
+				<th>Photo</th>
+				<th>Description</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for animal in animals %}
 				<tr>
-					<th>Id</th>
-					<th>Prenom</th>
-					<th>Espece</th>
-					<th>Couleur</th>
-					<th>Age</th>
-					<th>Sexe</th>
-					<th>Photo</th>
-					<th>Description</th>
-					<th>actions</th>
-				</tr>
-			</thead>
-			<tbody>
-				{% for animal in animals %}
-					<tr>
-						<td>{{ animal.id }}</td>
-						<td>{{ animal.prenom }}</td>
-						{% if animal.espece == "chien" %}
-							<td>
-								<i class="fas fa-dog"></i>
-							</td>
-						{% else %}
-							<td>
-								<i class="fas fa-cat"></i>
-							</td>
-						{% endif %}
-						<td>{{ animal.couleur }}</td>
-						<td>{{ animal.age }}</td>
-						{% if animal.sexe == "m" %}
-							<td>
-								<i class="fas fa-mars"></i>
-							</td>
-						{% else %}
-							<td>
-								<i class="fas fa-venus"></i>
-							</td>
-						{% endif %}
+					<td>{{ animal.id }}</td>
+					<td>{{ animal.prenom }}</td>
+					{% if animal.espece == "chien" %}
 						<td>
-							{% for image in animal.images %}
-								<img src="{{ asset('/uploads/animal_photo/'~ image.name) }}" alt="photo de notre bete" width="10">
-							{% endfor %}
+							<i class="fas fa-dog"></i>
 						</td>
-
-
-						<td>{{ animal.description }}</td>
+					{% else %}
 						<td>
-							<a href="{{ path('animal_show', {'id': animal.id}) }}"><i class="far fa-eye"></i></a>
-							<a href="{{ path('animal_edit', {'id': animal.id}) }}"><i class="far fa-edit"></i></a>
+							<i class="fas fa-cat"></i>
+						</td>
+					{% endif %}
+					<td>{{ animal.couleur }}</td>
+					<td>{{ animal.age }}</td>
+					{% if animal.sexe == "m" %}
+						<td>
+							<i class="fas fa-mars"></i>
+						</td>
+					{% else %}
+						<td>
+							<i class="fas fa-venus"></i>
 						</td>
 					</tr>
 				{% else %}
@@ -110,17 +98,33 @@
 						<a href="{{ path('animal_new') }}">Ajouter un animal</a>
 					</button>
 						
+					{% endif %}
+					<td>
+						{% for image in animal.images %}
+							<img src="{{ asset('/uploads/animal_photo/'~ image.name) }}" alt="photo de notre bete" width="10">
+						{% endfor %}
+					</td>
 
-		{% else %}
-			<div>
-			<h3>Pas D'animaux</h3>
-			<p>Comment cela se fait? </p>
-			</div>
-			 <button type="button" class="btn btn-primary">
-				<a href="{{ path('animal_new') }}">Ajouter un animal</a>
-			</button>
 
-		{% endif %}
-	{% endif %}	
+					<td>{{ animal.description }}</td>
+					<td>
+						<a href="{{ path('animal_show', {'id': animal.id}) }}">
+							<i class="far fa-eye"></i>
+						</a>
+						<a href="{{ path('animal_edit', {'id': animal.id}) }}">
+							<i class="far fa-edit"></i>
+						</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="9">Aucun animaux d'enrengistrée</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	{% endif %}
+{% endif %}
 
 {% endblock %}

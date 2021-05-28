@@ -107,6 +107,15 @@ class UserController extends AbstractController
         $user->setAbonnement($abonnement);
         $this->getDoctrine()->getManager()->flush();
         $this->addFlash("success", "Le paiement a bien été validé, vous êtes désormais abonné !");
-        return $this->redirectToRoute('user_index');
+        return $this->redirectToRoute('profil');
+    }
+
+    #[Route('remove/abonnement/{idU}', name: 'remove_abonnement', methods: ['GET'])]
+    public function removeAbonnement($idU, UserRepository $userRepo)
+    {
+        $user = $userRepo->find($idU);
+        $user->setAbonnement(null);
+        $this->getDoctrine()->getManager()->flush();
+        return $this->redirectToRoute('profil');
     }
 }

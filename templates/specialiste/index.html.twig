@@ -1,63 +1,54 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Specialiste index{% endblock %}
+{% block title %}Annuaire des spécialistes : {% endblock %}
 
 {% block body %}
   <h1>Specialiste index</h1>
 
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Id</th>
-        <th>Nom</th>
-        <th>Prenom</th>
-        <th>Profession</th>
-        <th>Telephone</th>
-        <th>Email</th>
-        <th>Adresse</th>
-        <th>Ville</th>
-        <th>Cp</th>
-        {% if is_granted("ROLE_ADMIN") %}
-          <th>actions</th>
-        {% endif %}
-      </tr>
-    </thead>
-    <tbody>
-      {% for specialiste in specialistes %}
-        <tr>
-          <td>{{ specialiste.id }}</td>
-          <td>{{ specialiste.nom }}</td>
-          <td>{{ specialiste.prenom }}</td>
-          <td>{{ specialiste.profession }}</td>
-          <td>{{ specialiste.telephone }}</td>
-          <td>{{ specialiste.email }}</td>
-          <td>{{ specialiste.adresse }}</td>
-          <td>{{ specialiste.ville }}</td>
-          <td>{{ specialiste.cp }}</td>
-          {% if is_granted("ROLE_ADMIN") %}
-            <td>
-              <div class="d-flex">
-                <a href="{{ path('specialiste_edit', {'id': specialiste.id}) }}">
-                  <i class="fas fa-user-edit"></i>
-                </a>
-                <form method="post" action="{{ path('specialiste_delete', {'id': specialiste.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
-                  <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ specialiste.id) }}">
-                  <button class="btn" style=" padding-left: 0px; padding-top: 0px; padding-right: 0px; width: 22px;">
-                    <i class="far fa-trash-alt"></i>
-                  </button>
-                </form>
-              </div>
-            </td>
+ <form class="form-inline my-2 mb-5 text-center" action="{{ path('recherche_specialiste') }}">
+      <input class=" mr-sm-2" name= "mot" type="search" placeholder="Entrez un métier">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
+    </form>
 
-          {% endif %}
-        </tr>
-      {% else %}
-        <tr>
-          <td colspan="10">no records found</td>
-        </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+
+    <table class="table table-striped table-primary">
+        <thead class="table-dark">
+            <tr>
+                <th>Profession</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Telephone</th>
+                <th>Email</th>
+                <th>Adresse</th>
+                <th>Ville</th>
+                <th>Cp</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for specialiste in specialistes %}
+            <tr>
+                <td class="fw-bold">{{ specialiste.profession|capitalize }}</td>
+                <td>{{ specialiste.nom }}</td>
+                <td>{{ specialiste.prenom }}</td> 
+                <td>{{ specialiste.telephone }}</td>
+                <td>{{ specialiste.email }}</td>
+                <td>{{ specialiste.adresse }}</td>
+                <td>{{ specialiste.ville }}</td>
+                <td>{{ specialiste.cp }}</td>
+                <td>
+                    <a href="{{ path('specialiste_show', {'id': specialiste.id}) }}">show</a>
+                    <a href="{{ path('specialiste_edit', {'id': specialiste.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
   {% if is_granted("ROLE_ADMIN") %}
     <a href="{{ path('specialiste_new') }}">Create new</a>
   {% endif %}
