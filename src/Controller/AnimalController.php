@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Image;
 use App\Entity\Animal;
+use App\Entity\QrCode;
 use App\Form\AnimalType;
 use App\Repository\AnimalRepository;
 use App\Controller\CarnetSanteController;
@@ -67,10 +68,10 @@ class AnimalController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($animal);
             $carnet->new($animal);
-
             $entityManager->flush();
 
-            return $this->redirectToRoute('animal_index');
+
+            return $this->redirectToRoute('profil');
         }
 
         return $this->render('animal/new.html.twig', [
@@ -104,7 +105,6 @@ class AnimalController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($animal);
             $carnet->new($animal);
-
             $entityManager->flush();
             $request->getSession();
             $this->addflash('success', 'Votre inscription a été enregistré.');
@@ -120,6 +120,14 @@ class AnimalController extends AbstractController
     #[Route('/{id}', name: 'animal_show', methods: ['GET'])]
     public function show(Animal $animal): Response
     {
+        if (!empty($animal->getCarnetSante()->getQrCode())) {
+
+            $qrcode = $animal->getCarnetSante()->getQrCode()->getImageQrc();
+            return $this->render('animal/show.html.twig', [
+                'animal' => $animal,
+                'qrcode' => $qrcode,
+            ]);
+        }
         return $this->render('animal/show.html.twig', [
             'animal' => $animal,
         ]);

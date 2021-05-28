@@ -40,6 +40,11 @@ class CarnetSante
      */
     private $user;
 
+    /**
+     * @ORM\OneToOne(targetEntity=QrCode::class, mappedBy="carnet", cascade={"persist", "remove"})
+     */
+    private $qrCode;
+
     public function __construct()
     {
         $this->visiteMedicals = new ArrayCollection();
@@ -130,6 +135,28 @@ class CarnetSante
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getQrCode(): ?QrCode
+    {
+        return $this->qrCode;
+    }
+
+    public function setQrCode(?QrCode $qrCode): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($qrCode === null && $this->qrCode !== null) {
+            $this->qrCode->setCarnet(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($qrCode !== null && $qrCode->getCarnet() !== $this) {
+            $qrCode->setCarnet($this);
+        }
+
+        $this->qrCode = $qrCode;
 
         return $this;
     }

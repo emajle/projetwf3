@@ -71,6 +71,37 @@ $jaune: #f9a620;
 //   background-image: url("/assets/images/CAREPET_Paws2.svg");
 //   background-repeat: no-repeat;
 // }
+/*======================
+    ANIMAL INDEX
+=======================*/
+
+#card-index{
+  padding-left:0px;
+  padding-right: 0px;
+}
+
+.couleur-card{
+  background-color: #FFD07E;
+}
+
+/*======================
+    ANIMAL SHOW
+=======================*/
+#corp-card{
+  margin-top: 20px;
+}
+
+#button-animal{
+  display: flex;
+  margin : 20px
+}
+#button-animal button{
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+
+
 
 /*======================
     ANIMAL CARD
@@ -132,7 +163,18 @@ p {
 #card-information {
   display: flex;
   padding: 5px;
+  justify-content: space-between;
 }
+
+#flex-card-information{
+  display: flex;
+}
+
+#card-qrcode{
+  margin-right: 20px;
+}
+
+
 
 #card-photo {
   background-position: center;
@@ -164,6 +206,14 @@ p {
   background-color: #fff;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
+}
+#card-code p {
+  margin: 0;
+}
+
+#card-lien a{
+  text-decoration: none;
+  color: #000;
 }
 
 // --------------------------------------------------------------------

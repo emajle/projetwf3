@@ -13,43 +13,56 @@
 				<p>{{animal.espece}}</p>
 			</div>
 			<div id="card-information">
-				<div id="card-photo">
-					{% for image in animal.images %}
-						<img src="{{ asset('/uploads/animal_photo/'~ image.name) }}" alt="photo de notre bete" width="146" height="146">
-					{% endfor %}
+				<div id="flex-card-information">
+						<div id="card-photo">
+							{% for image in animal.images %}
+								<img src="{{ asset('/uploads/animal_photo/'~ image.name) }}" alt="photo de notre bete" width="146" height="146">
+							{% endfor %}
+						</div>
+						<div id="card-text">
+							<div id="card-name">
+								<div class="card-box"></div>
+								<p class="cardtitle">Prénom :</p>
+								<p>{{animal.prenom}}</p>
+								<div class="card-box"></div>
+								<p class="cardtitle">Couleur :</p>
+								<p>{{animal.couleur}}</p>
+							</div>
+							<div id="card-detail">
+								<div class="card-box">
+									<p class="cardtitle">Sexe :</p>
+									<p>{{animal.sexe}}</p>
+								</div>
+								<div class="card-box">
+									<p class="cardtitle">Age :</p>
+									<p>{{animal.age}}</p>
+								</div>
+								<div class="card-box">
+									<p class="cardtitle">Description :</p>
+									<p>{{animal.description}}</p>
+								</div>
+							</div>
+							<div id="card-sign">
+								<p class="cardtitle">QR-code :</p>
+								<div id="cardsign"></div>
+							</div>
+						</div>
 				</div>
-				<div id="card-text">
-					<div id="card-name">
-						<div class="card-box"></div>
-						<p class="cardtitle">Prénom :</p>
-						<p>{{animal.prenom}}</p>
-						<div class="card-box"></div>
-						<p class="cardtitle">Couleur :</p>
-						<p>{{animal.couleur}}</p>
+					<div id="card-qrcode">
+					{% if qrcode is defined  %}
+						  <img src="{{ qr_code_data_uri(qrcode) }}"/>  
+					{% else %}
+						<p>Pour activer le QRcode de {{animal.prenom}} render vous <a href="{{path('carnet_sante_show', {'id': animal.carnetSante.id})}}"> Sur sont carnet de santer</a></p>
+					{% endif %}
 					</div>
-					<div id="card-detail">
-						<div class="card-box">
-							<p class="cardtitle">Sexe :</p>
-							<p>{{animal.sexe}}</p>
-						</div>
-						<div class="card-box">
-							<p class="cardtitle">Age :</p>
-							<p>{{animal.age}}</p>
-						</div>
-						<div class="card-box">
-							<p class="cardtitle">Description :</p>
-							<p>{{animal.description}}</p>
-						</div>
-					</div>
-					<div id="card-sign">
-						<p class="cardtitle">QR-code :</p>
-						<div id="cardsign"></div>
-					</div>
-				</div>
+				
 			</div>
 			<div id="card-code">
 				<p>
 					***************************** **************************************************** ************************
 				</p>
+				<div id="card-lien">
+					<a href="{{path('carnet_sante_show', {'id': animal.carnetSante.id})}}"> Carnet de sante de {{animal.prenom}}</a>
+				</div>
 			</div>
 		</div>

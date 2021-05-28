@@ -2,6 +2,8 @@
 
 namespace App\Repository;
 
+use App\Entity\Animal;
+use App\Entity\CarnetSante;
 use App\Entity\QrCode;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -18,6 +20,29 @@ class QrCodeRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, QrCode::class);
     }
+
+
+
+    /**
+     * Interroge la bdd pour faire si sa existe
+     * 
+     * SELECT * from qrcode
+     * INNER JOIN carnet_sante on 
+     * qrcode.animal = animal.id
+     * where animal.id = $id
+     */
+
+    public function aideqrcode($carnet)
+    {
+
+        return $this->createQueryBuilder("qr")
+            ->join(CarnetSante::class, "cs", "WITH", "cs.id = qr.carnet")
+            ->where(" cs.id =" . $carnet)
+            ->getQuery()
+            ->getResult();
+    }
+
+
 
     // /**
     //  * @return QrCode[] Returns an array of QrCode objects

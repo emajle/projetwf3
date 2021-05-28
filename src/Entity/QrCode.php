@@ -23,10 +23,9 @@ class QrCode
     private $image_qrc;
 
     /**
-     * @ORM\OneToOne(targetEntity=Animal::class, inversedBy="qrCode", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\OneToOne(targetEntity=CarnetSante::class, inversedBy="qrCode", cascade={"persist", "remove"})
      */
-    private $animal;
+    private $carnet;
 
     public function getId(): ?int
     {
@@ -45,14 +44,14 @@ class QrCode
         return $this;
     }
 
-    public function getAnimal(): ?Animal
+    public function getCarnet(): ?CarnetSante
     {
-        return $this->animal;
+        return $this->carnet;
     }
 
-    public function setAnimal(Animal $animal): self
+    public function setCarnet(?CarnetSante $carnet): self
     {
-        $this->animal = $animal;
+        $this->carnet = $carnet;
 
         return $this;
     }
