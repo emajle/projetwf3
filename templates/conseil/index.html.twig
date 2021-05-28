@@ -15,186 +15,221 @@
           font-size: 3.5rem;
         }
       }
+
+      .card-img{
+        filter: grayscale(80%) blur(2px);
+      }
+
+      .card-img:hover{
+        filter: none;
+      }
+
+      .col:hover {
+        z-index: 1;
+        transform: scale(1.10);
+      }
       
     </style>
-
+      
     <main>
-  <h1 class="visually-hidden">Features examples</h1>
+              {######################## Section éducation ################################}
 
   <div class="container px-4 py-5" id="featured-3">
-    <h2 class="pb-2 border-bottom">Columns with icons</h2>
+    <h2 class="pb-2 border-bottom">Education</h2>
     <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
-      <div class="feature col">
-        <div class="feature-icon bg-primary bg-gradient">
-          <svg class="bi" width="1em" height="1em"><use xlink:href="#collection"/></svg>
-        </div>
-        <h2>Featured title</h2>
-        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-        <a href="#" class="icon-link">
-          Call to action
-          <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
-        </a>
-      </div>
-      <div class="feature col">
-        <div class="feature-icon bg-primary bg-gradient">
-          <svg class="bi" width="1em" height="1em"><use xlink:href="#people-circle"/></svg>
-        </div>
-        <h2>Featured title</h2>
-        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-        <a href="#" class="icon-link">
-          Call to action
-          <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
-        </a>
-      </div>
-      <div class="feature col">
-        <div class="feature-icon bg-primary bg-gradient">
-          <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"/></svg>
-        </div>
-        <h2>Featured title</h2>
-        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-        <a href="#" class="icon-link">
-          Call to action
-          <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <div class="b-example-divider"></div>
-
-  <div class="container px-4 py-5" id="hanging-icons">
-    <h2 class="pb-2 border-bottom">Hanging icons</h2>
-    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
-      <div class="col d-flex align-items-start">
-        <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
-          <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"/></svg>
-        </div>
-        <div>
-          <h2>Featured title</h2>
-          <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-          <a href="#" class="btn btn-primary">
-            Primary button
-          </a>
-        </div>
-      </div>
-      <div class="col d-flex align-items-start">
-        <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
-          <svg class="bi" width="1em" height="1em"><use xlink:href="#cpu-fill"/></svg>
-        </div>
-        <div>
-          <h2>Featured title</h2>
-          <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-          <a href="#" class="btn btn-primary">
-            Primary button
-          </a>
-        </div>
-      </div>
-      <div class="col d-flex align-items-start">
-        <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
-          <svg class="bi" width="1em" height="1em"><use xlink:href="#tools"/></svg>
-        </div>
-        <div>
-          <h2>Featured title</h2>
-          <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-          <a href="#" class="btn btn-primary">
-            Primary button
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="b-example-divider"></div>
-
-  <div class="container px-4 py-5" id="custom-cards">
-    <h2 class="pb-2 border-bottom">Custom cards</h2>
-
-    <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
       <div class="col">
-       <img src="{{ asset('/images/chien-alimentation.jpg')}}" class="card-img" alt="chien et homme">
-        <div  class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg">
-        {# <img src="{{ asset('/images/chien-alimentation.jpg')}}" alt=""> #}
-          <div id="img-education-1" class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-          
-            <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Short title, long jacket</h2>
-            <ul class="d-flex list-unstyled mt-auto">
-              <li class="me-auto">
-               <a href="#" class="icon-link">Voir l'article<svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg></a>
-              </li>
-              <li class="d-flex align-items-center me-3">
-                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"/></svg>
-                <small>Earth</small>
-              </li>
-              <li class="d-flex align-items-center">
-                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"/></svg>
-                <small>3d</small>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-        <div class="col">
+        <a href="#" class="icon-link">
             <div class="card bg-dark text-white">
-                <img src="{{ asset('/images/chien-alimentation.jpg')}}" class="card-img" alt="chien et homme">
-                <div class="card-img-overlay">
-                    <h2 class="pt-5 mt-5 mb-4 lh-1 fw-bold">Short title, long jacket</h2>
-                    <ul id="ul-2" class="d-flex justify-content-between list-unstyled">
+                <img src="{{ asset('/images/chat-promenade.jpg')}}" class="card-img" alt="homme et chat sur un chemin">
+                <div class="card-img-overlay d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                    <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold text-center text-white">Promener son chat, bonne ou mauvaise idée?</h2>
+                    <ul class="d-flex list-unstyled mt-auto">
                         <li class="me-auto">
-                            <a href="#" class="icon-link">Voir l'article</a>
+                            
                         </li>
-                        <li class="d-flex me-3 align-items-end">
-                            <small>Earth</small>
+                        <li class="d-flex me-3 align-items-end text-white">
+                            <small>Geoffrey - Ethnologue</small>
                         </li>
                     </ul>
                 </div>
             </div>
-        </div>
-      {# <div class="col">
-        <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('unsplash-photo-2.jpg');">
-          <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-            <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Much longer title that wraps to multiple lines</h2>
-            <ul class="d-flex list-unstyled mt-auto">
-              <li class="me-auto">
-                <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
-              </li>
-              <li class="d-flex align-items-center me-3">
-                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"/></svg>
-                <small>Pakistan</small>
-              </li>
-              <li class="d-flex align-items-center">
-                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"/></svg>
-                <small>4d</small>
-              </li>
-            </ul>
+            </a>
           </div>
-        </div>
-      </div> #}
+        
 
-      <div class="col">
-        <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: {{ asset('/images/chien-alimentation.jpg')}};">
-          <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
-            <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Another longer title belongs here</h2>
-            <ul class="d-flex list-unstyled mt-auto">
-              <li class="me-auto">
-                <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
-              </li>
-              <li class="d-flex align-items-center me-3">
-                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"/></svg>
-                <small>California</small>
-              </li>
-              <li class="d-flex align-items-center">
-                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"/></svg>
-                <small>5d</small>
-              </li>
-            </ul>
-          </div>
+        <div class="col">
+        <a href="#" class="icon-link">
+            <div class="card bg-dark text-white">
+                <img src="{{ asset('/images/chien-education.jpg')}}" class="card-img" alt="chien couché sur un plaid">
+                <div class="card-img-overlay d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                    <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold text-center text-primary">Les règles de la maison</h2>
+                    <ul class="d-flex list-unstyled mt-auto">
+                        <li class="me-auto">
+                        </li>
+                        <li class="d-flex me-3 align-items-end text-dark">
+                            <small>Catherine - Educatrice canin</small>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            </a>
         </div>
-      </div>
+        
+
+       <div class="col">
+          <a href="#" class="icon-link">
+            <div class="card bg-dark text-white">
+                <img src="{{ asset('/images/chien-voiture.jpg')}}" class="card-img" alt="chien dans une voiture">
+                <div class="card-img-overlay d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                    <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold text-center text-white">Conseils pour les trajets en voiture</h2>
+                    <ul class="d-flex list-unstyled mt-auto">
+                        <li class="me-auto">
+                        </li>
+                        <li class="d-flex me-3 align-items-end text-white">
+                            <small>Marine - Comportementaliste</small>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            </a>
+        </div>
+    </div>
+  </div>
+
+                        {######################## Section quotidien ################################}
+
+  <div class="b-example-divider"></div>
+  <div class="container px-4 py-5" id="hanging-icons">
+    <h2 class="pb-2 border-bottom">Quotidien</h2>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+   <div class="col">
+        <a href="#" class="icon-link">
+            <div class="card bg-dark text-white">
+                <img src="{{ asset('/images/chiot.jpg')}}" class="card-img" alt="chiot assis">
+                <div class="card-img-overlay d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                    <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold text-center text-primary">Accueillir un chiot à la maison</h2>
+                    <p class="text-mute text-center text-white fw-bold mt-5">Des conseils pour préparer son arrivée</p>
+                    <ul class="d-flex list-unstyled mt-auto">
+                        <li class="me-auto">
+                            
+                        </li>
+                        <li class="d-flex me-3 align-items-end">
+                            <small>Marine - Comportementaliste</small>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            </a>
+          </div>
+        
+
+        <div class="col">
+        <a href="#" class="icon-link">
+            <div class="card bg-dark text-white">
+                <img src="{{ asset('/images/chat-enfant.jpg')}}" class="card-img" alt="chat et enfant sur un lit">
+                <div class="card-img-overlay d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                    <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold text-center text-white">Chat et enfant, ce qu'il faut savoir</h2>
+                    <ul class="d-flex list-unstyled mt-auto">
+                        <li class="me-auto">
+                        </li>
+                        <li class="d-flex me-3 align-items-end">
+                            <small>Dr Jousseaume - Vétérinaire</small>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            </a>
+        </div>
+        
+
+       <div class="col">
+          <a href="#" class="icon-link">
+            <div class="card bg-dark text-white">
+                <img src="{{ asset('/images/chien-jeu.jpg')}}" class="card-img" alt="chat">
+                <div class="card-img-overlay d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                    <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold text-center text-primary">Jouer avec son chien agé</h2>
+                    <ul class="d-flex list-unstyled mt-auto">
+                        <li class="me-auto">
+                        </li>
+                        <li class="d-flex me-3 align-items-end text-dark">
+                            <small>Dr Jéremie - Kiné</small>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            </a>
+        </div>
     </div>
   </div>
 
   <div class="b-example-divider"></div>
+
+                                      {######################## Section alimentation ################################}
+  <div class="container px-4 py-5" id="custom-cards">
+    <h2 class="pb-2 border-bottom">Alimentation</h2>
+
+    <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+       <div class="col">
+        <a href="#" class="icon-link">
+            <div class="card bg-dark text-white">
+                <img src="{{ asset('/images/barf.jpg')}}" class="card-img" alt="barf">
+                <div class="card-img-overlay d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                    <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold text-center text-white">Le barf, c'est quoi ?</h2>
+                    <p class="text-mute text-center text-white fw-bold mt-5">On vous explique tout ici ! </p>
+                    <ul class="d-flex list-unstyled mt-auto">
+                        <li class="me-auto">
+                            
+                        </li>
+                        <li class="d-flex me-3 align-items-end">
+                            <small>Dr André - Vétérinaire</small>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            </a>
+          </div>
+        
+
+        <div class="col">
+        <a href="#" class="icon-link">
+            <div class="card bg-dark text-white">
+                <img src="{{ asset('/images/chien-alimentation.jpg')}}" class="card-img" alt="chien et homme">
+                <div class="card-img-overlay d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                    <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold text-center text-primary">Que puis-je lui donner ?</h2>
+                    <ul class="d-flex list-unstyled mt-auto">
+                        <li class="me-auto">
+                        </li>
+                        <li class="d-flex me-3 align-items-end">
+                            <small>Dr Jousseaume - vétérinaire</small>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            </a>
+        </div>
+        
+
+       <div class="col">
+          <a href="#" class="icon-link">
+            <div class="card bg-dark text-white">
+                <img src="{{ asset('/images/chat-alimentation.jpg')}}" class="card-img" alt="chat">
+                <div class="card-img-overlay d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                    <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold text-center text-white">Moi? Gros? </h2>
+                    <p class="text-mute text-center text-white fw-bold mt-5">Découvrez comment l'aider à perdre du poids</p>
+                    <ul class="d-flex list-unstyled mt-auto">
+                        <li class="me-auto">
+                        </li>
+                        <li class="d-flex me-3 align-items-end text-dark">
+                            <small>Dr Benoit - vétérinaire</small>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            </a>
+        </div>
+          
+
+
 
 
 {% endblock %} 
