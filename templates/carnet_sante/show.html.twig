@@ -3,111 +3,166 @@
 {% block title %}CarnetSante{% endblock %}
 
 {% block body %}
-    <div class="container">
-        <h1>CarnetSante</h1>
-        <table class="table">
-            <tbody>
-                <tr>
-                    <th>Id</th>
-                    <td>{{ carnet_sante.id }}</td>
-                </tr>
-                <tr>
-                    <th>Maitre</th>
-                    <td>{{ carnet_sante.animal.membre.pseudo }}</td>
-                </tr>
-               <tr>
-                    <th>Prenom</th>
-                    <td>{{ carnet_sante.animal.prenom }}</td>
-                </tr>
-                <tr>
-                    <th>Espece</th>
-                    <td>{{ carnet_sante.animal.espece }}</td>
-                </tr>
-                <tr>
-                    <th>age</th>
-                    <td>{{ carnet_sante.animal.age }}</td>
-                </tr>
-                <tr>
-                    <th>sexe</th>
-                    <td>{{ carnet_sante.animal.sexe }}</td>
-                </tr>
-            </tbody>
-        </table>
-    
-        <div class="" >
-            <article class="col-6 align-bottom">
-                <h2>Visite medical </h2>
-                <table class="table border border-dark">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Date de la visite</th>
-                            <th scope="col">Symptome</th>
-                            <th scope="col">Diagnostique</th>
-                            <th scope="col">Analyses</th>
-                            <th scope="col">Specialiste</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {% for visite in visites %}
-                        <tr>
-                           <th scope="row">{{visite.id}}</th> 
-                            <td>{{visite.dateVisite ? visite.dateVisite|date('d/m/y') : '' }}</td>
-                            <td>{{ visite.symptome }}</td>
-                            <td>{{ visite.diagnostique }}</td>
-                            <td>{{ visite.analyses }}</td>
-                            <td>{{ visite.specialiste.nom }}</td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-            
-            </article>
+  <div id="carnet" class="row">
+    <div id="card-title">
+      <h1 class="text-center">E-Carnet
+      </div>
+    </h1>
 
-            <article class="col-6">
-                <h2>Vaccination ou Opération</h2>
-                <table class="table border border-dark">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Nom </th>
-                            <th scope="col">Date </th>
-                            <th scope="col"></th>
-                            <th scope="col">Detail</th>
-                            <th scope="col">Specialiste</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {% for operation in operations %}
-                        <tr>
-                           <th scope="row">{{operation.id}}</th> 
-                            <td>{{operation.date ? operation.date|date('Y-m-d') : '' }}</td> 
-                            <td>{{ operation.nom }}</td>
-                                    {% if operation.action == "operation" %}
-                                        <td> <i class="fas fa-clinic-medical"></i></td>
-                                        {% else %}
-                                        <td><i class="fas fa-syringe"></i></td>
-                                    {% endif %}
-                            <td>{{ operation.description }}</td>
-                            <td>{{ operation.specialiste.nom }}</td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                    </table>
-            </article>    
-        </div>   
+    <div class="col-lg-6" id="id">
+      <div>
+        <div id="card-id">
+          <div id="card-number">
+            <p class="cardtitle">Carte nationale d'identité (id) :
+            </p>
+            <p>{{carnet_sante.animal.id}}</p>
+          </div>
+          <p class="cardtitle">Espèce :
+          </p>
+          <p>{{carnet_sante.animal.espece}}</p>
+        </div>
+        <div id="card-information">
+          <div id="card-photo">
+            {% for image in carnet_sante.animal.images %}
+              <img src="{{ asset('/uploads/animal_photo/'~ image.name) }}" alt="photo de notre bete" width="146" height="146">
+            {% endfor %}
+          </div>
+          <div id="card-text">
+            <div id="card-name">
+              <div class="card-box"></div>
+              <p class="cardtitle">Prénom :</p>
+              <p>{{carnet_sante.animal.prenom}}</p>
+              <div class="card-box"></div>
+              <p class="cardtitle">Couleur :</p>
+              <p>{{carnet_sante.animal.couleur}}</p>
+            </div>
+            <div id="card-detail">
+              <div class="card-box">
+                <p class="cardtitle">Sexe :</p>
+                <p>{{carnet_sante.animal.sexe}}</p>
+              </div>
+              <div class="card-box">
+                <p class="cardtitle">Age :</p>
+                <p>{{carnet_sante.animal.age}}</p>
+              </div>
+              <div class="card-box">
+                <p class="cardtitle">Description :</p>
+                <p>{{carnet_sante.animal.description}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-        
-    <a href="{{ path('app_vac&opp_new', {'id': carnet_sante.id }) }}"> Nouvelle Vaccination ou Operation</a><br>
+    <div class="col-lg-6 table-responsive align-bottom" id="operation">
+      <h2 class="h4 text-center">Mes opération
+      </h2>
+      <table class=" table caption-top">
+        <thead>
+          <tr>
+            <th >Date</th>
+            <th>Nom</th>
+            <th >Symptome</th>
+            <th >Analyses</th>
+            <th >Specialiste</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for visite in visites %}
+            {% if visite.action == "operation" %}
+              <tr>
+                <td>{{visite.dateVisite ? visite.dateVisite|date('d/m/y') : '' }}</td>
+                <td>{{visite.nom}}</td>
+                <td>{{ visite.symptome }}</td>
+                <td>{{ visite.analyses }}</td>
+                <td >{{ visite.specialiste.nom }}</td>
+              </tr>
+            {% endif %}
+          {% endfor %}
+        </tbody>
+      </table>
 
-    <a href="{{ path('visite_medical_new', {'id': carnet_sante.id }) }}"> Nouvelle Visite medical</a><br>
- <button  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-            Ajoutée un animal
-            </button>
-    <a href="{{ path('carnet_sante_index') }}">back to list</a>
+    </div>
 
-    <a href="{{ path('carnet_sante_edit', {'id': carnet_sante.id}) }}">edit</a>
+    <article class="col-lg-6 table-responsive align-bottom" id="visite">
+      <h2 class="h4 text-center">Mes Visites medicaux
+      </h2>
+      <table class=" table caption-top">
+        <thead>
+          <tr>
+            <th scope="col">Date de la visite</th>
+            <th scope="col">Symptome</th>
+            <th scope="col">Diagnostique</th>
+            <th scope="col">Specialiste</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for visite in visites %}
+            {% if visite.action == "visite_medical" %}
+              <tr>
+                <td>{{visite.dateVisite ? visite.dateVisite|date('d/m/y') : '' }}</td>
+                <td>{{ visite.symptome }}</td>
+                <td>{{ visite.diagnostique }}</td>
+                <td>{{ visite.specialiste.nom }}</td>
+              </tr>
+            {% endif %}
+          {% endfor %}
+        </tbody>
+      </table>
+    </article>
 
-    {{ include('carnet_sante/_delete_form.html.twig') }}
+    <article class="col-lg-6 table-responsive align-bottom" id="vaccination">
+      <h2 class="h4 text-center">Mes Vaccinations
+      </h2>
+      <table class=" table caption-top">
+        <thead>
+          <tr>
+            <th scope="col">Date</th>
+            <th>Nom</th>
+            <th scope="col">Diagnostique</th>
+            <th scope="col">Specialiste</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for visite in visites %}
+            {% if visite.action == "vaccimation" %}
+              <tr>
+                <td>{{visite.dateVisite ? visite.dateVisite|date('d/m/y') : '' }}</td>
+                <td>{{visite.nom}}</td>
+                <td>{{ visite.diagnostique }}</td>
+                <td>{{ visite.specialiste.nom }}</td>
+
+              </tr>
+            {% endif %}
+          {% endfor %}
+        </tbody>
+      </table>
+    </article>
+    <button type="button" class="btn btn-outline-primary">
+      <a href="{{ path('visite_medical_new', {'id': carnet_sante.id }) }}">Ajoutez</a>
+    </button>
+  </div>
+
+  {% if is_granted("ROLE_ADMIN") %}
+    <div id="b-carnet" class="d-grid gap-2 col-3">
+
+      <button type="button" class="btn btn-primary">
+        <a href="{{ path('carnet_sante_index') }}">Retour a la liste</a>
+      </button>
+      <button class="btn btn-primary">
+        <a href="{{ path('carnet_sante_edit', {'id': carnet_sante.id}) }}">Éditer le carnet</a>
+      </button>
+      {{ include('carnet_sante/_delete_form.html.twig') }}
+
+    </div>
+  {% else %}
+    <div id="b-carnet" class="d-grid gap-2 col-3">
+      <button type="button" class="btn btn-primary">
+        <a href="{{ path('animal_index') }}">Mes animaux</a>
+      </button>
+    </div>
+
+  {% endif %}
+
 {% endblock %}

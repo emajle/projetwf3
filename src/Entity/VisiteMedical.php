@@ -39,7 +39,7 @@ class VisiteMedical
 
     /**
      * @ORM\ManyToOne(targetEntity=Specialiste::class,)
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $specialiste;
 
@@ -48,6 +48,16 @@ class VisiteMedical
      * @ORM\JoinColumn(nullable=false)
      */
     private $carnet;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $action;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $nom;
 
     public function getId(): ?int
     {
@@ -122,6 +132,30 @@ class VisiteMedical
     public function setCarnet(?CarnetSante $carnet): self
     {
         $this->carnet = $carnet;
+
+        return $this;
+    }
+
+    public function getAction(): ?string
+    {
+        return $this->action;
+    }
+
+    public function setAction(string $action): self
+    {
+        $this->action = $action;
+
+        return $this;
+    }
+
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): self
+    {
+        $this->nom = $nom;
 
         return $this;
     }

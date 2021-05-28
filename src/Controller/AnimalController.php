@@ -19,13 +19,13 @@ class AnimalController extends AbstractController
     #[Route('/', name: 'animal_index', methods: ['GET', 'POST'])]
     public function index(AnimalRepository $animalRepository, AnimalController $ac, Request $request, CarnetSanteController $carnet): Response
     {
+
         $titreModal = "Animal";
         $user = $this->getUser();
         $animal = new Animal();
         $animal->setMembre($user);
         $form = $this->createForm(AnimalType::class, $animal);
         $form->handleRequest($request);
-
         $ac->newModalAnimal($request, $carnet, $form, $animal);
 
         return $this->render('animal/index.html.twig', [

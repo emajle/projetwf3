@@ -40,13 +40,13 @@ class CarnetSanteController extends AbstractController
     #[Route('/{id}', name: 'carnet_sante_show', methods: ['GET'])]
     public function show(CarnetSante $carnetSante, VisiteMedicalRepository $vr, VaccinsEtOperationRepository $vor): Response
     {
-
+        //dd($carnetSante);
+        $idanimal = $carnetSante->getAnimal()->getId();
         $visites = $vr->jointCarnetVisite($carnetSante->getId());
-        $operaton = $vor->jointCarnetOperation($carnetSante->getId());
         return $this->render('carnet_sante/show.html.twig', [
             'carnet_sante' => $carnetSante,
             'visites' => $visites,
-            'operations' => $operaton,
+            'idanimal' => $idanimal,
 
         ]);
     }
