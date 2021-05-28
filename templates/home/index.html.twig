@@ -17,7 +17,6 @@
 			{{ encore_entry_link_tags('app') }}
 		{% endblock %}
 
-<<<<<<< HEAD
 		<style>
 			.bd-placeholder-img {
 				padding-right: 15px;
@@ -36,8 +35,6 @@
 				}
 			}
 		</style>
-=======
->>>>>>> 1af2408689d9ccfb95205ce57d3d7c35b0160b86
 
 	</head>
 	<body class="body-index">
@@ -61,21 +58,6 @@
 									<a class="nav-link" href="{{path('conseil_index')}}" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 										Les bons conseils
 									</a>
-<<<<<<< HEAD
-									<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-										<li>
-											<a class="dropdown-item" href="#">
-												&Eacute;ducation</a>
-										</li>
-										<li>
-											<a class="dropdown-item" href="#">Quotidien</a>
-										</li>
-										<li>
-											<a class="dropdown-item" href="#">Nourriture</a>
-										</li>
-									</ul>
-=======
->>>>>>> 1af2408689d9ccfb95205ce57d3d7c35b0160b86
 								</li>
 								<li class="nav-item">
 									<a class="nav-link" href="{{path('specialiste_index')}}">Annuaire</a>
@@ -94,43 +76,43 @@
 										</li>
 									</ul>
 								</li>
-								{%  if is_granted("ROLE_ADMIN") %} 
-								<li class="nav-item dropdown">
-									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-										Espace admin
-									</a>
-									<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-										<li>
-											<a class="dropdown-item" href="{{ path('animal_index') }}">Animaux</a>
-										</li>
-										<li>
-											<a class="dropdown-item" href="{{ path('user_index') }}">Membre</a>
-										</li>
-										<li>
-											<a class="dropdown-item" href="{{ path('carnet_sante_index') }}">E-carnet</a>
-										</li>
-										<li>
-											<a class="dropdown-item" href="{{ path('abonnement_index') }}">Abonnements</a>
-										</li>
-										<li>
-											<a class="dropdown-item" href="{{ path('produit_index') }}">Produits</a>
-										</li>
-									</ul>
-								</li>
-								{% elseif  is_granted("ROLE_ABONNE") %}  
-								<li class="nav-item dropdown">
-									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-										Mon espace 
-									</a>
-									<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-										<li>
-											<a class="dropdown-item" href="{{ path('animal_index') }}">Animaux</a>
-										</li>
-										<li>
-											<a class="dropdown-item" href="{{ path('carnet_sante_index') }}">E-carnet</a>
-										</li>
-									</ul>
-								</li>
+								{%  if is_granted("ROLE_ADMIN") %}
+									<li class="nav-item dropdown">
+										<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+											Espace admin
+										</a>
+										<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+											<li>
+												<a class="dropdown-item" href="{{ path('animal_index') }}">Animaux</a>
+											</li>
+											<li>
+												<a class="dropdown-item" href="{{ path('user_index') }}">Membre</a>
+											</li>
+											<li>
+												<a class="dropdown-item" href="{{ path('carnet_sante_index') }}">E-carnet</a>
+											</li>
+											<li>
+												<a class="dropdown-item" href="{{ path('abonnement_index') }}">Abonnements</a>
+											</li>
+											<li>
+												<a class="dropdown-item" href="{{ path('produit_index') }}">Produits</a>
+											</li>
+										</ul>
+									</li>
+								{% elseif  is_granted("ROLE_ABONNE") %}
+									<li class="nav-item dropdown">
+										<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+											Mon espace
+										</a>
+										<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+											<li>
+												<a class="dropdown-item" href="{{ path('animal_index') }}">Animaux</a>
+											</li>
+											<li>
+												<a class="dropdown-item" href="{{ path('carnet_sante_index') }}">E-carnet</a>
+											</li>
+										</ul>
+									</li>
 								{% endif %}
 								{% if app.user %}
 									<li class="nav-item">
@@ -161,21 +143,21 @@
 				<div class="carousel-inner">
 					<div class="carousel-item active">
 						<div class="container w-100
-														 ">
+																																						 ">
 							<img src="{{asset('/images/doggrass.jpg')}}" class="d-block w-100 h-50" alt="...">
 						</div>
 						<div class="carousel-caption d-none d-md-block"></div>
 					</div>
 					<div class="carousel-item">
 						<div class="container w-100
-														 ">
+																																						 ">
 							<img src="{{asset('/images/chienmain.jpg')}}" class="d-block w-100 h-50" alt="...">
 						</div>
 						<div class="carousel-caption d-none d-md-block"></div>
 					</div>
 					<div class="carousel-item">
 						<div class="container w-100
-														 ">
+																																						 ">
 							<img src="{{asset('/images/catdog.jpg')}}" class="d-block w-100 center h-50" alt="...">
 						</div>
 						<div class="carousel-caption d-none d-md-block"></div>
@@ -258,7 +240,7 @@
 							<p class="lead">Vous souhaitez avoir accès &agrave; l'historique de votre animal lors de vos d&eacute;placement ? Pensez au e-carnet !
 								<br>
 								Le e-carnet de sant&eacute; est un outil moderne et r&eacute;actif pour le suivi de la sant&eacute; de votre animal.
-														Grâce &agrave; ce service gratuit, vous avez acc&egrave;s &agrave; la fiche de suivi m&eacute;dical de votre animal à tout moment et de n'importe quel ordinateur ou smartphone.
+																																						Grâce &agrave; ce service gratuit, vous avez acc&egrave;s &agrave; la fiche de suivi m&eacute;dical de votre animal à tout moment et de n'importe quel ordinateur ou smartphone.
 								<br>
 								Possibilit&eacute; d'avoir un suivi via Qr-code.
 							</p>
@@ -394,7 +376,6 @@ class="footer text-center text-muted bg-dark">
 						Subscribe
 					</button>
 				</div>
-<<<<<<< HEAD
 				<!--Grid column-->
 			</div>
 			<!--Grid row-->
@@ -409,112 +390,4 @@ class="footer text-center text-muted bg-dark">
 	&copy;{{ "now"|date("Y") }}
 	<a class="text-muted" href="https://www.wf3.fr/">MyPetCare.com</a>
 </div>
-<!-- Copyright --></footer>{% block javascripts %}
-{{ encore_entry_script_tags('app') }}{% endblock %}</body></html>
-=======
-
-				<hr class="featurette-divider"></body>
-		</html>
-	</main>
-	<!-- Footer -->
-
-	<!-- Footer -->
-	<footer class="footer text-center text-muted bg-dark">
-  <!-- Grid container -->
-  <div class="container p-4 pb-0">
-    <!-- Section: Social media -->
-    <section class="mb-4">
-      <!-- Facebook -->
-      <a
-        class="btn btn-primary bg-info text-light btn-floating m-1"
-        href="#!"
-        role="button"
-        ><i class="fab fa-facebook-f"></i
-      ></a>
-
-      <!-- Google -->
-      <a
-        class="btn btn-primary bg-info text-light btn-floating m-1"
-        href="#!"
-        role="button"
-        ><i class="fab fa-google"></i
-      ></a>
-
-      <!-- Instagram -->
-      <a
-        class="btn btn-primary bg-info text-light btn-floating m-1"
-        href="#!"
-        role="button"
-        ><i class="fab fa-instagram"></i
-      ></a>
-
-      <!-- Linkedin -->
-      <a
-        class="btn btn-primary bg-info text-light btn-floating m-1"
-        href="#!"
-        role="button"
-        ><i class="fab fa-linkedin-in"></i
-      ></a>
-      <!-- Github -->
-      <a
-        class="btn btn-primary bg-info text-light btn-floating m-1"
-        href="#!"
-        role="button"
-        ><i class="fab fa-github"></i
-      ></a>
-    </section>
-    <!-- Section: Social media -->
-  </div>
-  <!-- Grid container -->
-  <div class="container p-4 pb-0">
-    <!-- Section: Form -->
-    <section class="">
-      <form action="">
-        <!--Grid row-->
-        <div class="row d-flex justify-content-center">
-          <!--Grid column-->
-          <div class="col-auto">
-            <p class="pt-2">
-              <strong>Sign up for our newsletter</strong>
-            </p>
-          </div>
-          <!--Grid column-->
-
-          <!--Grid column-->
-          <div class="col-md-5 col-12">
-            <!-- Email input -->
-            <div class="form-outline mb-4">
-              <input type="email" id="form5Example2" class="form-control" />
-              <label class="form-label" for="form5Example2">Email Address</label>
-            </div>
-          </div>
-          <!--Grid column-->
-
-          <!--Grid column-->
-          <div class="col-auto">
-            <!-- Submit button -->
-            <button type="submit" class="btn btn-primary mb-4">
-              Subscribe
-            </button>
-          </div>
-          <!--Grid column-->
-        </div>
-        <!--Grid row-->
-      </form>
-    </section>
-    <!-- Section: Form -->
-  </div>
-  <!-- Grid container -->
-
-  <!-- Copyright -->
-  <div class="text-center p-3 text-muted bg-dark">
-    &copy;{{ "now"|date("Y") }}
-    <a class="text-muted bg-dark" href="https://www.wf3.fr/">PetCare.com</a>
-  </div>
-  <!-- Copyright -->
-</footer>
-{% block javascripts %}
-	{{ encore_entry_script_tags('app') }}
-
-{% endblock %}</body></html>
->>>>>>> 1af2408689d9ccfb95205ce57d3d7c35b0160b86
+<!-- Copyright --></footer></body></html>

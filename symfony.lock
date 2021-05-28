@@ -2,6 +2,9 @@
     "bacon/bacon-qr-code": {
         "version": "2.0.3"
     },
+    "botman/botman": {
+        "version": "2.6.1"
+    },
     "composer/package-versions-deprecated": {
         "version": "1.11.99.1"
     },
@@ -100,7 +103,6 @@
     "egulias/email-validator": {
         "version": "3.1.1"
     },
-<<<<<<< HEAD
     "endroid/installer": {
         "version": "1.3.3"
     },
@@ -109,10 +111,9 @@
     },
     "endroid/qr-code-bundle": {
         "version": "4.0.2"
-=======
+    },
     "evenement/evenement": {
         "version": "v3.0.1"
->>>>>>> 4fda6828fdb027130ed9563c1702b06290ab1c76
     },
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.3"

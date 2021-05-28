@@ -25,11 +25,6 @@ class CarnetSante
     private $visiteMedicals;
 
     /**
-     * @ORM\OneToMany(targetEntity=VaccinsEtOperation::class, mappedBy="carnet", cascade={"persist", "remove"})
-     */
-    private $vaccinsEtOperation;
-
-    /**
      * @ORM\OneToOne(targetEntity=Animal::class, inversedBy="carnetSante", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
@@ -95,41 +90,6 @@ class CarnetSante
         $this->animal = $animal;
 
         return $this;
-    }
-
-    /**
-     * @return Collection|VaccinsEtOperation[]
-     */
-    public function getVaccinsEtOperation(): Collection
-    {
-        return $this->vaccinsEtOperation;
-    }
-
-    public function addVaccinsEtOperation(VaccinsEtOperation $visiteMedical): self
-    {
-        if (!$this->vaccinsEtOperation->contains($visiteMedical)) {
-            $this->vaccinsEtOperation[] = $visiteMedical;
-            $visiteMedical->setCarnet($this);
-        }
-
-        return $this;
-    }
-
-    public function removeVaccinsEtOperation(VaccinsEtOperation $visiteMedical): self
-    {
-        if ($this->vaccinsEtOperation->removeElement($visiteMedical)) {
-            // set the owning side to null (unless already changed)
-            if ($visiteMedical->getCarnet() === $this) {
-                $visiteMedical->setCarnet(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function getUser(): ?User
-    {
-        return $this->user;
     }
 
     public function setUser(?User $user): self
