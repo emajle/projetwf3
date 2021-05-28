@@ -19,11 +19,14 @@
 
 		<style>
 			.bd-placeholder-img {
+				padding-right: 15px;
+				margin-top: 50px;
 				font-size: 1.125rem;
 				text-anchor: middle;
 				-webkit-user-select: none;
 				-moz-user-select: none;
 				user-select: none;
+
 			}
 
 			@media(min-width: 768px) {
@@ -39,10 +42,10 @@
 		<header>
 			{% block nav %}
 
-				<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+				<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
 					<div class="container-fluid">
 						{% if app.user %}
-							<a class="navbar-brand" href="{{path('app_logout')}}">Déconnexion</a>
+							<a class="navbar-brand" href="{{path('app_logout')}}">D&eacute;connexion</a>
 						{% else %}
 							<a class="navbar-brand" href="{{path('app_login')}}">Connexion</a>
 						{% endif %}
@@ -57,7 +60,8 @@
 									</a>
 									<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 										<li>
-											<a class="dropdown-item" href="#">Éducation</a>
+											<a class="dropdown-item" href="#">
+												&Eacute;ducation</a>
 										</li>
 										<li>
 											<a class="dropdown-item" href="#">Quotidien</a>
@@ -70,7 +74,7 @@
 								<li class="nav-item">
 									<a class="nav-link" href="{{path('specialiste_index')}}">Annuaire</a>
 								</li>
-								
+
 								<li class="nav-item dropdown">
 									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 										E-Boutique
@@ -84,47 +88,47 @@
 										</li>
 									</ul>
 								</li>
-								{%  if is_granted("ROLE_ADMIN") %} 
-								<li class="nav-item dropdown">
-									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-										Espace admin
-									</a>
-									<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-										<li>
-											<a class="dropdown-item" href="{{ path('animal_index') }}">Animaux</a>
-										</li>
-										<li>
-											<a class="dropdown-item" href="{{ path('user_index') }}">Membre</a>
-										</li>
-										<li>
-											<a class="dropdown-item" href="{{ path('carnet_sante_index') }}">E-carnet</a>
-										</li>
-									</ul>
-								</li>
-								{% elseif  is_granted("ROLE_ABONNE") %}  
-								<li class="nav-item dropdown">
-									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-										Mon espace 
-									</a>
-									<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-										<li>
-											<a class="dropdown-item" href="{{ path('animal_index') }}">Animaux</a>
-										</li>
-										<li>
-											<a class="dropdown-item" href="{{ path('carnet_sante_index') }}">E-carnet</a>
-										</li>
-										<li>
-											<a class="dropdown-item" href="#">Ton abonnement</a>
-										</li>
-									</ul>
-								</li>
+								{%  if is_granted("ROLE_ADMIN") %}
+									<li class="nav-item dropdown">
+										<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+											Espace admin
+										</a>
+										<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+											<li>
+												<a class="dropdown-item" href="{{ path('animal_index') }}">Animaux</a>
+											</li>
+											<li>
+												<a class="dropdown-item" href="{{ path('user_index') }}">Membre</a>
+											</li>
+											<li>
+												<a class="dropdown-item" href="{{ path('carnet_sante_index') }}">E-carnet</a>
+											</li>
+										</ul>
+									</li>
+								{% elseif  is_granted("ROLE_ABONNE") %}
+									<li class="nav-item dropdown">
+										<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+											Mon espace
+										</a>
+										<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+											<li>
+												<a class="dropdown-item" href="{{ path('animal_index') }}">Animaux</a>
+											</li>
+											<li>
+												<a class="dropdown-item" href="{{ path('carnet_sante_index') }}">E-carnet</a>
+											</li>
+											<li>
+												<a class="dropdown-item" href="#">Ton abonnement</a>
+											</li>
+										</ul>
+									</li>
 								{% endif %}
-								 {% if app.user %}
-								<li class="nav-item">
-									<a class="nav-link" href="{{ path('profil')}}">
-										<i class="fas fa-user"></i>
-									</a>
-								</li>
+								{% if app.user %}
+									<li class="nav-item">
+										<a class="nav-link" href="{{ path('profil')}}">
+											<i class="fas fa-user"></i>
+										</a>
+									</li>
 								{%  endif %}
 							</ul>
 							<form class="d-flex">
@@ -148,32 +152,24 @@
 				<div class="carousel-inner">
 					<div class="carousel-item active">
 						<div class="container w-100
-						 "> 
-							<img src="{{asset('/images/dogmountain.jpg')}}" class="d-block w-100 h-50"  alt="...">
+														 ">
+							<img src="{{asset('/images/doggrass.jpg')}}" class="d-block w-100 h-50" alt="...">
 						</div>
-						<div class="carousel-caption d-none d-md-block">
-						
-							
-						</div>
+						<div class="carousel-caption d-none d-md-block"></div>
 					</div>
 					<div class="carousel-item">
 						<div class="container w-100
-						 ">
-						<img src="{{asset('/images/chienmain.jpg')}}" class="d-block w-100 h-50" alt="...">
+														 ">
+							<img src="{{asset('/images/chienmain.jpg')}}" class="d-block w-100 h-50" alt="...">
 						</div>
-						<div class="carousel-caption d-none d-md-block">
-						
-					
-						</div>
+						<div class="carousel-caption d-none d-md-block"></div>
 					</div>
 					<div class="carousel-item">
-					<div class="container w-100
-						 ">
-						<img src="{{asset('/images/catdog.jpg')}}" class="d-block w-100 center h-50" alt="...">
+						<div class="container w-100
+														 ">
+							<img src="{{asset('/images/catdog.jpg')}}" class="d-block w-100 center h-50" alt="...">
 						</div>
-						<div class="carousel-caption d-none d-md-block">
-				
-						</div>
+						<div class="carousel-caption d-none d-md-block"></div>
 					</div>
 				</div>
 				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
@@ -187,13 +183,21 @@
 			</div><br>
 
 			<div class="container marketing bg-grey">
-				<div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
-					<div class="col-md-6 px-0">
-						<h1 class="text-white display-4">A la Une : Loi visant à renforcer la lutte contre la maltraitance animale</h1>
-						<p class="text-muted lead my-3">La proposition de loi comprend diverses mesures pour lutter contre la maltraitance des animaux domestiques et des animaux sauvages captifs et améliorer leurs conditions de détention. </p>
-						<p class="lead mb-0">
-							<a href="https://www.vie-publique.fr/loi/278249-loi-lutte-contre-la-maltraitance-animale" class="text-primary fw-bold">Continuer la lecture...</a>
-						</p>
+				<div class="p-4 p-md-5 mb-4 text-dark border rounded">
+					<div class="row">
+
+						<div class="col-md-6 px-0">
+							<h1 class="text-dark display-4">A la Une : Loi visant à renforcer la lutte contre la maltraitance animale</h1>
+							<p class="text-muted lead my-3">La proposition de loi comprend diverses mesures pour lutter contre la maltraitance des animaux domestiques et des animaux sauvages captifs et améliorer leurs conditions de détention.
+							</p>
+							<p class="lead mb-0">
+								<a href="https://www.vie-publique.fr/loi/278249-loi-lutte-contre-la-maltraitance-animale" class="text-primary fw-bold" target="_blank">Continuer la lecture...</a>
+							</p>
+						</div>
+						<div class="col-md-6 px-0 text-center">
+							<img class="w-50" src="{{asset('/images/loissymbol.jpg')}}" alt="">
+						</div>
+
 					</div>
 				</div>
 
@@ -201,16 +205,16 @@
 					<div class="col-md-6">
 						<div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
 							<div class="col p-4 d-flex flex-column position-static">
-								<strong class="d-inline-block mb-2 text-primary">Conseil Education</strong>
-								<h3 class="mb-0">Comment éduquer son animal</h3>
+								<strong class="d-inline-block mb-2 text-primary">Conseil &Eacute;ducation</strong>
+								<h4 class="mb-0">Comment &eacute;duquer son animal</h4>
 								<div class="mb-1 text-muted"></div>
-								<p class="card-text mb-auto">Dans cette rubrique, vous trouverez toutes les informations nécéssaires à leur bonne éducation.</p>
-								<a href="#" class="stretched-link">C'est par ici</a>
+								<p class="card-text mb-auto">Dans cette rubrique, vous trouverez toutes les informations n&eacute;c&eacute;ssaires &agrave; leur bonne &eacute;ducation.</p>
+								<a href="#" class="text-primary">C'est par ici</a>
 							</div>
 							<div class="col-auto d-none d-lg-block">
-								<svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveaspectratio="xMidYMid slice" focusable="false">
-									<title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-								</svg>
+								<img class="bd-placeholder-img" width="200" height="200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveaspectratio="xMidYMid slice" focusable="false" src="{{asset('/images/dogx4.jpg')}}">
+									<title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em"></text>
+								</img>
 
 							</div>
 						</div>
@@ -219,15 +223,15 @@
 						<div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
 							<div class="col p-4 d-flex flex-column position-static">
 								<strong class="d-inline-block mb-2 text-primary">Conseils Nutritionels</strong>
-								<h3 class="mb-0">Comment bien nourir son animal</h3>
+								<h4 class="mb-0">Comment bien nourir son animal</h4>
 								<div class="mb-1 text-muted"></div>
-								<p class="mb-auto">Veillez sur lui au quotidien, parce que votre animal lui aussi a besoin de bien manger.</p>
-								<a href="#" class="stretched-link">La suite des conseils</a>
+								<p class="mb-auto">Veillez sur lui au quotidien, parce que votre animal lui aussi &agrave; besoin de manger sainement et &eacute;quilibr&eacute;.</p>
+								<a href="#" class="stretched-link">Nos autres conseils</a>
 							</div>
 							<div class="col-auto d-none d-lg-block">
-								<svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveaspectratio="xMidYMid slice" focusable="false">
-									<title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-								</svg>
+								<img class="bd-placeholder-img" width="200" height="200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveaspectratio="xMidYMid slice" focusable="false" src="{{asset('/images/catcofee.jpg')}}">
+									<title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em"></text>
+								</img>
 
 							</div>
 						</div>
@@ -238,171 +242,162 @@
 
 				<div class="row featurette">
 					<div class="col-md-7">
-						<h2 class="featurette-heading">E-Carnet !
-							<span class="text-muted">Qu'est-ce ?</span>
-						</h2>
-						<p class="lead">Vous souhaitez avoir accès à l'historique de votre animal lors de vos déplacement ? Pensez au e-carnet ! <br>
-						Le e-carnet de santé est un outil moderne et réactif pour le suivi de la santé de votre animal.
-						Gràce à ce service gratuit, vous avez accès à la fiche de suivi médical de votre animal à tout moment et de n'importe quel ordinateur ou smartphone. <br>
-						Possibilité d'avoir un suivi via Qr-code.
-						</p>
-						<p class="lead mb-0">
-						<a class="btn btn-primary" href="#" role="button">E-Carnet</a>
-						</p>
-						
+						<div class="mt-5">
+							<h2 class="featurette-heading">E-Carnet !
+								<span class="text-muted">Qu'est-ce ?</span>
+							</h2>
+							<p class="lead">Vous souhaitez avoir accès &agrave; l'historique de votre animal lors de vos d&eacute;placement ? Pensez au e-carnet !
+								<br>
+								Le e-carnet de sant&eacute; est un outil moderne et r&eacute;actif pour le suivi de la sant&eacute; de votre animal.
+														Grâce &agrave; ce service gratuit, vous avez acc&egrave;s &agrave; la fiche de suivi m&eacute;dical de votre animal à tout moment et de n'importe quel ordinateur ou smartphone.
+								<br>
+								Possibilit&eacute; d'avoir un suivi via Qr-code.
+							</p>
+							<p class="lead mb-0">
+								<a class="btn btn-primary" href="#" role="button">E-Carnet</a>
+							</p>
+						</div>
 					</div>
 					<div class="col-md-5" style="background-image: url('/1.jpg')">
 						<img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveaspectratio="xMidYMid slice" focusable="false" src="{{asset('/images/chienbebe.jpg')}}">
 							<title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em"></text>
-						</svg>
-
-					</div>
-				</div>
-
-				<hr class="featurette-divider">
-
-				<div class="row featurette">
-					<div class="col-md-7 order-md-2">
-						<h2 class="featurette-heading">Espace dédiés aux spécialistes animalier. <br>
-							<span class="text-muted">Qui sont-ils ?</span>
-						</h2>
-						<p class="lead">Ici, nous vous aiguillons vers les meilleurs spécialistes en tout genre pour le bien-être de votre compagnon</p>
-						<p class="lead mb-0">
-						<a class="btn btn-primary" href="#" role="button">Spécialistes</a>
-						</p>
-
-					</div>
-					
-					<div class="col-md-5 order-md-1">
-						<img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveaspectratio="xMidYMid slice" focusable="false" src="{{asset('/images/chien2.jpg')}}">
-							<title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/>
-							<text x="50%" y="50%" fill="#aaa" dy=".3em"></text>
-						</img>
-					</div>
-				</div>
-
-				<hr class="featurette-divider">
-
-				<div class="row featurette">
-					<div class="col-md-7">
-						<h2 class="featurette-heading">Animals accesories. <br>
-							<span class="text-muted">Habillez le, ou faites le jouer !</span>
-						</h2>
-						<p class="lead">Vous souhaitez l'habiller de façon originale ou lui donner le meilleur en terme d'accessoires ? <br>
-						Psss.. C'est par ici !</p>
-						<p class="lead mb-0">
-						<a class="btn btn-primary" href="#" role="button">Accessoires</a>
-						</p>
-					</div>
-					<div class="col-md-5">
-						<img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveaspectratio="xMidYMid slice" focusable="false" src="{{asset('/images/chien3.jpg')}}">
-							<title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em"></text>
 						</img>
 
 					</div>
+				</body>
+			</html>
+		</div>
+
+		<hr class="featurette-divider">
+
+		<div class="row featurette">
+			<div class=" mt-5 col-md-7 order-md-2">
+				<h2 class="featurette-heading">Espace d&eacute;di&eacute; aux sp&eacute;cialistes animalier.
+					<br>
+					<span class="text-muted">Qui sont-ils ?</span>
+				</h2>
+				<p class="lead">Ici, nous vous aiguillons vers les meilleurs sp&eacute;cialistes en tout genre pour le bien-être de votre compagnon</p>
+				<p class="lead mb-0">
+					<a class="btn btn-primary" href="#" role="button">Sp&eacute;cialistes</a>
+				</p>
+			</div>
+
+			<div class="col-md-5 order-md-1">
+				<img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveaspectratio="xMidYMid slice" focusable="false" src="{{asset('/images/catgrass.jpg')}}">
+					<title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/>
+					<text x="50%" y="50%" fill="#aaa" dy=".3em"></text>
+				</img>
+			</div>
+		</div>
+
+		<hr class="featurette-divider">
+
+		<div class="row featurette">
+			<div class="mt-5 col-md-7">
+				<h2 class="featurette-heading">Animal Accessoires.
+					<br>
+					<span class="text-muted">Habillez le, ou faites le jouer !</span>
+				</h2>
+				<p class="lead">Vous souhaitez l'habiller de façon originale, ou lui donner le meilleur en terme d'accessoires ?
+					<br>
+					Psss.. C'est par ici !</p>
+				<p class="lead mb-0">
+					<a class="btn btn-primary" href="#" role="button">Accessoires</a>
+				</p>
+			</div>
+			<div class="col-md-5">
+				<img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveaspectratio="xMidYMid slice" focusable="false" src="{{asset('/images/chien3.jpg')}}">
+					<title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em"></text>
+				</img>
+
+			</div>
+		</div>
+
+		<hr class="featurette-divider"></body>
+</html></main><!-- Footer --><!-- Footer --><footer
+class="footer text-center text-muted bg-dark">
+<!-- Grid container -->
+<div
+	class="container p-4 pb-0">
+	<!-- Section: Social media -->
+	<section
+		class="mb-4">
+		<!-- Facebook -->
+		<a class="btn btn-primary bg-info text-light btn-floating m-1" href="#!" role="button">
+			<i class="fab fa-facebook-f"></i>
+		</a>
+
+		<!-- Google -->
+		<a class="btn btn-primary bg-info text-light btn-floating m-1" href="#!" role="button">
+			<i class="fab fa-google"></i>
+		</a>
+
+		<!-- Instagram -->
+		<a class="btn btn-primary bg-info text-light btn-floating m-1" href="#!" role="button">
+			<i class="fab fa-instagram"></i>
+		</a>
+
+		<!-- Linkedin -->
+		<a class="btn btn-primary bg-info text-light btn-floating m-1" href="#!" role="button">
+			<i class="fab fa-linkedin-in"></i>
+		</a>
+		<!-- Github -->
+		<a class="btn btn-primary bg-info text-light btn-floating m-1" href="#!" role="button">
+			<i class="fab fa-github"></i>
+		</a>
+	</section>
+	<!-- Section: Social media -->
+</div>
+<!-- Grid container -->
+<div
+	class="container p-4 pb-0">
+	<!-- Section: Form -->
+	<section class="">
+		<form
+			action="">
+			<!--Grid row-->
+			<div
+				class="row d-flex justify-content-center">
+				<!--Grid column-->
+				<div class="col-auto">
+					<p class="pt-2">
+						<strong>Sign up for our newsletter</strong>
+					</p>
 				</div>
+				<!--Grid column-->
 
-				<hr class="featurette-divider"></body>
-		</html>
-	</main>
-	<!-- Footer -->
+				<!--Grid column-->
+				<div
+					class="col-md-5 col-12">
+					<!-- Email input -->
+					<div class="form-outline mb-4">
+						<input type="email" id="form5Example2" class="form-control"/>
+						<label class="form-label" for="form5Example2">Email Address</label>
+					</div>
+				</div>
+				<!--Grid column-->
 
-	<!-- Footer -->
-	<footer class="footer text-center text-muted bg-dark">
-  <!-- Grid container -->
-  <div class="container p-4 pb-0">
-    <!-- Section: Social media -->
-    <section class="mb-4">
-      <!-- Facebook -->
-      <a
-        class="btn btn-primary bg-info text-light btn-floating m-1"
-        href="#!"
-        role="button"
-        ><i class="fab fa-facebook-f"></i
-      ></a>
+				<!--Grid column-->
+				<div
+					class="col-auto">
+					<!-- Submit button -->
+					<button type="submit" class="btn btn-primary mb-4">
+						Subscribe
+					</button>
+				</div>
+				<!--Grid column-->
+			</div>
+			<!--Grid row-->
+		</form>
+	</section>
+	<!-- Section: Form -->
+</div>
+<!-- Grid container -->
 
-      <!-- Google -->
-      <a
-        class="btn btn-primary bg-info text-light btn-floating m-1"
-        href="#!"
-        role="button"
-        ><i class="fab fa-google"></i
-      ></a>
-
-      <!-- Instagram -->
-      <a
-        class="btn btn-primary bg-info text-light btn-floating m-1"
-        href="#!"
-        role="button"
-        ><i class="fab fa-instagram"></i
-      ></a>
-
-      <!-- Linkedin -->
-      <a
-        class="btn btn-primary bg-info text-light btn-floating m-1"
-        href="#!"
-        role="button"
-        ><i class="fab fa-linkedin-in"></i
-      ></a>
-      <!-- Github -->
-      <a
-        class="btn btn-primary bg-info text-light btn-floating m-1"
-        href="#!"
-        role="button"
-        ><i class="fab fa-github"></i
-      ></a>
-    </section>
-    <!-- Section: Social media -->
-  </div>
-  <!-- Grid container -->
-  <div class="container p-4 pb-0">
-    <!-- Section: Form -->
-    <section class="">
-      <form action="">
-        <!--Grid row-->
-        <div class="row d-flex justify-content-center">
-          <!--Grid column-->
-          <div class="col-auto">
-            <p class="pt-2">
-              <strong>Sign up for our newsletter</strong>
-            </p>
-          </div>
-          <!--Grid column-->
-
-          <!--Grid column-->
-          <div class="col-md-5 col-12">
-            <!-- Email input -->
-            <div class="form-outline mb-4">
-              <input type="email" id="form5Example2" class="form-control" />
-              <label class="form-label" for="form5Example2">Email Address</label>
-            </div>
-          </div>
-          <!--Grid column-->
-
-          <!--Grid column-->
-          <div class="col-auto">
-            <!-- Submit button -->
-            <button type="submit" class="btn btn-primary mb-4">
-              Subscribe
-            </button>
-          </div>
-          <!--Grid column-->
-        </div>
-        <!--Grid row-->
-      </form>
-    </section>
-    <!-- Section: Form -->
-  </div>
-  <!-- Grid container -->
-
-  <!-- Copyright -->
-  <div class="text-center p-3 text-muted bg-dark">
-    &copy;{{ "now"|date("Y") }}
-    <a class="text-muted bg-dark" href="https://www.wf3.fr/">PetCare.com</a>
-  </div>
-  <!-- Copyright -->
-</footer>
-{% block javascripts %}
-	{{ encore_entry_script_tags('app') }}
-
-{% endblock %}</body></html>
+<!-- Copyright -->
+<div class="text-center p-3 text-muted bg-warning">
+	&copy;{{ "now"|date("Y") }}
+	<a class="text-muted" href="https://www.wf3.fr/">MyPetCare.com</a>
+</div>
+<!-- Copyright --></footer>{% block javascripts %}
+{{ encore_entry_script_tags('app') }}{% endblock %}</body></html>

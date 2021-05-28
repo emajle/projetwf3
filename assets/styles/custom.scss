@@ -3,12 +3,23 @@
 $primary: #077187;
 $secondary: #f9a620;
 $info: #333333;
+$warning : #3D3D3D;
 
-
+.container {
+    padding-top: 80px;
+  }
+  
 
 .textexp{
     color:$secondary;
 }
+
+.text-bas{
+    width : 100px;  
+    vertical-align:middle;
+}
+
+
 
 
 
