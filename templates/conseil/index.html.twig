@@ -38,15 +38,12 @@
     <h2 class="pb-2 border-bottom">Education</h2>
     <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
       <div class="col">
-        <a href="#" class="icon-link">
+        <a href="#" class="icon-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
             <div class="card bg-dark text-white">
                 <img src="{{ asset('/images/chat-promenade.jpg')}}" class="card-img" alt="homme et chat sur un chemin">
                 <div class="card-img-overlay d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
                     <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold text-center text-white">Promener son chat, bonne ou mauvaise idée?</h2>
                     <ul class="d-flex list-unstyled mt-auto">
-                        <li class="me-auto">
-                            
-                        </li>
                         <li class="d-flex me-3 align-items-end text-white">
                             <small>Geoffrey - Ethnologue</small>
                         </li>
@@ -55,17 +52,35 @@
             </div>
             </a>
           </div>
+                                                <!-- Modal education - 1-->
+                                                
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Promener son chat, bonne ou mauvaise idée?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <img class="d-flex m-auto" src="{{ asset('/images/chat-promenade.jpg')}}" width="50%"  alt="">
+                   <p> "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"</p>
+                </div>
+                <div class="modal-footer">
+                    <small>Ecrit part Geoffrey, Ethnologue</small>
+                </div>
+                </div>
+            </div>
+            </div>
+                                                <!-- End Modal education - 1 -->
         
 
         <div class="col">
-        <a href="#" class="icon-link">
+         <a href="#" class="icon-link" data-bs-toggle="modal" data-bs-target="#Modal2">
             <div class="card bg-dark text-white">
                 <img src="{{ asset('/images/chien-education.jpg')}}" class="card-img" alt="chien couché sur un plaid">
                 <div class="card-img-overlay d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
                     <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold text-center text-primary">Les règles de la maison</h2>
                     <ul class="d-flex list-unstyled mt-auto">
-                        <li class="me-auto">
-                        </li>
                         <li class="d-flex me-3 align-items-end text-dark">
                             <small>Catherine - Educatrice canin</small>
                         </li>
@@ -75,16 +90,34 @@
             </a>
         </div>
         
-
+                                                <!-- Modal education - 2-->
+                                                
+            <div class="modal fade" id="Modal2" tabindex="-1" aria-labelledby="Modal2Label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="Modal2Label">Les règles de la maison</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <img class="d-flex m-auto" src="{{ asset('/images/chien-education.jpg')}}" width="50%"  alt="">
+                   <p> "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"</p>
+                </div>
+                <div class="modal-footer">
+                    <small>Ecrit part Catherine, éducatrice canin</small>
+                </div>
+                </div>
+            </div>
+            </div>
+                                                <!-- End Modal education - 2 -->
+        
        <div class="col">
-          <a href="#" class="icon-link">
+         <a href="#" class="icon-link" data-bs-toggle="modal" data-bs-target="#4">
             <div class="card bg-dark text-white">
                 <img src="{{ asset('/images/chien-voiture.jpg')}}" class="card-img" alt="chien dans une voiture">
                 <div class="card-img-overlay d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
                     <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold text-center text-white">Conseils pour les trajets en voiture</h2>
                     <ul class="d-flex list-unstyled mt-auto">
-                        <li class="me-auto">
-                        </li>
                         <li class="d-flex me-3 align-items-end text-white">
                             <small>Marine - Comportementaliste</small>
                         </li>
@@ -96,6 +129,28 @@
     </div>
   </div>
 
+                                                <!-- Modal education - 3 -->
+                                                
+            <div class="modal fade" id="Modal3" tabindex="-1" aria-labelledby="Modal3Label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="Modal3Label">Conseils pour les trajets en voiture</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <img class="d-flex m-auto" src="{{ asset('/images/chien-voiture.jpg')}}" width="50%"  alt="">
+                   <p class="text-center"> "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"</p>
+                </div>
+                <div class="modal-footer">
+                    <small>Ecrit part Marine, comportementaliste</small>
+                </div>
+                </div>
+            </div>
+            </div>
+                                                <!-- End Modal education - 3  -->
+
+
                         {######################## Section quotidien ################################}
 
   <div class="b-example-divider"></div>
@@ -103,7 +158,7 @@
     <h2 class="pb-2 border-bottom">Quotidien</h2>
     <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
    <div class="col">
-        <a href="#" class="icon-link">
+        <a href="#" class="icon-link" data-bs-toggle="modal" data-bs-target="#Modal4">
             <div class="card bg-dark text-white">
                 <img src="{{ asset('/images/chiot.jpg')}}" class="card-img" alt="chiot assis">
                 <div class="card-img-overlay d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
@@ -111,7 +166,6 @@
                     <p class="text-mute text-center text-white fw-bold mt-5">Des conseils pour préparer son arrivée</p>
                     <ul class="d-flex list-unstyled mt-auto">
                         <li class="me-auto">
-                            
                         </li>
                         <li class="d-flex me-3 align-items-end">
                             <small>Marine - Comportementaliste</small>
@@ -121,10 +175,31 @@
             </div>
             </a>
           </div>
+
+                                                          <!-- Modal education - 4 -->
+                                                
+            <div class="modal fade" id="Modal4" tabindex="-1" aria-labelledby="Modal4Label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="Modal4Label">Accueillir un chiot à la maison</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <img class="d-flex m-auto" src="{{ asset('/images/chiot.jpg')}}" width="50%"  alt="">
+                   <p class="text-center"> "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"</p>
+                </div>
+                <div class="modal-footer">
+                    <small>Ecrit part Marine, comportementaliste</small>
+                </div>
+                </div>
+            </div>
+            </div>
+                                                <!-- End Modal education - 4  -->
         
 
         <div class="col">
-        <a href="#" class="icon-link">
+        <a href="#" class="icon-link" data-bs-toggle="modal" data-bs-target="#Modal5">
             <div class="card bg-dark text-white">
                 <img src="{{ asset('/images/chat-enfant.jpg')}}" class="card-img" alt="chat et enfant sur un lit">
                 <div class="card-img-overlay d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
@@ -141,9 +216,29 @@
             </a>
         </div>
         
+                                                                  <!-- Modal education - 5 -->
+                                                
+            <div class="modal fade" id="Modal5" tabindex="-1" aria-labelledby="Modal5Label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="Modal5Label">Chat et enfant, ce qu'il faut savoir</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <img class="d-flex m-auto" src="{{ asset('/images/chat-enfant.jpg')}}" width="50%"  alt="">
+                   <p class="text-center"> "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"</p>
+                </div>
+                <div class="modal-footer">
+                    <small>Ecrit part Dr Jousseaume, vétérinaire</small>
+                </div>
+                </div>
+            </div>
+            </div>
+                                                <!-- End Modal education - 5  -->
 
        <div class="col">
-          <a href="#" class="icon-link">
+          <a href="#" class="icon-link" data-bs-toggle="modal" data-bs-target="#Modal6">
             <div class="card bg-dark text-white">
                 <img src="{{ asset('/images/chien-jeu.jpg')}}" class="card-img" alt="chat">
                 <div class="card-img-overlay d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
@@ -152,7 +247,7 @@
                         <li class="me-auto">
                         </li>
                         <li class="d-flex me-3 align-items-end text-dark">
-                            <small>Dr Jéremie - Kiné</small>
+                            <small>Dr Valerie - Kiné</small>
                         </li>
                     </ul>
                 </div>
@@ -162,6 +257,27 @@
     </div>
   </div>
 
+                                                   <!-- Modal education - 6 -->
+                                                
+            <div class="modal fade" id="Modal6" tabindex="-1" aria-labelledby="Modal6Label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="Modal6Label">Jouer avec son chien agé</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <img class="d-flex m-auto" src="{{ asset('/images/chien-jeu.jpg')}}" width="50%"  alt="">
+                   <p class="text-center"> "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"</p>
+                </div>
+                <div class="modal-footer">
+                    <small>Ecrit part Dr Valerie, kiné</small>
+                </div>
+                </div>
+            </div>
+            </div>
+                                                <!-- End Modal education - 6  -->
+
   <div class="b-example-divider"></div>
 
                                       {######################## Section alimentation ################################}
@@ -170,7 +286,7 @@
 
     <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
        <div class="col">
-        <a href="#" class="icon-link">
+        <a href="#" class="icon-link" data-bs-toggle="modal" data-bs-target="#Modal7">
             <div class="card bg-dark text-white">
                 <img src="{{ asset('/images/barf.jpg')}}" class="card-img" alt="barf">
                 <div class="card-img-overlay d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
@@ -189,9 +305,29 @@
             </a>
           </div>
         
+                                             <!-- Modal education - 7 -->
+                                            
+            <div class="modal fade" id="Modal7" tabindex="-1" aria-labelledby="Modal7Label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="Modal7Label">Le barf, c'est quoi ?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <img class="d-flex m-auto" src="{{ asset('/images/barf.jpg')}}" width="50%"  alt="">
+                   <p class="text-center"> "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"</p>
+                </div>
+                <div class="modal-footer">
+                    <small>Ecrit part Dr André, vétérinaire</small>
+                </div>
+                </div>
+            </div>
+            </div>
+                                                <!-- End Modal education - 7 -->
 
         <div class="col">
-        <a href="#" class="icon-link">
+        <a href="#" class="icon-link" data-bs-toggle="modal" data-bs-target="#Modal8">
             <div class="card bg-dark text-white">
                 <img src="{{ asset('/images/chien-alimentation.jpg')}}" class="card-img" alt="chien et homme">
                 <div class="card-img-overlay d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
@@ -207,10 +343,30 @@
             </div>
             </a>
         </div>
-        
+
+                                                <!-- Modal education - 8 -->
+                                                
+            <div class="modal fade" id="Modal8" tabindex="-1" aria-labelledby="Modal8Label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="Modal8Label">Que puis-je lui donner ?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <img class="d-flex m-auto" src="{{ asset('/images/chien-alimentation.jpg')}}" width="50%"  alt="">
+                   <p class="text-center"> "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"</p>
+                </div>
+                <div class="modal-footer">
+                    <small>Ecrit part Dr Jousseaume, vétérinaire</small>
+                </div>
+                </div>
+            </div>
+            </div>
+                                                <!-- End Modal education - 8 -->  
 
        <div class="col">
-          <a href="#" class="icon-link">
+          <a href="#" class="icon-link" data-bs-toggle="modal" data-bs-target="#Modal9">
             <div class="card bg-dark text-white">
                 <img src="{{ asset('/images/chat-alimentation.jpg')}}" class="card-img" alt="chat">
                 <div class="card-img-overlay d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
@@ -228,6 +384,26 @@
             </a>
         </div>
           
+                                               <!-- Modal education - 9 -->
+                                                
+            <div class="modal fade" id="Modal9" tabindex="-1" aria-labelledby="Modal9Label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="Modal9Label">Comment l'aider à perdre du poids</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <img class="d-flex m-auto" src="{{ asset('/images/chat-alimentation.jpg')}}" width="50%"  alt="">
+                   <p class="text-center"> "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"</p>
+                </div>
+                <div class="modal-footer">
+                    <small>Ecrit part Dr Benoit, vétérinaire</small>
+                </div>
+                </div>
+            </div>
+            </div>
+                                                <!-- End Modal education - 9  -->
 
 
 
