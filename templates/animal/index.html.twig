@@ -70,7 +70,7 @@
 	{% elseif is_granted("ROLE_ABONNE") %}
 			<h1 class="text-center mb-5">Mes Animaux</h1>
 		{% if app.user.animals  is not empty  %}
-					<div class="row justify-content-between mb-5">
+					<div class="row justify-content-between shadow p-3 mb-5 bg-body mb-5">
 						{% for animal in app.user.animals %}
 							<div id="card-index" class=" mb-5 border-dark card" style="width: 18rem;">
 								<div class="card-body text-center couleur-card">
