@@ -3,16 +3,18 @@
 namespace App\Controller;
 
 use App\Entity\Animal;
+use App\Entity\QrCode;
 use App\Entity\CarnetSante;
 use App\Entity\VisiteMedical;
 use App\Form\CarnetSanteType;
+use App\Repository\QrCodeRepository;
 use App\Repository\CarnetSanteRepository;
-use App\Repository\VaccinsEtOperationRepository;
 use App\Repository\VisiteMedicalRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\VaccinsEtOperationRepository;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/abonne/carnet')]
 class CarnetSanteController extends AbstractController
@@ -21,7 +23,6 @@ class CarnetSanteController extends AbstractController
     public function index(CarnetSanteRepository $carnetSanteRepository): Response
     {
 
-        //dd($carnetSanteRepository->findAll());
         return $this->render('carnet_sante/index.html.twig', [
             'carnet_santes' => $carnetSanteRepository->findAll(),
         ]);
@@ -38,15 +39,28 @@ class CarnetSanteController extends AbstractController
     }
 
     #[Route('/{id}', name: 'carnet_sante_show', methods: ['GET'])]
-    public function show(CarnetSante $carnetSante, VisiteMedicalRepository $vr, VaccinsEtOperationRepository $vor): Response
+    public function show(CarnetSante $carnetSante, VisiteMedicalRepository $vr, Request $request, QrCodeRepository $qr,): Response
     {
+        if (!$qr->aideqrcode($carnetSante->getId())) {
+
+            $referer = $request->headers->get('referer');
+            $data = $carnetSante->getId();
+            $url = $referer . $data;
+            $qrCode = new QrCode();
+            $qrCode->setCarnet($carnetSante);
+            $qrCode->setImageQrc($url);
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($qrCode);
+            $entityManager->flush();
+        }
+        //Creation du qrcode en bdd
 
         $visites = $vr->jointCarnetVisite($carnetSante->getId());
-        $operaton = $vor->jointCarnetOperation($carnetSante->getId());
         return $this->render('carnet_sante/show.html.twig', [
             'carnet_sante' => $carnetSante,
             'visites' => $visites,
-            'operations' => $operaton,
+            // 'idanimal' => $idanimal,
 
         ]);
     }

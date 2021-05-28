@@ -12,6 +12,8 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Validator\Constraints\Choice;
 
 class VisiteMedicalType extends AbstractType
 {
@@ -19,17 +21,29 @@ class VisiteMedicalType extends AbstractType
     {
         $builder
             ->add('date_visite', DateType::class, [
+                'format' => 'yyyy-MM-dd',
                 "widget" => "single_text",
                 "label" => "Date de la visite",
+                "placeholder" => "",
             ])
+            ->add('nom', TextType::class)
+            ->add('action', ChoiceType::class, [
+                "placeholder" => "",
+                "choices" => [
+                    "Visite Medical" => "visite_medical",
+                    "Opération" => "operation",
+                    "Vaccination" => "vaccimation",
+
+                ]
+            ],)
             ->add('symptome', TextType::class, [])
             ->add('diagnostique',  TextType::class, [])
             ->add('analyses',  TextType::class, [])
             ->add('specialiste', EntityType::class, [
                 "class" => Specialiste::class,
-                "placeholder" => "Nom du Specialiste",
+                "placeholder" => "",
+
                 "choice_label" => "Nom",
-                "label" => \false,
                 "required" => false,
             ]);
         // ->add('carnet', EntityType::class, [

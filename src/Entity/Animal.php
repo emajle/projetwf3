@@ -60,10 +60,6 @@ class Animal
      */
     private $description;
 
-    /**
-     * @ORM\OneToOne(targetEntity=QrCode::class, mappedBy="animal", cascade={"persist", "remove"})
-     */
-    private $qrCode;
 
     /**
      * @ORM\OneToMany(targetEntity=Image::class, mappedBy="animal", orphanRemoval=true, cascade={"persist"})
@@ -177,23 +173,6 @@ class Animal
     public function setDescription(string $description): self
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    public function getQrCode(): ?QrCode
-    {
-        return $this->qrCode;
-    }
-
-    public function setQrCode(QrCode $qrCode): self
-    {
-        // set the owning side of the relation if necessary
-        if ($qrCode->getAnimal() !== $this) {
-            $qrCode->setAnimal($this);
-        }
-
-        $this->qrCode = $qrCode;
 
         return $this;
     }

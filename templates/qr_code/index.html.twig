@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}QrCode index{% endblock %}
+
+{% block body %}
+    <h1>QrCode index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Image_qrc</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for qr_code in qr_codes %}
+            <tr>
+                <td>{{ qr_code.id }}</td>
+                <td>{{ qr_code.imageQrc }}</td>
+                <td>
+                    <a href="{{ path('qr_code_show', {'id': qr_code.id}) }}">show</a>
+                    <a href="{{ path('qr_code_edit', {'id': qr_code.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('qr_code_new') }}">Create new</a>
+{% endblock %}

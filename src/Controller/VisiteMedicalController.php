@@ -30,19 +30,32 @@ class VisiteMedicalController extends AbstractController
         $visiteMedical->setCarnet($carnet);
         $form = $this->createForm(VisiteMedicalType::class, $visiteMedical);
         $form->handleRequest($request);
+        $id = $carnet->getId();
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($visiteMedical);
             $entityManager->flush();
 
-            return $this->redirectToRoute('carnet_sante_index');
+            return $this->redirectToRoute('carnet_sante_show', array('id' => $id));
         }
 
         return $this->render('visite_medical/new.html.twig', [
             'visite_medical' => $visiteMedical,
             'form' => $form->createView(),
         ]);
+    }
+
+    public function newModalVisite($form, $visiteMedical)
+    {
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($visiteMedical);
+            $entityManager->flush();
+            $id = $this->getUser();
+
+            return $this->redirectToRoute('profil', array('id' => $id));
+        }
     }
 
     #[Route('/{id}', name: 'visite_medical_show', methods: ['GET'])]

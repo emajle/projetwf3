@@ -3,32 +3,32 @@
 {% block title %}VaccinsEtOperation{% endblock %}
 
 {% block body %}
-    <h1>VaccinsEtOperation</h1>
+  <h1>VaccinsEtOperation</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ vaccins_et_operation.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ vaccins_et_operation.nom }}</td>
-            </tr>
-            <tr>
-                <th>Action</th>
-                <td>{{ vaccins_et_operation.action }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ vaccins_et_operation.description }}</td>
-            </tr>
-        </tbody>
-    </table>
+  <table class="table">
+    <tbody>
+      <tr>
+        <th>Id</th>
+        <td>{{ vaccins_et_operation.id }}</td>
+      </tr>
+      <tr>
+        <th>Nom</th>
+        <td>{{ vaccins_et_operation.nom }}</td>
+      </tr>
+      <tr>
+        <th>Action</th>
+        <td>{{ vaccins_et_operation.action }}</td>
+      </tr>
+      <tr>
+        <th>Description</th>
+        <td>{{ vaccins_et_operation.description }}</td>
+      </tr>
+    </tbody>
+  </table>
 
-    <a href="{{ path('vaccins_et_operation_index') }}">back to list</a>
+  <a href="{{ path('vaccins_et_operation_index') }}">back to list</a>
 
-    <a href="{{ path('vaccins_et_operation_edit', {'id': vaccins_et_operation.id}) }}">edit</a>
+  <a href="{{ path('vaccins_et_operation_edit', {'id': vaccins_et_operation.id}) }}">edit</a>
 
-    {{ include('vaccins_et_operation/_delete_form.html.twig') }}
+  {{ include('vaccins_et_operation/_delete_form.html.twig') }}
 {% endblock %}

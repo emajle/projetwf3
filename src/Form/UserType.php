@@ -8,8 +8,11 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Positive;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
@@ -22,6 +25,7 @@ class UserType extends AbstractType
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
+                'label' => "Mots de passe",
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [
@@ -36,12 +40,36 @@ class UserType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('pseudo')
-            ->add('prenom')
-            ->add('nom')
-            ->add('cp')
-            ->add('adresse')
-            ->add('ville')
+            ->add('pseudo', TextType::class, [
+                'required' => false,
+            ])
+            ->add('prenom', TextType::class, [
+                'required' => false,
+            ])
+            ->add('nom', TextType::class, [
+                'required' => false,
+            ])
+            ->add('adresse', TextType::class, [
+                'required' => false,
+            ])
+            ->add('ville', TextType::class, [
+                'required' => false,
+            ])
+            ->add('cp', NumberType::class, [
+                'required' => false,
+                'constraints' => [
+                    new Positive([
+                        'message' => "doit etre un chiffre possitif"
+                    ]),
+                    new Length([
+                        'min' => 5,
+                        'max' => 5,
+                        'minMessage' => 'un code postal est composé de 5 chiffre',
+                        'maxMessage' => 'un code postal est composé de 5 chiffre',
+                    ]),
+
+                ]
+            ])
             ->add('roles', ChoiceType::class, [
                 "choices" => [
                     "Admin" => "ROLE_ADMIN",
@@ -50,15 +78,15 @@ class UserType extends AbstractType
                 ],
                 "multiple" => true,
                 "expanded" => true
-            ])
-            ->add('agreeTerms', CheckboxType::class, [
-                'mapped' => false,
-                'constraints' => [
-                    new IsTrue([
-                        'message' => 'You should agree to our terms.',
-                    ]),
-                ],
             ]);
+        // ->add('agreeTerms', CheckboxType::class, [
+        //     'mapped' => false,
+        //     'constraints' => [
+        //         new IsTrue([
+        //             'message' => 'You should agree to our terms.',
+        //         ]),
+        //     ],
+        // ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -4,13 +4,33 @@
 {% endblock %}
 
 {% block body %}
-	<h1 class="titre-card">Animal</h1>
+  <h1 class="titre-card text-center">Carte Identité {{animal.prenom |capitalize}}</h1>
+  <div id="corp-card">
+      {% include "animal/card_animal.html.twig" %}
+  </div>
 
-	<a href="{{ path('animal_index') }}">back to list</a>
+  <div id="button-animal">
+    <button type="button" class="btn btn-outline-primary">
+        <a href="{{ path('visite_medical_new', {'id': animal.carnetSante.id }) }}">Nouvelle Visite </a>
+      </button>
 
-	<a href="{{ path('animal_edit', {'id': animal.id}) }}">edit</a>
+      <button type="button" class="btn btn-outline-primary">
+          <a href="{{ path('animal_index') }}">Mes animaux</a>
+      </button>
+      
+      <button type="button" class="btn btn-outline-primary">
+        <a href="{{ path('animal_edit', {'id': animal.id}) }}">Modifier {{animal.prenom |capitalize}}</a>
+      </button>
+     
+      
+    {{include('animal/_delete_form.html.twig')}}
+      
 
-	{% include "animal/card_animal.html.twig" %}
+  </div>
 
-	{{include('animal/_delete_form.html.twig')}}
+  
+   
+
+
+  
 {% endblock %}
