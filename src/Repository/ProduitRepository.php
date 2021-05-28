@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Categories;
 use App\Entity\Produit;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -25,7 +26,8 @@ class ProduitRepository extends ServiceEntityRepository
     public function findByMot($value)
     {
         return $this->createQueryBuilder('p')
-            ->where("p.titre LIKE :mot")
+            ->join(Categories::class, 'c', "WITH", "p.categories = c.id")
+            ->where("c.name LIKE :mot")
             ->setParameter('mot', '%' . $value . '%')
             ->orderBy('p.id', 'DESC')
             ->getQuery()

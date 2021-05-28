@@ -5,6 +5,12 @@
 {% block body %}
     <h1>Specialiste index</h1>
 
+ <form class="form-inline my-2 mb-5 text-center" action="{{ path('recherche_specialiste') }}">
+      <input class=" mr-sm-2" name= "mot" type="search" placeholder="Entrez un métier">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
+    </form>
+
+
     <table class="table">
         <thead>
             <tr>
