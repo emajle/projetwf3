@@ -43,3 +43,5 @@ npm i @popperjs/core => pour résolution
 			<a class="text-white" href="https://www.wf3.fr/">PetCare.com</a>
 		</div>
 		<!-- Copyright -->
+
+sécurisation des FORMULAIRES.

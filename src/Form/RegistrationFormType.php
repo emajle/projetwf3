@@ -62,7 +62,7 @@ class RegistrationFormType extends AbstractType
                 'required' => false,
                 'constraints' => [
                     new Positive([
-                        'message' => "doit etre un chiffre possitif"
+                        'message' => "doit etre un chiffre positif"
                     ]),
                     new Length([
                         'min' => 5,

@@ -4,16 +4,27 @@ $primary: #077187;
 $secondary: #f9a620;
 $info: #333333;
 
-
-
-.textexp{
-    color:$secondary;
+.textexp {
+  color: $secondary;
 }
 
 .container {
-    padding-top: 80px;
+  padding-top: 80px;
+}
+
+#carouselExampleCaptions {
+  height: 100%;
+  padding: 0px;
+
+  .carousel-inner {
+    height: 100%;
+
+    .carousel-item {
+      height: 100%;
+    }
   }
-  
 
-
-
+  .carousel-item img {
+    height: 100%;
+  }
+}
