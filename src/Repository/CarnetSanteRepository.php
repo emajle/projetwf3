@@ -19,10 +19,12 @@ class CarnetSanteRepository extends ServiceEntityRepository
         parent::__construct($registry, CarnetSante::class);
     }
 
+
     // /**
     //  * @return CarnetSante[] Returns an array of CarnetSante objects
     //  */
     /*
+
     public function findByExampleField($value)
     {
         return $this->createQueryBuilder('c')

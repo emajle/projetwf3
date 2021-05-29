@@ -6,6 +6,7 @@ use App\Entity\Image;
 use App\Entity\Animal;
 use App\Entity\QrCode;
 use App\Form\AnimalType;
+use App\Entity\CarnetSante;
 use App\Repository\AnimalRepository;
 use App\Controller\CarnetSanteController;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,24 +21,20 @@ class AnimalController extends AbstractController
     #[Route('/', name: 'animal_index', methods: ['GET', 'POST'])]
     public function index(AnimalRepository $animalRepository, AnimalController $ac, Request $request, CarnetSanteController $carnet): Response
     {
-
-        $titreModal = "Animal";
         $user = $this->getUser();
         $animal = new Animal();
         $animal->setMembre($user);
         $form = $this->createForm(AnimalType::class, $animal);
         $form->handleRequest($request);
-        $ac->newModalAnimal($request, $carnet, $form, $animal);
 
         return $this->render('animal/index.html.twig', [
             'animals' => $animalRepository->findAll(),
             'form' => $form->createView(),
-            "titre" => $titreModal,
         ]);
     }
 
     #[Route('/new', name: 'animal_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, CarnetSanteController $carnet): Response
+    public function new(Request $request): Response
     {
         $user = $this->getUser();
         $animal = new Animal();
@@ -67,11 +64,17 @@ class AnimalController extends AbstractController
             //
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($animal);
-            $carnet->new($animal);
+            $carnetSante = new CarnetSante();
+            $carnetSante->setAnimal($animal);
+            $carnetSante->setUser($this->getUser());
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($carnetSante);
+
             $entityManager->flush();
 
 
-            return $this->redirectToRoute('profil');
+
+            return $this->redirectToRoute('carnet_sante_show',  ['id' => $carnetSante->getId()]);
         }
 
         return $this->render('animal/new.html.twig', [
@@ -79,43 +82,6 @@ class AnimalController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-
-    public function newModalAnimal(Request $request, CarnetSanteController $carnet, $form, $animal)
-    {
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            // On récupère les images transmis
-            $images = $form->get('image')->getData();
-            // On Boucle nos images
-            foreach ($images as $image) {
-                // Generée un nom aleatoire pour l'image
-                $fichier = md5(uniqid()) . '.' . $image->guessExtension();
-
-                // On copie le fichier dans le dossier uploads
-                $image->move(
-                    $this->getParameter('images_directory'),
-                    $fichier
-                );
-                // On stocke l'image dans la BDD (son nom)
-                $img = new Image();
-                $img->setName($fichier);
-                $animal->addImage($img);
-            }
-            //
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($animal);
-            $carnet->new($animal);
-            $entityManager->flush();
-            $request->getSession();
-            $this->addflash('success', 'Votre inscription a été enregistré.');
-            return $this->redirectToRoute('profil');
-        }
-    }
-
-
-
-
-
 
     #[Route('/{id}', name: 'animal_show', methods: ['GET'])]
     public function show(Animal $animal): Response

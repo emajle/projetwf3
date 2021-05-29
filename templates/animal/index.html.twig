@@ -113,6 +113,9 @@
 	
 		{% else %}
 			<div>Rien d'enrengistrée</div>
+			<button type="button" class="btn btn-success">
+				<a href="{{ path('animal_new') }}">Ajouter un animal</a>
+			</button>
 		{% endif %}
 	{% endif %}
 

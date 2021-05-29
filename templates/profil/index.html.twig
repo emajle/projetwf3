@@ -17,42 +17,4 @@
             {% endif %}
         </ul>
         
-            {# Animal user #}
-        <div>
-            <div class="d-flex justify-content-between flex-wrap align-items-center">
-                {% for animal in app.user.animals  %}
-                        <div class = clo-6>
-                            {% include "animal/card_animal.html.twig" %} 
-                        </div>
-                {% endfor %}
-            </div>
-        </div>
-        
-        {# Modal inscription animaux #}
-        <!-- Button trigger modal -->
-            <button  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-            Ajoutée un animal
-            </button>
-
-            <!-- Modal -->
-           {% include "form_modal.html.twig" %}
-        {# <h3>Mes emprunts</h3>
-        
-            <table class= "table table-bordered">
-                <thead class = "thead-dark">
-                    <th>Livre</th>
-                    <th>Emprunté le</th>
-                    <th>Rendu le</th>
-                </thead>
-
-                <tbody>
-                    {% for emprunt in app.user.emprunts %}
-                    <tr>
-                        <td>{{emprunt.livre_id.titre}}</td>
-                        <td>{{emprunt.dateEmprunt|date("d/m/y")}}</td>
-                        <td>{{emprunt.dateRetour ? emprunt.dateRetour|date("d/m/y"): "Le livre n'a pas etait rendu"}}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table> #}
 {% endblock %}
