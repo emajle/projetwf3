@@ -16,42 +16,6 @@
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
 
-
-		<style>
-			.bd-placeholder-img {
-				font-size: 1.125rem;
-				text-anchor: middle;
-				-webkit-user-select: none;
-				-moz-user-select: none;
-				user-select: none;
-			}
-
-			@media(min-width: 768px) {
-				.bd-placeholder-img-lg {
-					font-size: 3.5rem;
-				}
-			}
-
-			video {
-				position: fixed;
-				z-index: -1;
-			}
-
-			@media(min-aspect-ratio: 16 / 9) {
-				#videoBg {
-					width: 100%;
-					height: auto;
-				}
-			}
-
-			@media(max-aspect-ratio: 16 / 9) {
-				#videoBg {
-					width: auto;
-					height: 100%;
-				}
-			}
-		</style>
-
 	</head>
 	<body class="body d-flex h-100 text-center text-white bg-dark">
 
@@ -61,10 +25,6 @@
 
 		<div class="bg-music">
 			<audio src="{{asset('/audio/nina-simone-my-baby-just-cares-for-me.mp3')}}"></audio>
-			{# <button class="btn">
-																															<i class="fas fa-play-circle"></i>
-																															<i class="fas fa-pause-circle"></i>
-																															</button> #}
 		</div>
 
 
@@ -72,8 +32,7 @@
 
 			<header class="mb-auto">
 				<div>
-					<h3 class="float-md-start mb-0"><img class="float-md-start mb-0 w-25" src="{{asset('/images/CAREPET_Logo.svg')}}" alt="logo">
-						MyCarePet</h3>
+					<h3 class="float-md-start mb-0"><img class="float-md-start mb-0 w-25" src="{{asset('/images/CAREPET_Logo.svg')}}" alt="logo"></h3>
 
 					<nav class="nav nav-masthead justify-content-center float-md-end">
 						<a class="nav-link active" aria-current="page" href="{{path('app_home')}}">Accueil</a>
@@ -90,27 +49,18 @@
 					<a href="#" class="btn btn-sm btn-secondary fw-bold border-white bg-white">En savoir plus</a>
 				</p>
 				<div class="d-flex justify-content-center mt-5 h-100">
-					<div class="d-flex w-50 align-items-center align-self-center card p-3 text-center cookies"><img src="https://i.imgur.com/Tl8ZBUe.png" width="50"><span class="mt-2 text-dark">Nous utilisons des cookies indispensables au bon fonctionnement de notre site. Nous et nos partenaires utilisons également des cookies afin de personnaliser votre expérience de navigation et de mesurer la performance de notre site.</span>
-						<button class="btn btn-muted mt-3 px-4" type="button" onclick="fermer()">Annuler</button>
-						<button class="btn btn-primary mt-3 px-4" type="button" onclick="fermer()">Accepter</button>
+					<div id="card-welcome" class="d-flex w-50 align-items-center align-self-center card p-3 text-center cookies"><img src="https://i.imgur.com/Tl8ZBUe.png" width="50"><span class="mt-2 text-dark">Nous utilisons des cookies indispensables au bon fonctionnement de notre site. Nous et nos partenaires utilisons également des cookies afin de personnaliser votre expérience de navigation et de mesurer la performance de notre site.</span>
+						<button class="btn btn-muted mt-3 px-4" type="button">Annuler</button>
+						<button id="accept" class="btn btn-primary mt-3 px-4" type="button">Accepter</button>
 					</div>
 				</div>
 			</main>
 
 			<footer class="mt-auto text-white-50">
-				<p>Cover template for
+				<p>
 					<a href="https://github.com" class="text-white">MyCarePet Team</a>, by
 					<a href="https://twitter.com/mdo" class="text-white">E.S.G.T</a>.</p>
-				<audio class="d-flex w-100" controls src="{{asset('/audio/nina-simone-my-baby-just-cares-for-me.mp3')}}">
-					Your browser does not support the<code>audio</code>element.</audio>
 			</footer>
-			<script>
-				window.addEventListener("DOMContentLoaded", event => {
-const audio = document.querySelector("audio");
-audio.volume = 0.2;
-audio.play();
-});
-			</script>
 		</div>
 	</body>
 </html>
