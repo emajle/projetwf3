@@ -17,14 +17,14 @@
     </form>
 
     
-    <div class="col-md-6">
-      <div class="col" id="content">
+      
         {% for produit in produits %}
+        <div class="col gx-3 gy-3">
           {% include "e_boutique/_content.html.twig" with {produit: produit} only %}
-  
+        </div>
         {% endfor %}
-      </div>
-    </div>
+      
+    
   </div>
 </div>
 
