@@ -33,6 +33,7 @@
 	<body>
 		{% block h1 %}{% endblock %}
 		<div class="container">
+		
 			{% block body %}
 				{% for message in app.flashes("success") %}
 					<div class="alert alert-success" role="alert">{{ message }}</div>
