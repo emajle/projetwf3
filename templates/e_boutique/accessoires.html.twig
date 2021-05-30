@@ -17,32 +17,17 @@
     </form>
 
     
-    <div class="col-md-12">
-      <div class="grid" id="content">
+      
         {% for produit in produits %}
+        <div class="col gx-3 gy-3">
           {% include "e_boutique/_content.html.twig" with {produit: produit} only %}
-  
+        </div>
         {% endfor %}
-      </div>
-    </div>
+      
+    
   </div>
 </div>
- {# <p>Filtrer</p>
- <form id="filters">
- {% for categorie in categories %}
-    <p><input type="checkbox" name="categories[]" id="cat{{categorie.id}}" value="{{categorie.id}}"><label for="cat{{categorie.id}}">{{categorie.name}}</label> </p>
-  {% endfor %}
- </form>
- 
- <div id="content">
-  {% include "e_boutique/_content.html.twig" %}
- </div>
-
-  #}
 
 
-{% endblock %}
 
-{% block javascriptsAjax %}
-<script src="{{ asset('js/filters.js') }}"></script>
 {% endblock %}

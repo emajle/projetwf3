@@ -3,33 +3,35 @@
 {% block title %}Categories index{% endblock %}
 
 {% block body %}
-    <h1>Categories index</h1>
-
-    <table class="table">
-        <thead>
+    <h1>Les catégories</h1>
+<br>
+    <table class="table table-striped table-primary">
+        <thead class="table-dark">
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
+                <th class="text-center">Name</th>
+                <th class="text-center">Editer</th>
+                <th class="text-center">Supprimer</th>
             </tr>
         </thead>
         <tbody>
         {% for category in categories %}
             <tr>
-                <td>{{ category.id }}</td>
-                <td>{{ category.name }}</td>
-                <td>
-                    <a href="{{ path('categories_show', {'id': category.id}) }}">show</a>
-                    <a href="{{ path('categories_edit', {'id': category.id}) }}">edit</a>
+                <td class="text-center">{{ category.name }}</td>
+                <td class="text-center">
+                    <a href="{{ path('categories_edit', {'id': category.id}) }}"><i class="far fa-edit"></i></a>
+                </td>
+                <td class="text-center">
+                    <a href="{{ path('categories_delete', {'id': category.id}) }}"><i class="fa fa-trash"></i></a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">Aucune catégorie</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+    
+		<a class="btn btn-primary" href="{{ path('categories_new') }}">Nouvelle catégorie</a>
 
-    <a href="{{ path('categories_new') }}">Create new</a>
 {% endblock %}

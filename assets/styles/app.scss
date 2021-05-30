@@ -28,8 +28,8 @@ $jaune: #f9a620;
 .body {
   text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
   box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
+  background-color: #0772877a !important;
 }
-
 .cover-container {
   max-width: 42em;
 }
@@ -188,8 +188,6 @@ p {
 
 #cardsign {
   display: flex;
-  background: no-repeat
-    url(https://fontmeme.com/permalink/200329/2719511201202ec68d51bbc66ea58d25.png);
   background-position: center;
   height: 38px;
   width: 350px;
@@ -300,9 +298,27 @@ p {
 }
 //----------------------------------------------------------------
 
+/*======================
+    VIDEO Welcome
+=======================*/
+
 video {
-  background-size: cover;
   position: fixed;
+  z-index: -1;
+}
+
+@media (min-aspect-ratio: 16 / 9) {
+  #videoBg {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-aspect-ratio: 16 / 9) {
+  #videoBg {
+    width: auto;
+    height: 100%;
+  }
 }
 
 #carnet {
@@ -326,22 +342,29 @@ video {
     COOKIE
 =======================*/
 
-// .card {
-//   position: relative;
-//   width: 200px;
-//   margin-top: -600px;
-//   z-index: 2;
-//   flex-direction: column;
-//   min-width: 0;
-//   word-wrap: break-word;
-//   background-color: #fff;
-//   background-clip: border-box;
-//   border: 1px solid #d2d2dc;
-//   border-radius: 6px;
-//   -webkit-box-shadow: 0px 0px 5px 0px rgb(249, 249, 250);
-//   -moz-box-shadow: 0px 0px 5px 0px rgba(212, 182, 212, 1);
-//   box-shadow: 0px 0px 5px 0px rgb(161, 163, 164);
-// }
+#card-welcome {
+  display: block;
+  position: relative;
+  width: 200px;
+  margin-top: -600px;
+  z-index: 2;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid #d2d2dc;
+  border-radius: 6px;
+  -webkit-box-shadow: 0px 0px 5px 0px rgb(249, 249, 250);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(212, 182, 212, 1);
+  box-shadow: 0px 0px 5px 0px rgb(161, 163, 164);
+}
+
+#card-welcome.hide {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
 
 .cookies a {
   text-decoration: none;

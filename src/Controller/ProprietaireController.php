@@ -17,27 +17,4 @@ class ProprietaireController extends AbstractController
             'controller_name' => 'ProprietaireController',
         ]);
     }
-
-
-    #[Route('/conseil', name: 'app_conseil')]
-
-    public function conseil(): Response
-    {
-
-        return $this->render('proprio/conseil.html.twig', []);
-    }
-
-    #[Route('/education', name: 'app_education')]
-
-    public function education(): Response
-    {
-        return $this->render('proprio/reponse_conseil.html.twig', []);
-    }
-
-    #[Route('/quotidien', name: 'app_quotidien')]
-
-    public function quotidien(): Response
-    {
-        return $this->render('proprio/reponse_conseil.html.twig', []);
-    }
 }

@@ -1,11 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New VisiteMedical{% endblock %}
+{% block title %}Nouvelle Visite vétérinaire{% endblock %}
 
 {% block body %}
-    <h1>Create new VisiteMedical</h1>
+    <h1>Enregistrer une nouvelle visite vétérinaire</h1>
 
-    {{ include('visite_medical/_form.html.twig') }}
+   {{ include('visite_medical/_form.html.twig') }}
 
-    <a href="{{ path('visite_medical_index') }}">back to list</a>
+    <a class="btn btn-secondary my-2" href="{{ path('visite_medical_index') }}">Revenir à la liste</a>
+
+ 
 {% endblock %}

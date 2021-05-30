@@ -71,7 +71,7 @@ class SpecialisteController extends AbstractController
     #[Route('/{id}', name: 'specialiste_delete', methods: ['POST'])]
     public function delete(Request $request, Specialiste $specialiste): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$specialiste->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $specialiste->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($specialiste);
             $entityManager->flush();
