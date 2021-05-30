@@ -150,9 +150,8 @@
         </tbody>
       </table>
     </article>
-    <button type="button" class="btn btn-outline-primary">
-      <a href="{{ path('visite_medical_new', {'id': carnet_sante.id }) }}">Ajouter</a>
-    </button>
+    
+      <a class="btn btn-outline-primary" href="{{ path('visite_medical_new', {'id': carnet_sante.id }) }}">Ajouter</a>
   </div>
 
   {% if is_granted("ROLE_ADMIN") %}

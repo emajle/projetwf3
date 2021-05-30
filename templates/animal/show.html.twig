@@ -10,17 +10,11 @@
   </div>
 
   <div id="button-animal">
-    <button type="button" class="btn btn-outline-primary">
-        <a href="{{ path('visite_medical_new', {'id': animal.carnetSante.id }) }}">Nouvelle Visite </a>
-      </button>
+        <a class="btn btn-outline-primary mx-2" href="{{ path('visite_medical_new', {'id': animal.carnetSante.id }) }}">Nouvelle Visite </a>
 
-      <button type="button" class="btn btn-outline-primary">
-          <a href="{{ path('animal_index') }}">Mes animaux</a>
-      </button>
+        <a class="btn btn-outline-primary mx-2" href="{{ path('animal_index') }}">Mes animaux</a>
       
-      <button type="button" class="btn btn-outline-primary">
-        <a href="{{ path('animal_edit', {'id': animal.id}) }}">Modifier {{animal.prenom |capitalize}}</a>
-      </button>
+        <a class="btn btn-outline-primary mx-2" href="{{ path('animal_edit', {'id': animal.id}) }}">Modifier {{animal.prenom |capitalize}}</a>
      
     {{include('animal/_delete_form.html.twig')}}
        
