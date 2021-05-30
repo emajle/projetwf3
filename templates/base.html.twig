@@ -14,8 +14,6 @@
 			<!-- Custom styles for Panier -->
 			<link href="form-validation.css" rel="stylesheet">
 		{% endblock %}
-		{% block headHome %}{% endblock %}
-		{% block head %}{% endblock %}
 		<style>
 			.grid {
 				display: grid;
@@ -24,199 +22,117 @@
 			}
 		</style>
 
-
 		{% block javascripts %}
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
 
 	</head>
 	<body>
-		{% block h1 %}{% endblock %}
-		<div class="container">
-		
-			{% block body %}
-				{% for message in app.flashes("success") %}
-					<div class="alert alert-success" role="alert">{{ message }}</div>
-				{% endfor %}
-			{% endblock %}
-
-		</div>
-
 		{% block nav %}
-			<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-				<div class="container-fluid">
-					{% if app.user %}
-						<a class="navbar-brand" href="{{path('app_logout')}}">Déconnexion</a>
-					{% else %}
-						<a class="navbar-brand" href="{{path('app_login')}}">Connexion</a>
-					{% endif %}
-					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-					</button>
-					<div class="collapse navbar-collapse" id="navbarCollapse">
-						<ul class="navbar-nav me-auto mb-2 mb-md-0">
-							<li class="nav-item">
-								{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-									<a class="nav-link" href="{{path('conseil_index')}}">
-										Les bons conseils
-									</a>
-								{% else %}
-									<a class="nav-link" href="{{path('app_login')}}">
-										Les bons conseils
-									</a>
-								{% endif %}
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="{{path('specialiste_index')}}">Annuaire</a>
-							</li>
 
-							<li class="nav-item dropdown">
-								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-									E-Boutique
-								</a>
-								<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-									<li>
-										<a class="dropdown-item" href="{{ path('e_boutique_accessoires') }}">Accessoires</a>
-									</li>
-									<li>
-										<a class="dropdown-item" href="{{ path('e_boutique_abonnement') }}">Abonnement</a>
-									</li>
-								</ul>
-							</li>
-							{%  if is_granted("ROLE_ADMIN") %}
-								<li class="nav-item dropdown">
-									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-										Espace admin
-									</a>
-									<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-										<li>
-											<a class="dropdown-item" href="{{ path('animal_index') }}">Animaux</a>
-										</li>
-										<li>
-											<a class="dropdown-item" href="{{ path('user_index') }}">Membre</a>
-										</li>
-										<li>
-											<a class="dropdown-item" href="{{ path('carnet_sante_index') }}">E-carnet</a>
-										</li>
-										<li>
-											<a class="dropdown-item" href="{{ path('abonnement_index') }}">Abonnements</a>
-										</li>
-										<li>
-											<a class="dropdown-item" href="{{ path('produit_index') }}">Produits</a>
-										</li>
-										<li>
-											<a class="dropdown-item" href="{{ path('categories_index') }}">Catégories</a>
-										</li>
-									</ul>
-								</li>
-							{% elseif  is_granted("ROLE_ABONNE") %}
-								<li class="nav-item dropdown">
-									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-										Mon espace
-									</a>
-									<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-										<li>
-											<a class="dropdown-item" href="{{ path('animal_index') }}">Animaux</a>
-										</li>
-										<li>
-											<a class="dropdown-item" href="{{ path('carnet_sante_index') }}">E-carnet</a>
-										</li>
-									</ul>
-								</li>
-							{% endif %}
-							{% if app.user %}
-								<li class="nav-item">
-									<a class="nav-link" href="{{ path('profil')}}">
-										<i class="fas fa-user"></i>
-									</a>
-								</li>
-							{%  endif %}
-						</ul>
-					</div>
+			{{include("nav.html.twig")}}
+		{% endblock %}
+		<div
+			class="container">
+
+			{# {% for message in app.flashes("success") %}
+							{% for msg in messages %}
+								<div class="alert alert-success" role="alert">{{ message }}</div>
+							{% endfor %}
+			
+						{% endfor %} #}
+
+			{% block body %}{% endblock %}
+		</div>
+		{% block footer %}
+			<br>
+			<footer
+				class="footer text-center text-muted bg-dark">
+				<!-- Grid container -->
+				<div
+					class="container p-4 pb-0">
+					<!-- Section: Social media -->
+					<section
+						class="mb-4">
+						<!-- Facebook -->
+						<a class="btn btn-primary bg-info text-light btn-floating m-1" href="#!" role="button">
+							<i class="fab fa-facebook-f"></i>
+						</a>
+
+						<!-- Google -->
+						<a class="btn btn-primary bg-info text-light btn-floating m-1" href="#!" role="button">
+							<i class="fab fa-google"></i>
+						</a>
+
+						<!-- Instagram -->
+						<a class="btn btn-primary bg-info text-light btn-floating m-1" href="#!" role="button">
+							<i class="fab fa-instagram"></i>
+						</a>
+
+						<!-- Linkedin -->
+						<a class="btn btn-primary bg-info text-light btn-floating m-1" href="#!" role="button">
+							<i class="fab fa-linkedin-in"></i>
+						</a>
+						<!-- Github -->
+						<a class="btn btn-primary bg-info text-light btn-floating m-1" href="#!" role="button">
+							<i class="fab fa-github"></i>
+						</a>
+					</section>
+					<!-- Section: Social media -->
 				</div>
-			</nav>
+				<!-- Grid container -->
+				<div
+					class="container p-4 pb-0">
+					<!-- Section: Form -->
+					<section class="">
+						<form
+							action="">
+							<!--Grid row-->
+							<div
+								class="row d-flex justify-content-center">
+								<!--Grid column-->
+								<div class="col-auto">
+									<p class="pt-2">
+										<strong>Souscrivez à notre newsletter :</strong>
+									</p>
+								</div>
+								<!--Grid column-->
+
+								<!--Grid column-->
+								<div
+									class="col-md-5 col-12">
+									<!-- Email input -->
+									<div class="form-outline mb-4">
+										<input type="email" id="form5Example2" class="form-control"/>
+										<label class="form-label" for="form5Example2">Adresse email</label>
+									</div>
+								</div>
+								<!--Grid column-->
+
+								<!--Grid column-->
+								<div
+									class="col-auto">
+									<!-- Submit button -->
+									<a href="{{ path('newsletter') }}" class="btn btn-primary mb-4">
+										Souscrire
+									</a>
+								</div>
+								<!--Grid column-->
+							</div>
+							<!--Grid row-->
+						</form>
+					</section>
+					<!-- Section: Form -->
+				</div>
+				<!-- Grid container -->
+
+				<!-- Copyright -->
+				<div class="text-center p-3 text-muted bg-warning">
+					&copy;{{ "now"|date("Y") }}
+					<a class="text-muted" href="https://www.wf3.fr/">MyPetCare.com</a>
+				</div>
+				<!-- end Copyright -->
+			</footer>
 		{% endblock %}
 	</body>
-
-{% block footer %}
-	<footer class="footer text-center text-muted bg-dark">
-<!-- Grid container -->
-		<div class="container p-4 pb-0">
-	<!-- Section: Social media -->
-			<section class="mb-4">
-			<!-- Facebook -->
-				<a class="btn btn-primary bg-info text-light btn-floating m-1" href="#!" role="button">
-				<i class="fab fa-facebook-f"></i>
-				</a>
-
-			<!-- Google -->
-				<a class="btn btn-primary bg-info text-light btn-floating m-1" href="#!" role="button">
-				<i class="fab fa-google"></i>
-				</a>
-
-			<!-- Instagram -->
-				<a class="btn btn-primary bg-info text-light btn-floating m-1" href="#!" role="button">
-				<i class="fab fa-instagram"></i>
-				</a>
-
-			<!-- Linkedin -->
-				<a class="btn btn-primary bg-info text-light btn-floating m-1" href="#!" role="button">
-				<i class="fab fa-linkedin-in"></i>
-				</a>
-			<!-- Github -->
-				<a class="btn btn-primary bg-info text-light btn-floating m-1" href="#!" role="button">
-				<i class="fab fa-github"></i>
-				</a>
-			</section>
-	<!-- Section: Social media -->
-		</div>
-<!-- Grid container -->
-		<div class="container p-4 pb-0">
-	<!-- Section: Form -->
-			<section class="">
-				<form action="">
-			<!--Grid row-->
-					<div class="row d-flex justify-content-center">
-				<!--Grid column-->
-						<div class="col-auto">
-							<p class="pt-2">
-							<strong>Souscrivez à notre newsletter :</strong>
-							</p>
-						</div>
-				<!--Grid column-->
-
-				<!--Grid column-->
-					<div class="col-md-5 col-12">
-					<!-- Email input -->
-						<div class="form-outline mb-4">
-							<input type="email" id="form5Example2" class="form-control"/>
-							<label class="form-label" for="form5Example2">Adresse email</label>
-						</div>
-					</div>
-				<!--Grid column-->
-
-				<!--Grid column-->
-					<div class="col-auto">
-					<!-- Submit button -->
-						<a href="{{ path('newsletter') }}" class="btn btn-primary mb-4">
-						Souscrire
-						</a>
-					</div>
-				<!--Grid column-->
-				</div>
-			<!--Grid row-->
-				</form>
-			</section>
-	<!-- Section: Form -->
-		</div>
-<!-- Grid container -->
-
-<!-- Copyright -->
-		<div class="text-center p-3 text-muted bg-warning">
-			&copy;{{ "now"|date("Y") }}
-			<a class="text-muted" href="https://www.wf3.fr/">MyPetCare.com</a>
-		</div>
-<!-- end Copyright -->
-	</footer>
-{% endblock %}
 </html>
