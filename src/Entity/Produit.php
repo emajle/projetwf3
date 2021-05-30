@@ -126,11 +126,7 @@ class Produit
     public function setImageFile(File $photo = null)
     {
         $this->imageFile = $photo;
-
-        //It is required that at least one field changes if you are using Doctrine,
-        //otherwise the event listeners won't be called and the file is lost
         if ($photo) {
-            // if 'updatedAt' is not defined in your entity, use another property
             $this->createdAt = new \DateTime('now');
         }
     }

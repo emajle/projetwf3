@@ -8,10 +8,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[Route('/panier')]
 class PanierController extends AbstractController
 {
 
-    #[Route('/panier', name: 'panier')]
+    #[Route('/', name: 'panier')]
     public function index(SessionInterface $session, AbonnementRepository $aboRepo)
     {
         $panier = $session->get('panier', []);
@@ -27,7 +28,7 @@ class PanierController extends AbstractController
         ]);
     }
 
-    #[Route('/panier/add/{id}', name: 'panier_ajout')]
+    #[Route('/add/{id}', name: 'panier_ajout')]
     public function add($id, SessionInterface $session)
     {
         $panier = $session->get('panier', []);
@@ -43,7 +44,7 @@ class PanierController extends AbstractController
         return $this->redirectToRoute('panier');
     }
 
-    #[Route('/panier/remove/{id}', name: 'panier_supprimer')]
+    #[Route('/remove/{id}', name: 'panier_supprimer')]
     public function remove($id, SessionInterface $session)
     {
         $panier = $session->get('panier', []);

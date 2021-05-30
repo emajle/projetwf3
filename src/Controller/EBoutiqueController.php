@@ -9,15 +9,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[Route('/boutique')]
 class EBoutiqueController extends AbstractController
 {
-    #[Route('/boutique', name: 'e_boutique')]
+    #[Route('/', name: 'e_boutique')]
     public function index(): Response
     {
         return $this->render('e_boutique/index.html.twig');
     }
 
-    #[Route('boutique/accessoires', name: 'e_boutique_accessoires')]
+    #[Route('/accessoires', name: 'e_boutique_accessoires')]
     public function accessoires(ProduitRepository $pr): Response
     {
         return $this->render('e_boutique/accessoires.html.twig', [
@@ -26,7 +27,7 @@ class EBoutiqueController extends AbstractController
     }
 
 
-    #[Route('boutique/abonnement', name: 'e_boutique_abonnement')]
+    #[Route('/abonnement', name: 'e_boutique_abonnement')]
     public function abonnement(QrCodeRepository $qrc): Response
     {
         return $this->render('e_boutique/abonnement.html.twig');
