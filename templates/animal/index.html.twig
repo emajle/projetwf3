@@ -8,7 +8,7 @@
 		<h1>Animaux
 		</h1>
 
-		<table class="table">
+		<table class="table table-responsive">
 			<thead>
 				<tr>
 					<th>Id</th>
@@ -24,7 +24,7 @@
 			</thead>
 			<tbody>
 				{% for animal in animals %}
-					<>
+					<tr>
 						<td>{{ animal.id }}</td>
 						<td>{{ animal.prenom }}</td>
 							{% if animal.espece == "chien" %}
@@ -68,7 +68,7 @@
 	{% elseif is_granted("ROLE_ABONNE") %}
 		<h1 class="text-center mb-5">Mes Animaux</h1>
 		{% if app.user.animals  is not empty  %}
-			<div class="row justify-content-between shadow p-3 mb-5 bg-body mb-5">
+			<div class="row justify-content-evenly shadow p-3 mb-5 bg-body mb-5">
 				{% for animal in app.user.animals %}
 					<div id="card-index" class=" mb-5 border-dark card" style="width: 18rem;">
 						<div class="card-body text-center couleur-card">
@@ -105,7 +105,7 @@
 				{% endfor %}
 			</div>
 
-			<button type="button" class="btn btn-success">
+			<button type="button" class="btn btn-danger form-btn">
 				<a href="{{ path('animal_new') }}">Ajouter un animal</a>
 			</button>
 
@@ -113,6 +113,9 @@
 	
 		{% else %}
 			<div>Rien d'enrengistrée</div>
+			<button type="button" class="btn btn-success">
+				<a href="{{ path('animal_new') }}">Ajouter un animal</a>
+			</button>
 		{% endif %}
 	{% endif %}
 

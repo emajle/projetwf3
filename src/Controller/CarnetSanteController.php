@@ -28,33 +28,23 @@ class CarnetSanteController extends AbstractController
         ]);
     }
 
-    public function new(Animal $animal)
-    {
-        $carnetSante = new CarnetSante();
-        $carnetSante->setAnimal($animal);
-        $carnetSante->setUser($this->getUser());
-        $entityManager = $this->getDoctrine()->getManager();
-        $entityManager->persist($carnetSante);
-        $entityManager->flush();
-    }
-
     #[Route('/{id}', name: 'carnet_sante_show', methods: ['GET'])]
     public function show(CarnetSante $carnetSante, VisiteMedicalRepository $vr, Request $request, QrCodeRepository $qr,): Response
     {
         if (!$qr->aideqrcode($carnetSante->getId())) {
-
-            $referer = $request->headers->get('referer');
-            $data = $carnetSante->getId();
-            $url = $referer . $data;
+            $host = $request->getHttpHost();
+            $suite = $request->getPathInfo();
+            //dd($referer = $request->headers->get('referer'));
+            $url = $host . $suite;
             $qrCode = new QrCode();
             $qrCode->setCarnet($carnetSante);
-            $qrCode->setImageQrc($url);
+            $qrCode->setImageQrc("http://" . $url);
 
+            //Creation du qrcode en bdd
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($qrCode);
             $entityManager->flush();
         }
-        //Creation du qrcode en bdd
 
         $visites = $vr->jointCarnetVisite($carnetSante->getId());
         return $this->render('carnet_sante/show.html.twig', [

@@ -3,56 +3,132 @@
 {% block title %}Profil {{app.user.pseudo}}{% endblock %}
 
 {% block body %}
-      <h2>Hello {{ app.user.pseudo }}! </h2>
-        {# Information user #}
-        <ul class = "list-group">
-            <li class="list-group-itemp">Nom : {{ app.user.nom }}</li>
-            <li class="list-group-itemp">Prenom : {{ app.user.prenom }}</li>
-            <li class="list-group-itemp">email : {{ app.user.email }}</li>
-            <li class="list-group-itemp">adresse : {{ app.user.adresse }}</li>
-            <li class="list-group-itemp">ville : {{ app.user.ville }}</li>
-            <li class="list-group-itemp">cp : {{ app.user.cp }}</li>
-            {% if (app.user.abonnement) is not null %} 
-            <li class="list-group-itemp">Abonnement : {{ app.user.abonnement.name|capitalize }} <a href="{{ path('remove_abonnement', {'idU': app.user.id }) }}" ><button class="btn btn-danger">Se désabonner</button></a></li>
-            {% endif %}
-        </ul>
-        
-            {# Animal user #}
-        <div>
-            <div class="d-flex justify-content-between flex-wrap align-items-center">
-                {% for animal in app.user.animals  %}
-                        <div class = clo-6>
-                            {% include "animal/card_animal.html.twig" %} 
-                        </div>
-                {% endfor %}
+      <h2 class="text-center">Hello {{ app.user.pseudo |capitalize }}! </h2>
+
+
+          <div class="row gutters-sm mt-3">
+            <div class="col-md-4 mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex flex-column align-items-center text-center">
+                    <div class="mt-3">
+                      <h4>{{app.user.pseudo |upper }}</h4>
+                      {% if (app.user.abonnement) is not null %} 
+                        <a href="{{ path('remove_abonnement', {'idU': app.user.id }) }}" >
+                        <button class="btn btn-danger">Se désabonner</button></a>
+
+                        {% else %}
+                        <a href="{{ path('e_boutique_abonnement') }}" >
+                        <button class="btn btn-danger">S'Abonner</button></a>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card mt-3">
+                <h5 class="text-center pt-3 pb-3">Mes E-Carnet</h5>
+                <ul class="list-group list-group-flush">
+                  {% for animal in app.user.animals  %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                   <h6>{{animal.prenom |upper }}
+                    {% if animal.espece == "chien" %}
+                      🐕
+                    {% else %}
+                      🐈
+                    {% endif %}
+                   </h6>
+                    <span class="text-secondary"> <a href="{{ path('carnet_sante_show', {'id': animal.carnetSante.id }) }}"> Carnet {{ animal.carnetSante.id}} </a></span>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
             </div>
+            <div class="col-md-8">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Nom</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{app.user.nom |capitalize}}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Prenon</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{app.user.prenom |capitalize}}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Email</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{app.user.email}}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Adresse</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{app.user.adresse}}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Ville</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{app.user.ville}}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Code Postal</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{app.user.cp}}
+                    </div>
+                  </div>
+                  <hr>
+                  {% if app.user.abonnement is not null %}
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Abonnement</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{app.user.abonnement.name |capitalize}}
+                    </div>
+                  </div>
+                  <hr>
+                  {% endif %}
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <a class="btn btn-info" href="{{ path('user_edit', {'id': app.user.id}) }}">Edit</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row gutters-sm">
+                      {% for animal in app.user.animals  %}
+                <div class="mb-3">
+                            {% include "animal/card_animal.html.twig" %} 
+                            </div>
+                      {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        
-        {# Modal inscription animaux #}
-        <!-- Button trigger modal -->
-            <button  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-            Ajoutée un animal
-            </button>
-
-            <!-- Modal -->
-           {% include "form_modal.html.twig" %}
-        {# <h3>Mes emprunts</h3>
-        
-            <table class= "table table-bordered">
-                <thead class = "thead-dark">
-                    <th>Livre</th>
-                    <th>Emprunté le</th>
-                    <th>Rendu le</th>
-                </thead>
-
-                <tbody>
-                    {% for emprunt in app.user.emprunts %}
-                    <tr>
-                        <td>{{emprunt.livre_id.titre}}</td>
-                        <td>{{emprunt.dateEmprunt|date("d/m/y")}}</td>
-                        <td>{{emprunt.dateRetour ? emprunt.dateRetour|date("d/m/y"): "Le livre n'a pas etait rendu"}}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table> #}
+    </div>
 {% endblock %}

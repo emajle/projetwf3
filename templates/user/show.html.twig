@@ -3,7 +3,7 @@
 {% block title %}Utilisateur{% endblock %}
 
 {% block body %}
-    <h1>Utilisateur {{user.pseudo}}</h1>
+    <h1>Utilisateur {{user.pseudo |capitalize}}</h1>
 
    <div class = "container">
         <table class="table">
@@ -15,6 +15,17 @@
                 <tr>
                     <th>Pseudo</th>
                     <td>{{user.pseudo}}</td>
+                </tr>
+                <tr>
+                    <th>Abonnement</th>
+                    <td>
+                        {% if user.abonnement.name is defined %}
+                            {{user.abonnement.name}}
+                        {% else %}
+                            Pas Abonnée
+                        {% endif %}
+                    
+                    </td>
                 </tr>
                 <tr>
                     <th>Email</th>
@@ -67,36 +78,49 @@
         {% if animaux|length != 0 %}
             <h2>Animaux</h2>
             <div>
-                <p>Le membre {{user.pseudo}} a {{animaux|length}} </p>
+                <p>Le membre {{user.pseudo}} a {{animaux|length}} 
+                
+                {% if animaux|length == 1 %}
+                    animal
+                    {% else %}
+
+                    animaux 
+                {% endif %}
+                
+                </p>
             </div>
-            <div class="d-flex justify-content-center">
+            <div class="row justify-content-evenly">
                 {% for animal in animaux %}
-                    <table class="table border border-dark">
-                            <tbody>
-                                <tr>
-                                    <th>Prenom</th>
-                                    <td>{{animal.prenom}}</td>
-                                </tr>
-                                <tr>
-                                    <th>Espece</th>
-                                    <td>{{animal.espece}}</td>
-                                </tr>
-                                <tr>
-                            <th></th>
-                                <td> <a href="{{ path('animal_show', {'id': animal.id}) }}">Voir animal</a></td>
-                                </tr>
-                            </tbody>
-                    </table>
+                   <div class="col-md-4">
+                        <table class="table border border-dark">
+                                <tbody>
+                                    <tr>
+                                        <th>Prenom</th>
+                                        <td>{{animal.prenom}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Espece</th>
+                                        <td>{{animal.espece}}</td>
+                                    </tr>
+                                    <tr>
+                                <th></th>
+                                    <td> <a href="{{ path('animal_show', {'id': animal.id}) }}">Voir animal</a></td>
+                                    </tr>
+                                </tbody>
+                        </table>
+                   </div>
                 {% endfor %}
             </div>
         {% endif %}
         
-    
-        <a href="{{ path('user_index') }}">Retour a la liste</a><br>
-    
-        <a href="{{ path('user_edit', {'id': user.id}) }}">Edite le membre</a>
-    
-       
-        {{ include('user/_delete_form.html.twig') }}
+       <div class="d-flex">
+            <button class="btn btn-danger form-btn mt-2 mx-2">
+                <a href="{{ path('user_index') }}">Retour a la liste</a>
+            </button>
+            <button class="btn btn-danger form-btn mt-2 mx-2">
+                <a href="{{ path('user_edit', {'id': user.id}) }}">Edite le membre</a>
+            </button>
+            {{ include('user/_delete_form.html.twig') }}
+       </div>
    </div>
 {% endblock %}

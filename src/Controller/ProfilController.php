@@ -22,20 +22,6 @@ class ProfilController extends AbstractController
 
     public function index(AnimalRepository $aR, AnimalController $ac, Request $request, CarnetSanteController $carnet): Response
     {
-        $titreModal = "Animal";
-        $user = $this->getUser();
-        $animal = new Animal();
-        $animal->setMembre($user);
-        $form = $this->createForm(AnimalType::class, $animal);
-        $form->handleRequest($request);
-
-        $ac->newModalAnimal($request, $carnet, $form, $animal);
-
-        return $this->render('profil/index.html.twig', [
-            "animaux" => $aR->idAnimal($this->getUser()->getId()),
-            'form' => $form->createView(),
-            "titre" => $titreModal,
-
-        ]);
+        return $this->render('profil/index.html.twig', []);
     }
 }

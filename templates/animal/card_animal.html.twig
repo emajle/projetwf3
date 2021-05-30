@@ -48,13 +48,12 @@
 							</div>
 						</div>
 				</div>
+				{% if qrcode is defined %}
 					<div id="card-qrcode">
-					{% if qrcode is defined  %}
 						  <img src="{{ qr_code_data_uri(qrcode) }}"/>  
-					{% else %}
-						<p>Pour activer le QRcode de {{animal.prenom}} render vous <a href="{{path('carnet_sante_show', {'id': animal.carnetSante.id})}}"> Sur sont carnet de santer</a></p>
-					{% endif %}
 					</div>
+					
+				{% endif %}
 				
 			</div>
 			<div id="card-code">
@@ -62,7 +61,22 @@
 					***************************** **************************************************** ************************
 				</p>
 				<div id="card-lien">
+				{% if qrcode is defined %}
+					
 					<a href="{{path('carnet_sante_show', {'id': animal.carnetSante.id})}}"> Carnet de sante de {{animal.prenom}}</a>
+				{% else %}
+					<div class= "d-flex justify-content-between">
+						<div>
+							<a href="{{path('carnet_sante_show', {'id': animal.carnetSante.id})}}"> Carnet de sante de {{animal.prenom}}</a>
+						</div>
+						
+						<div>
+							<a href="{{path('animal_show', {'id': animal.id})}}"> Carte nationale d'identité</a>
+						</div>
+
+					</div>
+
+				{% endif %}
 				</div>
 			</div>
 		</div>
