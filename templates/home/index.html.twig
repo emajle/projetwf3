@@ -59,9 +59,15 @@
 						<div class="collapse navbar-collapse" id="navbarCollapse">
 							<ul class="navbar-nav me-auto mb-2 mb-md-0">
 								<li class="nav-item">
-									<a class="nav-link" href="{{path('conseil_index')}}" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+									<a class="nav-link" href="{{path('conseil_index')}}">
 										Les bons conseils
 									</a>
+								{% else %}
+									<a class="nav-link" href="{{path('app_login')}}">
+										Les bons conseils
+									</a>
+								{% endif %}
 								</li>
 								<li class="nav-item">
 									<a class="nav-link" href="{{path('specialiste_index')}}">Annuaire</a>
@@ -100,6 +106,9 @@
 											</li>
 											<li>
 												<a class="dropdown-item" href="{{ path('produit_index') }}">Produits</a>
+											</li>
+											<li>
+											<a class="dropdown-item" href="{{ path('categories_index') }}">Catégories</a>
 											</li>
 										</ul>
 									</li>
@@ -356,7 +365,7 @@ class="footer text-center text-muted bg-dark">
 				<!--Grid column-->
 				<div class="col-auto">
 					<p class="pt-2">
-						<strong>Sign up for our newsletter</strong>
+						<strong>Souscrivez à notre newsletter :</strong>
 					</p>
 				</div>
 				<!--Grid column-->
@@ -367,7 +376,7 @@ class="footer text-center text-muted bg-dark">
 					<!-- Email input -->
 					<div class="form-outline mb-4">
 						<input type="email" id="form5Example2" class="form-control"/>
-						<label class="form-label" for="form5Example2">Email Address</label>
+						<label class="form-label" for="form5Example2">Adresse email</label>
 					</div>
 				</div>
 				<!--Grid column-->
@@ -376,9 +385,9 @@ class="footer text-center text-muted bg-dark">
 				<div
 					class="col-auto">
 					<!-- Submit button -->
-					<button type="submit" class="btn btn-primary mb-4">
-						Subscribe
-					</button>
+					<a href="{{ path('newsletter') }}" class="btn btn-primary mb-4">
+						Souscrire
+					</a>
 				</div>
 				<!--Grid column-->
 			</div>
