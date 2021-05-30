@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Annuaire des spécialistes : {% endblock %}
+{% block title %}Annuaire{% endblock %}
 
 {% block body %}
-  <h1>Specialiste index</h1>
+  <h1>Annuaire des spécialistes : </h1>
 
  <form class="form-inline my-2 mb-5 text-center" action="{{ path('recherche_specialiste') }}">
       <input class=" mr-sm-2" name= "mot" type="search" placeholder="Entrez un métier">
@@ -22,7 +22,8 @@
                 <th>Adresse</th>
                 <th>Ville</th>
                 <th>Cp</th>
-                <th>actions</th>
+                <th>Voir</th>
+                <th>Editer</th>
             </tr>
         </thead>
         <tbody>
@@ -37,8 +38,10 @@
                 <td>{{ specialiste.ville }}</td>
                 <td>{{ specialiste.cp }}</td>
                 <td>
-                    <a href="{{ path('specialiste_show', {'id': specialiste.id}) }}">show</a>
-                    <a href="{{ path('specialiste_edit', {'id': specialiste.id}) }}">edit</a>
+                    <a href="{{ path('specialiste_show', {'id': specialiste.id}) }}"><i class="far fa-eye"></i></a>
+                </td>
+                <td>
+                    <a href="{{ path('specialiste_edit', {'id': specialiste.id}) }}"><i class="far fa-edit"></i></a>
                 </td>
             </tr>
         {% else %}

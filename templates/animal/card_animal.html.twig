@@ -52,7 +52,7 @@
 					{% if qrcode is defined  %}
 						  <img src="{{ qr_code_data_uri(qrcode) }}"/>  
 					{% else %}
-						<p>Pour activer le QRcode de {{animal.prenom}} render vous <a href="{{path('carnet_sante_show', {'id': animal.carnetSante.id})}}"> Sur sont carnet de santer</a></p>
+						<p>Pour activer le QRcode de {{animal.prenom}} rendez vous <a href="{{path('carnet_sante_show', {'id': animal.carnetSante.id})}}"> sur son carnet de santé</a></p>
 					{% endif %}
 					</div>
 				

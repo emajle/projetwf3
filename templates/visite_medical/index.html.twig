@@ -5,33 +5,34 @@
 {% block body %}
     <h1>VisiteMedical index</h1>
 
-    <table class="table">
-        <thead>
+    <table class="table table-striped table-primary">
+        <thead class="table-dark">
             <tr>
-                <th>Id</th>
                 <th>Date_visite</th>
                 <th>Symptome</th>
                 <th>Diagnostique</th>
                 <th>Analyses</th>
-                <th>actions</th>
+                <th>Voir</th>
+                <th>Editer</th>
             </tr>
         </thead>
         <tbody>
         {% for visite_medical in visite_medicals %}
             <tr>
-                <td>{{ visite_medical.id }}</td>
-                <td>{{ visite_medical.dateVisite ? visite_medical.dateVisite|date('Y-m-d') : '' }}</td>
+                <td class="fw-bold">{{ visite_medical.dateVisite ? visite_medical.dateVisite|date('Y-m-d') : '' }}</td>
                 <td>{{ visite_medical.symptome }}</td>
                 <td>{{ visite_medical.diagnostique }}</td>
                 <td>{{ visite_medical.analyses }}</td>
                 <td>
-                    <a href="{{ path('visite_medical_show', {'id': visite_medical.id}) }}">show</a>
-                    <a href="{{ path('visite_medical_edit', {'id': visite_medical.id}) }}">edit</a>
+                    <a href="{{ path('visite_medical_show', {'id': visite_medical.id}) }}"><i class="far fa-eye"></i></a>
+                </td>
+                <td>
+                    <a href="{{ path('visite_medical_edit', {'id': visite_medical.id}) }}"><i class="far fa-edit"></i></a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="6">Aucune visite médicale</td>
             </tr>
         {% endfor %}
         </tbody>

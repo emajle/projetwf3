@@ -1,34 +1,36 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}CarnetSante index{% endblock %}
+{% block title %}Carnet Sante index{% endblock %}
 
 {% block body %}
 
     {%  if is_granted("ROLE_ADMIN") %} 
-        <h1>Les Carnets de Santes</h1>
-        <table class="table">
-            <thead>
+        <h1>Les Carnets de Santé :</h1>
+        <br>
+        <table  class="table table-striped table-primary">
+            <thead class="table-dark">
                 <tr>
-                    <th>Id</th>
                     <th>Prenom</th>
                     <th>Maitre</th>
-                    <th>actions</th>
+                    <th>Voir</th>
+                    <th>Editer</th>
                 </tr>
             </thead>
             <tbody>
             {% for carnet_sante in carnet_santes %}
                 <tr>
-                        <td>{{ carnet_sante.id }}</td>
-                        <td>{{ carnet_sante.animal.prenom}}</td>
+                        <td class="fw-bold">{{ carnet_sante.animal.prenom}}</td>
                         <td>{{ carnet_sante.animal.membre.pseudo}}</td>
                         <td>
-                            <a href="{{ path('carnet_sante_show', {'id': carnet_sante.id}) }}">show</a>
-                            <a href="{{ path('carnet_sante_edit', {'id': carnet_sante.id}) }}">edit</a>
+                            <a href="{{ path('carnet_sante_show', {'id': carnet_sante.id}) }}"><i class="far fa-eye"></i></a>
+                        </td>
+                        <td>
+                            <a href="{{ path('carnet_sante_edit', {'id': carnet_sante.id}) }}"><i class="far fa-edit"></i></a>
                         </td>
                     </tr>
              {% else %}
                 <tr>
-                    <td colspan="2">no records found</td>
+                    <td colspan="2">Aucun carnet</td>
                 </tr>
             {% endfor %}
             </tbody>
@@ -37,35 +39,36 @@
     {% elseif is_granted("ROLE_ABONNE") %}
         {% if app.user.carnetSantes is not empty  %}
             <h1>Vos carnet de santée</h1>
-                <table class="table">
-                    <thead>
+                <table class="table table-striped table-primary">
+                    <thead class="table-dark">
                         <tr>
-                            <th>Id</th>
                             <th>Prenom</th>
-                            <th>Maitre</th>
-                            <th>actions</th>
+                            <th>Propriétaire</th>
+                            <th>Voir</th>
+                            <th>Editer</th>
                         </tr>
                     </thead>
                     <tbody>
                                 {% for carnet_sante in app.user.carnetSantes %}     
                         <tr>
-                                <td>{{ carnet_sante.id }}</td>
-                                <td>{{ carnet_sante.animal.prenom}}</td>
+                                <td class="fw-bold">{{ carnet_sante.animal.prenom}}</td>
                                 <td>{{ carnet_sante.animal.membre.pseudo}}</td>
                                 <td>
-                                    <a href="{{ path('carnet_sante_show', {'id': carnet_sante.id}) }}">show</a>
-                                    <a href="{{ path('carnet_sante_edit', {'id': carnet_sante.id}) }}">edit</a>
+                                    <a href="{{ path('carnet_sante_show', {'id': carnet_sante.id}) }}"><i class="far fa-eye"></i></a>
+                                </td>
+                                <td>
+                                    <a href="{{ path('carnet_sante_edit', {'id': carnet_sante.id}) }}"><i class="far fa-edit"></i></a>
                                 </td>
                         </tr>
                                 {% else %}
                         <tr>
-                            <td colspan="2">Pas d'animaux enrensigtrée</td>
+                            <td colspan="2">Pas d'animaux enregistrés</td>
                         </tr>
                     </tbody>
                 </table>
                                 {% endfor %}
         {% else %}
-        <p>Pas encore d'animaux enrengistré, Mais quelle dommage vous avez droit a un accée a nous carnet de santer en ligne pour vos monstre</p>
+        <p>Pas encore d'animaux enrengistrés, mais quel dommage vous avez droit à un accès à nos carnets de santé en ligne pour vos monstres</p>
         {% endif %}
         
     {% endif %}
