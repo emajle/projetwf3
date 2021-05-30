@@ -3,11 +3,15 @@
 {% block title %}User index{% endblock %}
 
 {% block body %}
-  <h1>
+  <h1 class="text-center">
     Liste de nos Utilisateur</h1>
   <div class="container">
 
-    <table class="table">
+  <p>
+      Nous avons sur My Cart Pert {{users|length}} Membres
+  </p>
+
+    <table class="table table-responsive mt-3">
       <thead>
         <tr>
           <th>Id</th>
@@ -63,10 +67,8 @@
 
             </td>
             <td>
-              <a href="{{ path('user_show', {'id': user.id}) }}">Voir le membre</a>
-            </td>
-            <td>
-              <a href="{{ path('user_edit', {'id': user.id}) }}">Editée un membre</a>
+              <a href="{{ path('user_show', {'id': user.id}) }}"><i class="far fa-eye"></i></a>
+              <a href="{{ path('user_edit', {'id': user.id}) }}"><i class="fas fa-user-edit"></i></a>
             </td>
           </tr>
         {% else %}
@@ -75,8 +77,18 @@
           </tr>
         {% endfor %}
       </tbody>
+      <tfoot>
+      <td>
+      </td>
+      </tfoot>
     </table>
-
   </div>
-  <a href="{{ path('admin_user_new') }}">Ajouter un utilisateur</a>
+
+  <div class="row">
+    
+    <p>
+    <a href="{{ path('admin_user_new') }}">Ajouter un utilisateur</a>
+    </p>
+  
+  </div>
 {% endblock %}
