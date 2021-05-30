@@ -76,8 +76,10 @@
                 <td>{{visite.nom}}</td>
                 <td>{{ visite.symptome }}</td>
                 <td>{{ visite.analyses }}</td>
-                {% if visite.specialiste is defined %}
+                {% if visite.specialiste.name is defined %}
                   <td>{{ visite.specialiste.nom }}</td>
+                  {% else %}
+                  <td><i class="fas fa-times"></i></td>
                 {% endif %}
               </tr>
             {% endif %}
@@ -106,8 +108,10 @@
                 <td>{{visite.dateVisite ? visite.dateVisite|date('d/m/y') : '' }}</td>
                 <td>{{ visite.symptome }}</td>
                 <td>{{ visite.diagnostique }}</td>
-                {% if visite.specialiste is defined %}
+                {% if visite.specialiste.name is defined %}
                   <td>{{ visite.specialiste.nom }}</td>
+                  {% else %}
+                  <td><i class="fas fa-times"></i></td>
                 {% endif %}
               </tr>
             {% endif %}
@@ -135,10 +139,11 @@
                 <td>{{visite.dateVisite ? visite.dateVisite|date('d/m/y') : '' }}</td>
                 <td>{{visite.nom}}</td>
                 <td>{{ visite.diagnostique }}</td>
-                {% if visite.specialiste is defined %}
+                {% if visite.specialiste.name is defined %}
                   <td>{{ visite.specialiste.nom }}</td>
+                  {% else %}
+                  <td><i class="fas fa-times"></i></td>
                 {% endif %}
-
               </tr>
             {% endif %}
           {% endfor %}

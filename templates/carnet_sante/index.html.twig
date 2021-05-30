@@ -23,7 +23,6 @@
                         <td>{{ carnet_sante.animal.membre.pseudo}}</td>
                         <td>
                             <a href="{{ path('carnet_sante_show', {'id': carnet_sante.id}) }}">show</a>
-                            <a href="{{ path('carnet_sante_edit', {'id': carnet_sante.id}) }}">edit</a>
                         </td>
                     </tr>
              {% else %}
@@ -54,7 +53,6 @@
                                 <td>{{ carnet_sante.animal.membre.pseudo}}</td>
                                 <td>
                                     <a href="{{ path('carnet_sante_show', {'id': carnet_sante.id}) }}">show</a>
-                                    <a href="{{ path('carnet_sante_edit', {'id': carnet_sante.id}) }}">edit</a>
                                 </td>
                         </tr>
                                 {% else %}

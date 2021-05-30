@@ -15,7 +15,10 @@ class CarnetSanteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('animal', TextType::class);
+            ->add('', Entity::class, [
+                "class" => CarnetSante::class,
+
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
