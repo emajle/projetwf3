@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit CarnetSante{% endblock %}
+{% block title %}Editer CarnetSante{% endblock %}
 
 {% block body %}
-    <h1>Edit CarnetSante</h1>
+    <h1>Editer un carnet de santé</h1>
 
-    {{ include('carnet_sante/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('carnet_sante/_form.html.twig', {'button_label': 'Modifier'}) }}
 
-    <a href="{{ path('carnet_sante_index') }}">back to list</a>
+    <a class="btn btn-secondary" href="{{ path('carnet_sante_index') }}">Revenir à la liste</a>
 
     {{ include('carnet_sante/_delete_form.html.twig') }}
 {% endblock %}

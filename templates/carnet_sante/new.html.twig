@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New CarnetSante{% endblock %}
+{% block title %}Nouveau Carnet de Santé{% endblock %}
 
 {% block body %}
-    <h1>Create new CarnetSante</h1>
+    <h1>Créer un nouveau carnet de santé</h1>
 
     {{ include('carnet_sante/_form.html.twig') }}
 
-    <a href="{{ path('carnet_sante_index') }}">back to list</a>
+    <a class="btn btn-secondary" href="{{ path('carnet_sante_index') }}">Revenir à la liste</a>
 {% endblock %}

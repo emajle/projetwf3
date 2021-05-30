@@ -1,13 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit VisiteMedical{% endblock %}
+{% block title %}Editer Visite{% endblock %}
 
 {% block body %}
-    <h1>Edit VisiteMedical</h1>
+    <h1>Modifier une visite</h1>
 
-    {{ include('visite_medical/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('visite_medical/_form.html.twig', {'button_label': 'Modifier'}) }}
 
-    <a href="{{ path('visite_medical_index') }}">back to list</a>
+<div class="d-flex my-2">
+
+    <a class="btn btn-secondary me-2" href="{{ path('visite_medical_index') }}">Revenir à la liste</a>
 
     {{ include('visite_medical/_delete_form.html.twig') }}
+
+</div>
+   
 {% endblock %}

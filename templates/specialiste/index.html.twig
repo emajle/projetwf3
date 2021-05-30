@@ -40,9 +40,11 @@
                 <td>
                     <a href="{{ path('specialiste_show', {'id': specialiste.id}) }}"><i class="far fa-eye"></i></a>
                 </td>
-                {{  is_granted('ROLE_ADMIN') ? "<td>
-                    <a href='{{ path('specialiste_edit', {'id': specialiste.id}) }}'><i class='far fa-edit'></i></a>
-                </td>" : ""}}
+                {% if is_granted('ROLE_ADMIN')%}
+                    <td>
+                        <a href="{{ path('specialiste_edit', {'id': specialiste.id}) }}"><i class='far fa-edit'></i></a>
+                    </td>
+                {% endif %}
             </tr>
         {% else %}
             <tr>
@@ -54,9 +56,8 @@
 
   {% if is_granted("ROLE_ADMIN") %}
 
-    <button type="button" class="btn btn-outline-primary">
-		<a href="{{ path('specialiste_new') }}">Nouveau spécialiste</a>
-	</button>
+		<a class="btn btn-primary" href="{{ path('specialiste_new') }}">Nouveau spécialiste</a>
+
     
   {% endif %}
 
