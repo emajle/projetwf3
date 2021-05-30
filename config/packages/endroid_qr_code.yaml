@@ -6,4 +6,10 @@ endroid_qr_code:
         encoding: "UTF-8"
         errorCorrectionLevel: "low"
         roundBlockSizeMode: "margin"
+        logoPath: "%kernel.project_dir%/assets/images/CAREPET_Logo.png"
+        logoResizeToWidth: 75
         validateResult: false
+        labelText: "CAREPET"
+        labelFontPath: "%kernel.project_dir%/vendor/endroid/qr-code/assets/noto_sans.otf"
+        labelFontSize: 10
+        labelAlignment: "center"
