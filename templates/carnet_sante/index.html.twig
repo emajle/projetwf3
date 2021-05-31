@@ -39,7 +39,7 @@
     {% elseif is_granted("ROLE_ABONNE") %}
         {% if app.user.carnetSantes is not empty  %}
             <h1>Vos carnets de santé</h1>
-                <table class="table table-striped table-primary">
+                <table class="table table-striped table-primary table-responsive">
                     <thead class="table-dark">
                         <tr>
                             <th>Prenom</th>
