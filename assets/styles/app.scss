@@ -12,7 +12,9 @@ $jaune: #f9a620;
 // .titre {
 //   color: black;
 // }
-
+*{
+  font-family: 'Arima Madurai', cursive;
+}
 /*======================
     PAGE WELCOME
 =======================*/
@@ -70,6 +72,36 @@ $jaune: #f9a620;
 //   background-image: url("/assets/images/CAREPET_Paws2.svg");
 //   background-repeat: no-repeat;
 // }
+
+
+
+
+
+.p-conseil{
+
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+    }
+  }
+  .card-img{
+    filter: grayscale(80%) blur(2px);
+  }
+
+  .col:hover {
+    z-index: 1;
+    transform: scale(1.10);
+  }
+}
+
 /*======================
     ANIMAL INDEX
 =======================*/
@@ -80,7 +112,15 @@ $jaune: #f9a620;
 }
 
 .couleur-card {
-  background-color: #ffd07e;
+  background-color: #077187;
+}
+
+#img-animal-index:hover{
+  cursor: pointer;
+}
+#img-animal-index:active {
+  z-index: 1;
+  transform: scale(2);
 }
 
 /*======================

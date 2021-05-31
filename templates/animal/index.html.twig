@@ -67,13 +67,62 @@
 		</table>
 
 	{% elseif is_granted("ROLE_ABONNE") %}
+
 		<h1 class="text-center mb-5">Mes Animaux</h1>
+
+		{% if app.user.animals  is not empty  %}
+		<div class="row justify-content-evenly shadow p-3 bg-body mb-5">
+
+			{% for animal in app.user.animals %}
+
+				<div class="card p-0 shadow" style="width: 18rem;">
+
+					{% for image in animal.images %}
+						<img id="img-animal-index" src="{{ asset('/uploads/animal_photo/'~ image.name) }}" class="card-img-top" alt="Photo de votre animal">
+					{% endfor %}
+
+					<div class="card-body text-center couleur-card">
+						<h5 class="card-title fw-bold">{{ animal.prenom }}</h5>
+						<p class="card-text fst-italic">{{animal.description}}</p>
+					</div>
+
+					<ul class="text-center list-group list-group-flush">
+						<li class="list-group-item">
+							{% if animal.espece == "chien" %}
+								<i class="fas fa-dog"></i>
+							{% else %}
+								<i class="fas fa-cat"></i>
+							{% endif %}
+						</li>
+						<li class="text-center list-group-item">
+							{% if animal.sexe == "m" %}
+								<i class="fas fa-mars"></i>
+							{% else %}
+								<i class="fas fa-venus"></i>
+							{% endif %}
+						</li>
+						<li class="list-group-item">{{animal.couleur}}</li>
+					</ul>
+
+					<div class="card-body text-center couleur-card">
+						<a class="btn btn-secondary" href="{{ path('animal_show', {'id': animal.id}) }}">Voir CI</i></a>
+						<a class="btn btn-secondary" href="{{ path('animal_edit', {'id': animal.id}) }}" class="card-link">Modifier</a>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	{% else %}
+		<div>Aucun animal enregistré</div>
+			<a class="btn btn-primary" href="{{ path('animal_new') }}">Ajouter un animal</a>
+			
+	{% endif %} 
+{# 		<h1 class="text-center mb-5">Mes Animaux</h1>
 		{% if app.user.animals  is not empty  %}
 			<div class="row justify-content-evenly shadow p-3 mb-5 bg-body mb-5">
 				{% for animal in app.user.animals %}
-					<div id="card-index" class=" mb-5 border-dark card" style="width: 18rem;">
+					<div id="card-index" class=" mb-5 border-secondary border-2 rounded-3 card" style="width: 18rem;">
 						<div class="card-body text-center couleur-card">
-							<h5 class="card-title">{{animal.prenom}}</h5>
+							<h5 class="card-title fw-bold">{{animal.prenom}}</h5>
 							<p class="card-text fst-italic">{{animal.description}}</p>
 						</div>
 						<ul class="text-center list-group list-group-flush">
@@ -98,25 +147,20 @@
 							<li class="list-group-item">{{animal.couleur}}</li>
 						</ul>
 						<div class="card-body text-center couleur-card">
-							<a href="{{ path('animal_show', {'id': animal.id}) }}">Voir CI</i></a>
-						<a href="{{ path('animal_edit', {'id': animal.id}) }}" class="card-link">Modifier</a>
+							<a class="btn btn-secondary" href="{{ path('animal_show', {'id': animal.id}) }}">Voir CI</i></a>
+						<a class="btn btn-secondary" href="{{ path('animal_edit', {'id': animal.id}) }}" class="card-link">Modifier</a>
 						</div>
 					</div>
 				{% endfor %}
 			</div>
-
-			<button type="button" class="btn btn-outline-primary">
-				<a href="{{ path('animal_new') }}">Ajouter un animal</a>
-			</button>
-
-		
+			
+				<a class="btn btn-primary" href="{{ path('animal_new') }}">Ajouter un animal</a>
 	
 		{% else %}
 			<div>Aucun animal enregistré</div>
-			<button type="button" class="btn btn-success">
-				<a href="{{ path('animal_new') }}">Ajouter un animal</a>
-			</button>
-		{% endif %}
+				<a class="btn btn-primary" href="{{ path('animal_new') }}">Ajouter un animal</a>
+			
+		{% endif %} #}
 	{% endif %}
 
 {% endblock %}
