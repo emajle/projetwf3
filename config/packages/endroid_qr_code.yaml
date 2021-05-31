@@ -1,15 +1,15 @@
 endroid_qr_code:
-    default:
-        writer: Endroid\QrCode\Writer\PngWriter
-        size: 150
-        margin: 5
-        encoding: "UTF-8"
-        errorCorrectionLevel: "low"
-        roundBlockSizeMode: "margin"
-        logoPath: "%kernel.project_dir%/assets/images/CAREPET_Logo.png"
-        logoResizeToWidth: 75
-        validateResult: false
-        labelText: "CAREPET"
-        labelFontPath: "%kernel.project_dir%/vendor/endroid/qr-code/assets/noto_sans.otf"
-        labelFontSize: 10
-        labelAlignment: "center"
+  default:
+    writer: Endroid\QrCode\Writer\PngWriter
+    size: 150
+    margin: 5
+    encoding: "UTF-8"
+    errorCorrectionLevel: "low"
+    roundBlockSizeMode: "margin"
+    logoPath: "%kernel.project_dir%/assets/images/CAREPET_Logo.png"
+    logoResizeToWidth: 75
+    validateResult: false
+    labelText: "CAREPET"
+    labelFontPath: "%kernel.project_dir%/vendor/endroid/qr-code/assets/noto_sans.otf"
+    labelFontSize: 10
+    labelAlignment: "center"
