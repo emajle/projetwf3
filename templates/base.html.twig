@@ -24,76 +24,12 @@
 	</head>
 	<body>
 		{% block nav %}
-
-							<li class="nav-item dropdown">
-								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-									E-Boutique
-								</a>
-								<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-									<li>
-										<a class="dropdown-item" href="{{ path('e_boutique_accessoires') }}">Accessoires</a>
-									</li>
-									<li>
-										<a class="dropdown-item" href="{{ path('e_boutique_abonnement') }}">Abonnement</a>
-									</li>
-								</ul>
-							</li>
-							{%  if is_granted("ROLE_ADMIN") %}
-								<li class="nav-item dropdown">
-									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-										Espace admin
-									</a>
-									<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-										<li>
-											<a class="dropdown-item" href="{{ path('animal_index') }}">Animaux</a>
-										</li>
-										<li>
-											<a class="dropdown-item" href="{{ path('user_index') }}">Membre</a>
-										</li>
-										<li>
-											<a class="dropdown-item" href="{{ path('carnet_sante_index') }}">E-carnet</a>
-										</li>
-										<li>
-											<a class="dropdown-item" href="{{ path('abonnement_index') }}">Abonnements</a>
-										</li>
-										<li>
-											<a class="dropdown-item" href="{{ path('produit_index') }}">Produits</a>
-										</li>
-										<li>
-											<a class="dropdown-item" href="{{ path('categories_index') }}">Catégories</a>
-										</li>
-									</ul>
-								</li>
-							{% elseif  is_granted("ROLE_ABONNE") %}
-								<li class="nav-item dropdown">
-									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-										Mon espace
-									</a>
-									<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-										<li>
-											<a class="dropdown-item" href="{{ path('animal_index') }}">Animaux</a>
-										</li>
-										<li>
-											<a class="dropdown-item" href="{{ path('carnet_sante_index') }}">E-carnet</a>
-										</li>
-										<li>
-											<a class="dropdown-item" href="{{ path('profil') }}">Profil</a>
-										</li>
-									</ul>
-								</li>
-							{% endif %}
-							{% if app.user %}
-								<li class="nav-item">
-									<a class="nav-link" href="{{ path('profil')}}">
-										<i class="fas fa-user"></i>
-									</a>
-								</li>
-							{%  endif %}
-						</ul>
-					</div>
-				</div>
-			</nav>
+			{% include "nav.html.twig" %}
 		{% endblock %}
+		<div class="container">
+
+		{% block body %}{% endblock %}
+		</div>
 	</body>
 
 {% block footer %}
@@ -117,39 +53,31 @@
 			<!--Grid row-->
 					<div class="row d-flex justify-content-center">
 
-						<!-- Instagram -->
-						<a class="btn btn-primary bg-info text-light btn-floating m-1" href="#!" role="button">
-							<i class="fab fa-instagram"></i>
-						</a>
+				<!--Grid column-->
+					<div class="col-md-5 col-12">
+					<!-- Email input -->
+						<div class="form-outline mb-4">
+							<input type="email" id="form5Example2" class="form-control"/>
+							<label class="form-label" for="form5Example2">Adresse email</label>
+						</div>
+					</div>
+				<!--Grid column-->
 
-						<!-- Linkedin -->
-						<a class="btn btn-primary bg-info text-light btn-floating m-1" href="#!" role="button">
-							<i class="fab fa-linkedin-in"></i>
+				<!--Grid column-->
+					<div class="col-auto">
+					<!-- Submit button -->
+						<a href="{{ path('newsletter') }}" class="btn btn-primary mb-4">
+						Souscrire
 						</a>
-						<!-- Github -->
-						<a class="btn btn-primary bg-info text-light btn-floating m-1" href="#!" role="button">
-							<i class="fab fa-github"></i>
-						</a>
-					</section>
-					<!-- Section: Social media -->
+					</div>
+				<!--Grid column-->
 				</div>
-				<!-- Grid container -->
-				<div
-					class="container p-4 pb-0">
-					<!-- Section: Form -->
-					<section class="">
-						<form
-							action="">
-							<!--Grid row-->
-							<div
-								class="row d-flex justify-content-center">
-								<!--Grid column-->
-								<div class="col-auto">
-									<p class="pt-2">
-										<strong>Souscrivez à notre newsletter :</strong>
-									</p>
-								</div>
-								<!--Grid column-->
+			<!--Grid row-->
+				</form>
+			</section>
+	<!-- Section: Form -->
+		</div>
+<!-- Grid container -->
 
 <!-- Copyright -->
 		<div class="text-center p-3 text-muted bg-warning">
