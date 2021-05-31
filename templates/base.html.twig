@@ -27,8 +27,12 @@
 			{% include "nav.html.twig" %}
 		{% endblock %}
 		<div class="container">
+		{% block h1 %}{% endblock %}
 
+		<div id="height-body">
 		{% block body %}{% endblock %}
+		
+		</div>
 		</div>
 	</body>
 
