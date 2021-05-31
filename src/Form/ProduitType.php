@@ -35,11 +35,11 @@ class ProduitType extends AbstractType
                 "class" => Categories::class,
                 "choice_label" => "name",
                 "label" => "Catégorie",
-                'required' => false
+                'required' => true
             ])
             ->add('description')
             ->add('photo', FileType::class, [
-                'required' => false,
+                'required' => true,
                 'mapped' => false
             ])
 

@@ -47,9 +47,9 @@
               <li>Coordonnées vétérinaires</li>
             </ul>
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-            <a href="{{ path('panier_ajout', {'id': 1}) }}"><button type="button" class="btn btn-lg btn-block btn-primary">Je m'abonne !</button></a>
+              <a href="{{ path('panier_ajout', {'id': 1}) }}"><button type="button" class="btn btn-lg btn-block btn-primary">Je m'abonne !</button></a> 
             {% else %}
-            <a href="{{ path('app_login') }}"><button type="button" class="btn btn-lg btn-block btn-primary">Je m'abonne !</button></a>    
+              <a href="{{ path('app_login') }}"><button type="button" class="btn btn-lg btn-block btn-primary">Je m'abonne !</button></a>
             {% endif %}
           </div>
         </div>
@@ -68,9 +68,9 @@
               <li>Coordonnées vétérinaires</li>
             </ul>
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-              <a href="{{ path('panier_ajout', {'id': 2}) }}"><button type="button" class="btn btn-lg btn-block btn-primary">Je m'abonne !</button></a>
+              <a href="{{ path('panier_ajout', {'id': 2}) }}"><button type="button" class="btn btn-lg btn-block btn-primary">Je m'abonne !</button></a> 
             {% else %}
-              <a href="{{ path('app_login') }}"><button type="button" class="btn btn-lg btn-block btn-primary">Je m'abonne !</button></a>           
+              <a href="{{ path('app_login') }}"><button type="button" class="btn btn-lg btn-block btn-primary">Je m'abonne !</button></a>
             {% endif %}
           </div>
         </div>
@@ -89,7 +89,7 @@
               <li>Coordonnées vétérinaires</li>
             </ul>
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-              <a href="{{ path('panier_ajout', {'id': 3}) }}"><button type="button" class="btn btn-lg btn-block btn-primary">Je m'abonne !</button></a>
+              <a href="{{ path('panier_ajout', {'id': 3}) }}"><button type="button" class="btn btn-lg btn-block btn-primary">Je m'abonne !</button></a> 
             {% else %}
               <a href="{{ path('app_login') }}"><button type="button" class="btn btn-lg btn-block btn-primary">Je m'abonne !</button></a>
             {% endif %}
