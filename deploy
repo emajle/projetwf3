@@ -1,0 +1,2 @@
+#!/bin/sh
+rsync -av ./ u104910394@access873443127.webspace-data.io:~/mypetcare.com  --include=public/build --include=public/.htaccess --include=vendor --exclude-from=.gitignore --exclude=".*"
