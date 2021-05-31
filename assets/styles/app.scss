@@ -14,6 +14,11 @@ $jaune: #f9a620;
 // }
 *{
   font-family: 'Arima Madurai', cursive;
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+  }
 }
 /*======================
     PAGE WELCOME
@@ -73,9 +78,30 @@ $jaune: #f9a620;
 //   background-repeat: no-repeat;
 // }
 
+/*======================
+    PAGE ABONNEMENT
+=======================*/
+.p-abonnement{
 
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+  
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
 
+}
 
+/*======================
+    PAGE CONSEIL
+=======================*/
 
 .p-conseil{
 
@@ -99,6 +125,27 @@ $jaune: #f9a620;
   .col:hover {
     z-index: 1;
     transform: scale(1.10);
+  }
+}
+
+/*======================
+    PANIER
+=======================*/
+
+.p-panier{
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
   }
 }
 
