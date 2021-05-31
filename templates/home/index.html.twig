@@ -17,25 +17,6 @@
 			{{ encore_entry_link_tags('app') }}
 		{% endblock %}
 
-		<style>
-			.bd-placeholder-img {
-				padding-right: 15px;
-				margin-top: 50px;
-				font-size: 1.125rem;
-				text-anchor: middle;
-				-webkit-user-select: none;
-				-moz-user-select: none;
-				user-select: none;
-
-			}
-
-			@media(min-width: 768px) {
-				.bd-placeholder-img-lg {
-					font-size: 3.5rem;
-				}
-			}
-		</style>
-
 		{% block javascripts %}
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
@@ -48,22 +29,22 @@
 
 				<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
 					<div class="container-fluid">
-					<img src="{{asset('images/CAREPET_Logo.svg')}}" alt="logo" width="50px">
+						<a href="{{path('app_home')}}"><img src="{{asset('images/CAREPET_Logo_White_Icon.svg')}}" alt="logo" width="50px"></a>
 						<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="navbar-toggler-icon"></span>
 						</button>
 						<div class="collapse navbar-collapse" id="navbarCollapse">
 							<ul class="navbar-nav me-auto mb-2 mb-md-0">
 								<li class="nav-item">
-								{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-									<a class="nav-link" href="{{path('conseil_index')}}">
-										Les bons conseils
-									</a>
-								{% else %}
-									<a class="nav-link" href="{{path('app_login')}}">
-										Les bons conseils
-									</a>
-								{% endif %}
+									{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+										<a class="nav-link" href="{{path('conseil_index')}}">
+											Les bons conseils
+										</a>
+									{% else %}
+										<a class="nav-link" href="{{path('app_login')}}">
+											Les bons conseils
+										</a>
+									{% endif %}
 								</li>
 								<li class="nav-item">
 									<a class="nav-link" href="{{path('specialiste_index')}}">Annuaire</a>
@@ -104,7 +85,7 @@
 												<a class="dropdown-item" href="{{ path('produit_index') }}">Produits</a>
 											</li>
 											<li>
-											<a class="dropdown-item" href="{{ path('categories_index') }}">Catégories</a>
+												<a class="dropdown-item" href="{{ path('categories_index') }}">Catégories</a>
 											</li>
 										</ul>
 									</li>
@@ -120,6 +101,9 @@
 											<li>
 												<a class="dropdown-item" href="{{ path('carnet_sante_index') }}">E-carnet</a>
 											</li>
+											<li>
+												<a class="dropdown-item" href="{{ path('profil') }}">Profil</a>
+											</li>
 										</ul>
 									</li>
 								{% endif %}
@@ -132,10 +116,10 @@
 								{%  endif %}
 							</ul>
 							{% if app.user %}
-							<a class="navbar-brand" href="{{path('app_logout')}}">D&eacute;connexion</a>
-						{% else %}
-							<a class="navbar-brand" href="{{path('app_login')}}">Connexion</a>
-						{% endif %}
+								<a class="navbar-brand" href="{{path('app_logout')}}">D&eacute;connexion</a>
+							{% else %}
+								<a class="navbar-brand" href="{{path('app_login')}}">Connexion</a>
+							{% endif %}
 						</div>
 					</div>
 				</nav>
@@ -144,7 +128,7 @@
 		</header>
 
 		<main>
-			<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+			<div id="carouselExampleCaptions" class="p-carousel carousel slide" data-bs-ride="carousel">
 				<div class="carousel-indicators">
 					<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
 					<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -153,21 +137,21 @@
 				<div class="carousel-inner">
 					<div class="carousel-item active">
 						<div class="container w-50
-																																																																						 ">
+																																																																																																						 ">
 							<img src="{{asset('/images/chienmain.jpg')}}" class="d-block w-100 h-50" alt="...">
 						</div>
 						<div class="carousel-caption d-none d-md-block"></div>
 					</div>
 					<div class="carousel-item">
 						<div class="container w-50
-																																																																						 ">
+																																																																																																						 ">
 							<img src="{{asset('/images/chat-woman.jpg')}}" class="d-block w-100 h-50" alt="...">
 						</div>
 						<div class="carousel-caption d-none d-md-block"></div>
 					</div>
 					<div class="carousel-item">
 						<div class="container w-50
-																																																																						 ">
+																																																																																																						 ">
 							<img src="{{asset('/images/catdog.jpg')}}" class="d-block w-100 center h-50" alt="...">
 						</div>
 						<div class="carousel-caption d-none d-md-block"></div>
@@ -250,7 +234,7 @@
 							<p class="lead">Vous souhaitez avoir accès &agrave; l'historique de votre animal lors de vos d&eacute;placement ? Pensez au e-carnet !
 								<br>
 								Le e-carnet de sant&eacute; est un outil moderne et r&eacute;actif pour le suivi de la sant&eacute; de votre animal.
-																																																																						Grâce &agrave; ce service gratuit, vous avez acc&egrave;s &agrave; la fiche de suivi m&eacute;dical de votre animal à tout moment et de n'importe quel ordinateur ou smartphone.
+																																																																																																						Grâce &agrave; ce service gratuit, vous avez acc&egrave;s &agrave; la fiche de suivi m&eacute;dical de votre animal à tout moment et de n'importe quel ordinateur ou smartphone.
 								<br>
 								Possibilit&eacute; d'avoir un suivi via Qr-code.
 							</p>
@@ -315,14 +299,14 @@
 		</div>
 
 		<hr class="featurette-divider"></body>
-</html></main>
-<!-- Footer --><!-- Footer -->
-
-<footer class="footer text-center text-muted bg-dark">
+</html></main><!-- Footer --><!-- Footer --><footer
+class="footer text-center text-muted bg-dark">
 <!-- Grid container -->
-<div class="container p-4 pb-0">
+<div
+	class="container p-4 pb-0">
 	<!-- Section: Social media -->
-	<section class="mb-4">
+	<section
+		class="mb-4">
 		<!-- Facebook -->
 		<a class="btn btn-primary bg-info text-light btn-floating m-1" href="#!" role="button">
 			<i class="fab fa-facebook-f"></i>

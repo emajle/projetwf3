@@ -1,0 +1,96 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+	<div class="container-fluid">
+		<a href="{{path('app_home')}}"><img src="{{asset('images/CAREPET_Logo_White_Icon.svg')}}" alt="logo" width="50px"></a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarCollapse">
+			<ul class="navbar-nav me-auto mb-2 mb-md-0">
+				<li class="nav-item">
+					{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+						<a class="nav-link" href="{{path('conseil_index')}}">
+							Les bons conseils
+						</a>
+					{% else %}
+						<a class="nav-link" href="{{path('app_login')}}">
+							Les bons conseils
+						</a>
+					{% endif %}
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{path('specialiste_index')}}">Annuaire</a>
+				</li>
+
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						E-Boutique
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<li>
+							<a class="dropdown-item" href="{{ path('e_boutique_accessoires') }}">Accessoires</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="{{ path('e_boutique_abonnement') }}">Abonnement</a>
+						</li>
+					</ul>
+				</li>
+				{%  if is_granted("ROLE_ADMIN") %}
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Espace admin
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<li>
+								<a class="dropdown-item" href="{{ path('animal_index') }}">Animaux</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="{{ path('user_index') }}">Membre</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="{{ path('carnet_sante_index') }}">E-carnet</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="{{ path('abonnement_index') }}">Abonnements</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="{{ path('produit_index') }}">Produits</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="{{ path('categories_index') }}">Catégories</a>
+							</li>
+						</ul>
+					</li>
+				{% elseif  is_granted("ROLE_ABONNE") %}
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Mon espace
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<li>
+								<a class="dropdown-item" href="{{ path('animal_index') }}">Animaux</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="{{ path('carnet_sante_index') }}">E-carnet</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="{{ path('profil') }}">Profil</a>
+							</li>
+						</ul>
+					</li>
+				{% endif %}
+				{% if app.user %}
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('profil')}}">
+							<i class="fas fa-user"></i>
+						</a>
+					</li>
+				{%  endif %}
+			</ul>
+			{% if app.user %}
+				<a class="navbar-brand" href="{{path('app_logout')}}">D&eacute;connexion</a>
+			{% else %}
+				<a class="navbar-brand" href="{{path('app_login')}}">Connexion</a>
+			{% endif %}
+		</div>
+	</div>
+</nav>

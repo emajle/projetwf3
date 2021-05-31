@@ -1,17 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Annuaire{% endblock %}
+{% block title %}Annuaire
+{% endblock %}
 
 {% block body %}
-  <h1>Annuaire des spécialistes : </h1>
+	<h1>Annuaire des spécialistes :
+	</h1>
 
- <form class="form-inline my-2 mb-5 text-center" action="{{ path('recherche_specialiste') }}">
-      <input class=" mr-sm-2" name= "mot" type="search" placeholder="Entrez un métier">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
-    </form>
+	<form class="form-inline my-2 mb-5 text-center" action="{{ path('recherche_specialiste') }}">
+		<input class=" mr-sm-2" name="mot" type="search" placeholder="Entrez un métier">
+		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
+	</form>
 
 
-    <table class="table table-striped table-primary">
+    <table class="table table-striped table-primary table-responsive">
         <thead class="table-dark">
             <tr>
                 <th>Profession</th>
@@ -54,11 +56,11 @@
         </tbody>
     </table>
 
-  {% if is_granted("ROLE_ADMIN") %}
+	{% if is_granted("ROLE_ADMIN") %}
 
 		<a class="btn btn-primary" href="{{ path('specialiste_new') }}">Nouveau spécialiste</a>
 
-    
-  {% endif %}
+
+	{% endif %}
 
 {% endblock %}

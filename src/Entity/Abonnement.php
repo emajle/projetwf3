@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AbonnementRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -23,14 +25,19 @@ class Abonnement
     private $name;
 
     /**
-     * @ORM\OneToOne(targetEntity=User::class, mappedBy="abonnement", cascade={"persist", "remove"})
-     */
-    private $membre;
-
-    /**
      * @ORM\Column(type="integer")
      */
     private $prix;
+
+    /**
+     * @ORM\OneToMany(targetEntity=User::class, mappedBy="abonnement")
+     */
+    private $users;
+
+    public function __construct()
+    {
+        $this->users = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -49,27 +56,6 @@ class Abonnement
         return $this;
     }
 
-    public function getMembre(): ?User
-    {
-        return $this->membre;
-    }
-
-    public function setMembre(?User $membre): self
-    {
-        // unset the owning side of the relation if necessary
-        if ($membre === null && $this->membre !== null) {
-            $this->membre->setAbonnement(null);
-        }
-
-        // set the owning side of the relation if necessary
-        if ($membre !== null && $membre->getAbonnement() !== $this) {
-            $membre->setAbonnement($this);
-        }
-
-        $this->membre = $membre;
-
-        return $this;
-    }
 
     public function getPrix(): ?int
     {
@@ -79,6 +65,36 @@ class Abonnement
     public function setPrix(int $prix): self
     {
         $this->prix = $prix;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->setAbonnement($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->users->removeElement($user)) {
+            // set the owning side to null (unless already changed)
+            if ($user->getAbonnement() === $this) {
+                $user->setAbonnement(null);
+            }
+        }
 
         return $this;
     }

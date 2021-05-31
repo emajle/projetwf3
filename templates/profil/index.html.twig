@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Profil {{app.user.pseudo}}{% endblock %}
+{% block title %}Profil {{ app.user.pseudo }}{% endblock %}
 
 {% block body %}
-      <h2 class="text-center">Hello {{ app.user.pseudo |capitalize }}! </h2>
+      <h2 class="text-center">Hello {{ app.user.pseudo|capitalize }}! </h2>
 
 
           <div class="row gutters-sm mt-3">
@@ -26,7 +26,7 @@
                 </div>
               </div>
               <div class="card mt-3">
-                <h5 class="text-center pt-3 pb-3">Mes E-Carnet</h5>
+                <h5 class="text-center pt-3 pb-3">Mes E-Carnets</h5>
                 <ul class="list-group list-group-flush">
                   {% for animal in app.user.animals  %}
                     <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
@@ -106,14 +106,14 @@
                       <h6 class="mb-0">Abonnement</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      {{app.user.abonnement.name |capitalize}}
+                      {{app.user.abonnement.name|capitalize}}
                     </div>
                   </div>
                   <hr>
                   {% endif %}
                   <div class="row">
                     <div class="col-sm-12">
-                      <a class="btn btn-info" href="{{ path('user_edit', {'id': app.user.id}) }}">Edit</a>
+                      <a class="btn btn-info" href="{{ path('user_edit', {'id': app.user.id}) }}">Modifier</a>
                     </div>
                   </div>
                 </div>

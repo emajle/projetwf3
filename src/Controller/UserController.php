@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 #[Route('/user')]
@@ -100,11 +101,14 @@ class UserController extends AbstractController
     }
 
     #[Route('abonnement/{idU}/{idA}', name: 'user_abonnement', methods: ['GET'])]
-    public function abonnement($idA, $idU, UserRepository $userRepo, AbonnementRepository $aboRepo)
+    public function abonnement($idU, $idA, UserRepository $userRepo, AbonnementRepository $aboRepo)
     {
         $user = $userRepo->find($idU);
         $abonnement = $aboRepo->find($idA);
+
         $user->setAbonnement($abonnement);
+        $user->setRoles(['ROLE_ABONNE']);
+
         $this->getDoctrine()->getManager()->flush();
         $this->addFlash("success", "Le paiement a bien été validé, vous êtes désormais abonné !");
         return $this->redirectToRoute('profil');
@@ -115,6 +119,7 @@ class UserController extends AbstractController
     {
         $user = $userRepo->find($idU);
         $user->setAbonnement(null);
+        $user->setRoles(['ROLE_USER']);
         $this->getDoctrine()->getManager()->flush();
         return $this->redirectToRoute('profil');
     }

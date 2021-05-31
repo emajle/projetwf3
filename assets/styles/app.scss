@@ -12,6 +12,36 @@ $jaune: #f9a620;
 // .titre {
 //   color: black;
 // }
+*{
+  font-family: 'Arima Madurai', cursive;
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+  }
+}
+
+/*======================
+    CAROUSEL
+=======================*/
+.p-carousel{
+  .bd-placeholder-img {
+    padding-right: 15px;
+    margin-top: 50px;
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+
+  }
+
+  @media(min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+}
 
 /*======================
     PAGE WELCOME
@@ -26,8 +56,8 @@ $jaune: #f9a620;
 }
 
 .body {
-  text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
-  box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
+  // text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+  // box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
   background-color: #0772877a !important;
 }
 .cover-container {
@@ -70,6 +100,78 @@ $jaune: #f9a620;
 //   background-image: url("/assets/images/CAREPET_Paws2.svg");
 //   background-repeat: no-repeat;
 // }
+
+/*======================
+    PAGE ABONNEMENT
+=======================*/
+.p-abonnement{
+
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+  
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+
+}
+
+/*======================
+    PAGE CONSEIL
+=======================*/
+
+.p-conseil{
+
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+    }
+  }
+  .card-img{
+    filter: grayscale(80%) blur(2px);
+  }
+
+  .col:hover {
+    z-index: 1;
+    transform: scale(1.10);
+  }
+}
+
+/*======================
+    PANIER
+=======================*/
+
+.p-panier{
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+}
+
 /*======================
     ANIMAL INDEX
 =======================*/
@@ -80,7 +182,15 @@ $jaune: #f9a620;
 }
 
 .couleur-card {
-  background-color: #ffd07e;
+  background-color: #077187;
+}
+
+#img-animal-index:hover{
+  cursor: pointer;
+}
+#img-animal-index:active {
+  z-index: 1;
+  transform: scale(2);
 }
 
 /*======================
@@ -382,7 +492,7 @@ video {
    FORMULAIRE
 =======================*/
 
-.form-btn a{
+.form-btn a {
   color: white;
   text-decoration: none;
 }

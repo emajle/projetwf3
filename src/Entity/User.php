@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Entity\Animal;
-use App\Entity\Abonnement;
 use App\Entity\CarnetSante;
 use App\Entity\NewsCategorie;
 use Doctrine\ORM\Mapping as ORM;
@@ -83,11 +82,6 @@ class User implements UserInterface
     private $isVerified = false;
 
     /**
-     * @ORM\OneToOne(targetEntity=Abonnement::class, inversedBy="membre", cascade={"persist", "remove"})
-     */
-    private $abonnement;
-
-    /**
      * @ORM\OneToMany(targetEntity=CarnetSante::class, mappedBy="user")
      */
     private $carnetSantes;
@@ -96,6 +90,11 @@ class User implements UserInterface
      * @ORM\Column(type="datetime")
      */
     private $created_at;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Abonnement::class, inversedBy="users")
+     */
+    private $abonnement;
 
     public function __construct()
     {
@@ -301,18 +300,6 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getAbonnement(): ?Abonnement
-    {
-        return $this->abonnement;
-    }
-
-    public function setAbonnement(?Abonnement $abonnement): self
-    {
-        $this->abonnement = $abonnement;
-
-        return $this;
-    }
-
     /**
      * @return Collection|CarnetSante[]
      */
@@ -351,6 +338,18 @@ class User implements UserInterface
     public function setCreatedAt(\DateTimeInterface $created_at): self
     {
         $this->created_at = $created_at;
+
+        return $this;
+    }
+
+    public function getAbonnement(): ?Abonnement
+    {
+        return $this->abonnement;
+    }
+
+    public function setAbonnement(?Abonnement $abonnement): self
+    {
+        $this->abonnement = $abonnement;
 
         return $this;
     }

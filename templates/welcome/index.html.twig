@@ -4,9 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="">
-		<title>Cover Template · Bootstrap v5.0</title>
-
-		<link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/cover/">
+		<title>Welcome to MyCarePet</title>
 
 		{% block stylesheets %}
 			{{ encore_entry_link_tags('app') }}
@@ -32,18 +30,17 @@
 
 			<header class="mb-auto">
 				<div>
-					<h3 class="float-md-start mb-0"><img class="float-md-start mb-0 w-25" src="{{asset('/images/CAREPET_Logo.svg')}}" alt="logo"></h3>
+					<h2 class="float-md-start mb-0"><img class="float-md-start mb-0 w-25" src="{{asset('/images/CAREPET_Logo.svg')}}" alt="logo"></h2>
 
 					<nav class="nav nav-masthead justify-content-center float-md-end">
 						<a class="nav-link active" aria-current="page" href="{{path('app_home')}}">Accueil</a>
-						<a class="nav-link" href="#">Boutique</a>
-						<a class="nav-link" href="#">Contact</a>
+						<a class="nav-link" href="{{path('e_boutique_accessoires')}}">Boutique</a>
 					</nav>
 				</div>
 			</header>
 
 			<main class="px-3">
-				<h1>My Care Pet</h1>
+				<h1>MyCarePet</h1>
 				<p class="lead text-primary">Si vous voulez des conseils pour le bien être de votre ami vous êtes au bon endroit. Notre réseau d'experts et de spécialistes vous accompagnera. Parce que si votre animal se porte bien il vous le rend bien.</p>
 				<p class="lead">
 					<a href="#" class="btn btn-sm btn-secondary fw-bold border-white bg-white">En savoir plus</a>
