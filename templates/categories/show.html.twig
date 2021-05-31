@@ -5,18 +5,20 @@
 {% block body %}
     <h1>Categories</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ category.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ category.name }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="table-responsive ">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ category.id }}</td>
+                </tr>
+                <tr>
+                    <th>Nom</th>
+                    <td>{{ category.name }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
     <a class="btn btn-secondary" href="{{ path('categories_index') }}">Revenir à la liste</a>
 

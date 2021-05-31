@@ -6,46 +6,48 @@
 {% block body %}
 	<h1>Specialiste</h1>
 
-	<table class="table">
-		<tbody>
-			<tr>
-				<th>Id</th>
-				<td>{{ specialiste.id }}</td>
-			</tr>
-			<tr>
-				<th>Nom</th>
-				<td>{{ specialiste.nom }}</td>
-			</tr>
-			<tr>
-				<th>Prenom</th>
-				<td>{{ specialiste.prenom }}</td>
-			</tr>
-			<tr>
-				<th>Profession</th>
-				<td>{{ specialiste.profession }}</td>
-			</tr>
-			<tr>
-				<th>Telephone</th>
-				<td>{{ specialiste.telephone }}</td>
-			</tr>
-			<tr>
-				<th>Email</th>
-				<td>{{ specialiste.email }}</td>
-			</tr>
-			<tr>
-				<th>Adresse</th>
-				<td>{{ specialiste.adresse }}</td>
-			</tr>
-			<tr>
-				<th>Ville</th>
-				<td>{{ specialiste.ville }}</td>
-			</tr>
-			<tr>
-				<th>Cp</th>
-				<td>{{ specialiste.cp }}</td>
-			</tr>
-		</tbody>
-	</table>
+	<div class="table-responsive ">
+		<table class="table">
+			<tbody>
+				<tr>
+					<th>Id</th>
+					<td>{{ specialiste.id }}</td>
+				</tr>
+				<tr>
+					<th>Nom</th>
+					<td>{{ specialiste.nom }}</td>
+				</tr>
+				<tr>
+					<th>Prenom</th>
+					<td>{{ specialiste.prenom }}</td>
+				</tr>
+				<tr>
+					<th>Profession</th>
+					<td>{{ specialiste.profession }}</td>
+				</tr>
+				<tr>
+					<th>Telephone</th>
+					<td>{{ specialiste.telephone }}</td>
+				</tr>
+				<tr>
+					<th>Email</th>
+					<td>{{ specialiste.email }}</td>
+				</tr>
+				<tr>
+					<th>Adresse</th>
+					<td>{{ specialiste.adresse }}</td>
+				</tr>
+				<tr>
+					<th>Ville</th>
+					<td>{{ specialiste.ville }}</td>
+				</tr>
+				<tr>
+					<th>Cp</th>
+					<td>{{ specialiste.cp }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 
 	<a class="btn btn-secondary mb-2" href="{{ path('specialiste_index') }}">Revenir à la liste</a>
 

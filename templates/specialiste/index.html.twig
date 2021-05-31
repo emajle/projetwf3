@@ -13,49 +13,51 @@
 	</form>
 
 
-    <table class="table table-striped table-primary table-responsive">
-        <thead class="table-dark">
-            <tr>
-                <th>Profession</th>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Telephone</th>
-                <th>Email</th>
-                <th>Adresse</th>
-                <th>Ville</th>
-                <th>Cp</th>
-                <th>Voir</th>
-                {{ is_granted('ROLE_ADMIN') ? "<th>Editer</th>" : ""}}
-            </tr>
-        </thead>
-        <tbody>
-        {% for specialiste in specialistes %}
-            <tr>
-                <td class="fw-bold">{{ specialiste.profession|capitalize }}</td>
-                <td>{{ specialiste.nom }}</td>
-                <td>{{ specialiste.prenom }}</td> 
-                <td>{{ specialiste.telephone }}</td>
-                <td>{{ specialiste.email }}</td>
-                <td>{{ specialiste.adresse }}</td>
-                <td>{{ specialiste.ville }}</td>
-                <td>{{ specialiste.cp }}</td>
-                <td>
-                    <a href="{{ path('specialiste_show', {'id': specialiste.id}) }}"><i class="far fa-eye"></i></a>
-                </td>
-                {% if is_granted('ROLE_ADMIN')%}
+   <div class="table-responsive" >
+        <table class="table table-striped table-primary">
+            <thead class="table-dark">
+                <tr>
+                    <th>Profession</th>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Telephone</th>
+                    <th>Email</th>
+                    <th>Adresse</th>
+                    <th>Ville</th>
+                    <th>Cp</th>
+                    <th>Voir</th>
+                    {{ is_granted('ROLE_ADMIN') ? "<th>Editer</th>" : ""}}
+                </tr>
+            </thead>
+            <tbody>
+            {% for specialiste in specialistes %}
+                <tr>
+                    <td class="fw-bold">{{ specialiste.profession|capitalize }}</td>
+                    <td>{{ specialiste.nom }}</td>
+                    <td>{{ specialiste.prenom }}</td> 
+                    <td>{{ specialiste.telephone }}</td>
+                    <td>{{ specialiste.email }}</td>
+                    <td>{{ specialiste.adresse }}</td>
+                    <td>{{ specialiste.ville }}</td>
+                    <td>{{ specialiste.cp }}</td>
                     <td>
-                        <a href="{{ path('specialiste_edit', {'id': specialiste.id}) }}"><i class='far fa-edit'></i></a>
+                        <a href="{{ path('specialiste_show', {'id': specialiste.id}) }}"><i class="far fa-eye"></i></a>
                     </td>
-                {% endif %}
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="10">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                    {% if is_granted('ROLE_ADMIN')%}
+                        <td>
+                            <a href="{{ path('specialiste_edit', {'id': specialiste.id}) }}"><i class='far fa-edit'></i></a>
+                        </td>
+                    {% endif %}
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="10">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
+   </div> 
 	{% if is_granted("ROLE_ADMIN") %}
 
 		<a class="btn btn-primary" href="{{ path('specialiste_new') }}">Nouveau spécialiste</a>
@@ -64,3 +66,4 @@
 	{% endif %}
 
 {% endblock %}
+

@@ -5,30 +5,32 @@
 {% block body %}
     <h1>Visite vétérinaire</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ visite_medical.id }}</td>
-            </tr>
-            <tr>
-                <th>Date_visite</th>
-                <td>{{ visite_medical.dateVisite ? visite_medical.dateVisite|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Symptome</th>
-                <td>{{ visite_medical.symptome }}</td>
-            </tr>
-            <tr>
-                <th>Diagnostique</th>
-                <td>{{ visite_medical.diagnostique }}</td>
-            </tr>
-            <tr>
-                <th>Analyses</th>
-                <td>{{ visite_medical.analyses }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="table-responsive ">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ visite_medical.id }}</td>
+                </tr>
+                <tr>
+                    <th>Date_visite</th>
+                    <td>{{ visite_medical.dateVisite ? visite_medical.dateVisite|date('Y-m-d') : '' }}</td>
+                </tr>
+                <tr>
+                    <th>Symptome</th>
+                    <td>{{ visite_medical.symptome }}</td>
+                </tr>
+                <tr>
+                    <th>Diagnostique</th>
+                    <td>{{ visite_medical.diagnostique }}</td>
+                </tr>
+                <tr>
+                    <th>Analyses</th>
+                    <td>{{ visite_medical.analyses }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
     <a class="btn btn-primary mb-2" href="{{ path('visite_medical_edit', {'id': visite_medical.id}) }}">Modifier</a>
 
