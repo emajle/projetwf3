@@ -36,15 +36,9 @@
 						<div class="collapse navbar-collapse" id="navbarCollapse">
 							<ul class="navbar-nav me-auto mb-2 mb-md-0">
 								<li class="nav-item">
-									{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 										<a class="nav-link" href="{{path('conseil_index')}}">
 											Les bons conseils
 										</a>
-									{% else %}
-										<a class="nav-link" href="{{path('app_login')}}">
-											Les bons conseils
-										</a>
-									{% endif %}
 								</li>
 								<li class="nav-item">
 									<a class="nav-link" href="{{path('specialiste_index')}}">Annuaire</a>
@@ -172,7 +166,7 @@
 					<div class="row">
 
 						<div class="col-md-6 px-0">
-							<h1 class="text-dark display-4">A la Une : Loi visant à renforcer la lutte contre la maltraitance animale</h1>
+							<h1 class="text-dark display-4">&Agrave; la Une : Loi visant à renforcer la lutte contre la maltraitance animale</h1>
 							<p class="text-muted lead my-3">La proposition de loi comprend diverses mesures pour lutter contre la maltraitance des animaux domestiques et des animaux sauvages captifs et améliorer leurs conditions de détention.
 							</p>
 							<p class="lead mb-0">
@@ -210,7 +204,7 @@
 								<strong class="d-inline-block mb-2 text-primary">Conseils Nutritionels</strong>
 								<h4 class="mb-0">Comment bien nourir son animal</h4>
 								<div class="mb-1 text-muted"></div>
-								<p class="mb-auto">Veillez sur lui au quotidien, parce que votre animal lui aussi &agrave; besoin de manger sainement et &eacute;quilibr&eacute;.</p>
+								<p class="mb-auto">Veillez sur lui au quotidien, parce que votre animal lui aussi a besoin de manger sainement et &eacute;quilibr&eacute;.</p>
 								<a href="#" class="stretched-link">Nos autres conseils</a>
 							</div>
 							<div class="col-auto d-none d-lg-block">
@@ -231,10 +225,10 @@
 							<h2 class="featurette-heading">E-Carnet !
 								<span class="text-muted">Qu'est-ce ?</span>
 							</h2>
-							<p class="lead">Vous souhaitez avoir accès &agrave; l'historique de votre animal lors de vos d&eacute;placement ? Pensez au e-carnet !
+							<p class="lead">Vous souhaitez avoir accès &agrave; l'historique de votre animal lors de vos d&eacute;placements ? Pensez au e-carnet !
 								<br>
 								Le e-carnet de sant&eacute; est un outil moderne et r&eacute;actif pour le suivi de la sant&eacute; de votre animal.
-																																																																																																						Grâce &agrave; ce service gratuit, vous avez acc&egrave;s &agrave; la fiche de suivi m&eacute;dical de votre animal à tout moment et de n'importe quel ordinateur ou smartphone.
+																																																																																																						Grâce &agrave; ce service, vous avez acc&egrave;s &agrave; la fiche de suivi v&eacute;t&eacute;rinaire de votre animal à tout moment et de n'importe quel ordinateur ou smartphone.
 								<br>
 								Possibilit&eacute; d'avoir un suivi via Qr-code.
 							</p>
@@ -257,11 +251,11 @@
 
 		<div class="row featurette">
 			<div class=" mt-5 col-md-7 order-md-2">
-				<h2 class="featurette-heading">Espace d&eacute;di&eacute; aux sp&eacute;cialistes animalier.
+				<h2 class="featurette-heading">Espace d&eacute;di&eacute; aux sp&eacute;cialistes.
 					<br>
 					<span class="text-muted">Qui sont-ils ?</span>
 				</h2>
-				<p class="lead">Ici, nous vous aiguillons vers les meilleurs sp&eacute;cialistes en tout genre pour le bien-être de votre compagnon</p>
+				<p class="lead">Ici, nous vous aiguillons vers les meilleurs sp&eacute;cialistes en tout genre pour le bien-être de votre compagnon.</p>
 				<p class="lead mb-0">
 					<a class="btn btn-primary" href="#" role="button">Sp&eacute;cialistes</a>
 				</p>
@@ -307,27 +301,8 @@ class="footer text-center text-muted bg-dark">
 	<!-- Section: Social media -->
 	<section
 		class="mb-4">
-		<!-- Facebook -->
-		<a class="btn btn-primary bg-info text-light btn-floating m-1" href="#!" role="button">
-			<i class="fab fa-facebook-f"></i>
-		</a>
-
-		<!-- Google -->
-		<a class="btn btn-primary bg-info text-light btn-floating m-1" href="#!" role="button">
-			<i class="fab fa-google"></i>
-		</a>
-
-		<!-- Instagram -->
-		<a class="btn btn-primary bg-info text-light btn-floating m-1" href="#!" role="button">
-			<i class="fab fa-instagram"></i>
-		</a>
-
-		<!-- Linkedin -->
-		<a class="btn btn-primary bg-info text-light btn-floating m-1" href="#!" role="button">
-			<i class="fab fa-linkedin-in"></i>
-		</a>
 		<!-- Github -->
-		<a class="btn btn-primary bg-info text-light btn-floating m-1" href="#!" role="button">
+		<a class="btn btn-primary bg-info text-light btn-floating m-1" href="https://github.com/emajle/projetwf3" target="_blank" role="button">
 			<i class="fab fa-github"></i>
 		</a>
 	</section>
@@ -343,14 +318,6 @@ class="footer text-center text-muted bg-dark">
 			<!--Grid row-->
 			<div
 				class="row d-flex justify-content-center">
-				<!--Grid column-->
-				<div class="col-auto">
-					<p class="pt-2">
-						<strong>Souscrivez à notre newsletter :</strong>
-					</p>
-				</div>
-				<!--Grid column-->
-
 				<!--Grid column-->
 				<div
 					class="col-md-5 col-12">

@@ -57,14 +57,14 @@
 		</div>
 
 		<div class="col-lg-6 table-responsive align-bottom" id="operation">
-			<h2 class="h4 text-center">Mes opération
+			<h2 class="h4 text-center">Mes opérations
 			</h2>
 			<table class=" table caption-top">
 				<thead>
 					<tr>
 						<th>Date</th>
 						<th>Nom</th>
-						<th>Symptome</th>
+						<th>Symptômes</th>
 						<th>Analyses</th>
 						<th>Specialiste</th>
 					</tr>
@@ -75,7 +75,7 @@
 							<tr>
 								<td>{{visite.dateVisite ? visite.dateVisite|date('d/m/y') : '' }}</td>
 								<td>{{visite.nom}}</td>
-								<td>{{ visite.symptome }}</td>
+								<td>{{ visite.Symptômes }}</td>
 								<td>{{ visite.analyses }}</td>
 								{% if visite.specialiste.name is defined %}
 									<td>{{ visite.specialiste.nom }}</td>
@@ -93,13 +93,13 @@
 		</div>
 
 		<article class="col-lg-6 table-responsive align-bottom" id="visite">
-			<h2 class="h4 text-center">Mes Visites medicaux
+			<h2 class="h4 text-center">Mes Visites vétérinaires
 			</h2>
 			<table class=" table caption-top">
 				<thead>
 					<tr>
 						<th scope="col">Date de la visite</th>
-						<th scope="col">Symptome</th>
+						<th scope="col">Symptômes</th>
 						<th scope="col">Diagnostique</th>
 						<th scope="col">Specialiste</th>
 					</tr>
@@ -109,7 +109,7 @@
 						{% if visite.action == "visite_medical" %}
 							<tr>
 								<td>{{visite.dateVisite ? visite.dateVisite|date('d/m/y') : '' }}</td>
-								<td>{{ visite.symptome }}</td>
+								<td>{{ visite.Symptômes }}</td>
 								<td>{{ visite.diagnostique }}</td>
 								{% if visite.specialiste.name is defined %}
 									<td>{{ visite.specialiste.nom }}</td>
@@ -165,7 +165,7 @@
 		<div id="b-carnet" class="d-grid gap-2 col-3">
 
 			<button type="button" class="btn btn-primary">
-				<a href="{{ path('carnet_sante_index') }}">Retour a la liste</a>
+				<a href="{{ path('carnet_sante_index') }}">Retour à la liste</a>
 			</button>
 			<button class="btn btn-primary">
 				<a href="{{ path('carnet_sante_edit', {'id': carnet_sante.id}) }}">Éditer le carnet</a>
